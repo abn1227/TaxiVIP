@@ -14,7 +14,7 @@
             <div class="col-md-4 p-3">
                 <div class="ui link card">
                     <a class="image" href="{{ route($module['url']) }}">
-                        <img src="{{ asset('img/placeholder.png') }}" alt="" srcset="">
+                        <img src="{{ asset('img/'.$module['img'].'.jpg') }}" alt="" srcset="">
                     </a>
                     <div class="content">
                         <a class="header" href="#">{{ $module['name'] }}</a>

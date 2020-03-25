@@ -15,7 +15,7 @@
             <a class="nav-link" href="{{ route('home') }}">About<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('home') }}">Contact Us<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{ route('user') }}">User<span class="sr-only">(current)</span></a>
         </li>
       </ul>
     </div>
