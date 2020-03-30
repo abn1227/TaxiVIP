@@ -96,7 +96,8 @@ class TaxiDriver extends Controller
             'inputTaxiDriverName'=>'required',
             'inputTaxiDriverMobile'=>'required',
             'inputTaxiDriverLicense'=>'required',
-            'inputTaxiDriverEmail'=>'required','unique:users,email,$user->email'
+            'inputTaxiDriverEmail'=>'required','unique:users,email,$user->email',
+            'cut'=>'required',
         ],
         [
             'inputTaxiDriverIdentification.required'=>'Campo identificacion es necesario',
@@ -106,10 +107,12 @@ class TaxiDriver extends Controller
             'inputTaxiDriverLicense.required'=>'Campo obligatorio',
             'inputTaxiDriverLicense.required'=>'email es un campo obligatorio',
             'inputTaxiDriverEmail.unique'=>'ya existe un usuario con este correo',
-            'inputTaxiDriverEmail.required'=>'Email es un campo requerido'
+            'inputTaxiDriverEmail.required'=>'Email es un campo requerido',
+            'cut'=>'Debe seleccionar una fecha de corte'
         ]);
             
             $taxiDriver->driving_license=$request->inputTaxiDriverLicense;
+            $taxiDriver->cut_date=$request->cut;
             $taxiDriver->save();
 
             $personUpdate->name = $request->inputTaxiDriverName;

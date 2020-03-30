@@ -96,9 +96,7 @@
                 <div class="field">
                   <div class="ui radio checkbox">
                     <input type="radio" name="cut" value="1"
-                    @if ($taxiDriver=='1')
-                        check
-                    @endif
+                    {{ old('cut',$taxiDriver->cut_date) == "1" ? "checked" : "" }}
                     >
                     <label>Diario</label>
                   </div>
@@ -106,7 +104,7 @@
                 <div class="field">
                   <div class="ui radio checkbox">
                     <input type="radio" name="cut" value="2"
-                    {{ old('cut',$taxiDriver->status) == '2' ? 'checked' : '' }}
+                    {{ old('cut',$taxiDriver->cut_date) == "2" ? "checked" : "" }}
                     >
                     <label>Semanal</label>
                   </div>
@@ -114,13 +112,14 @@
                 <div class="field">
                   <div class="ui radio checkbox">
                     <input type="radio" name="cut" value="3"
-                    {{ old('cut',$taxiDriver->status) == '3' ? 'checked' : '' }}
+                    {{ old('cut',$taxiDriver->cut_date) == "3" ? "checked" : "" }}
                     >
                     <label>Quincenal</label>
                   </div>
                 </div>
               </div>
             </div>
+                      
           <!--Fin radiobotones-->
             </td>
           </tr>
@@ -141,6 +140,9 @@
        </table>
       </form>
       </div>
+    
+      
+      
 
       {{-- Fin datos taxista --}}
     </div>
