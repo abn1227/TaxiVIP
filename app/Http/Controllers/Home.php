@@ -10,6 +10,8 @@ class Home extends Controller
 
     public function init(){
         $modules = $this->getModules();
+        // session()->flush();
+        session()->forget('mensaje');
         return view('home', compact('modules'));
     }
 

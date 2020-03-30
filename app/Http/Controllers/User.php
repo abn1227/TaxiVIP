@@ -11,9 +11,25 @@ class User extends Controller
 {
     /*Muestra los datos de el usuario logueado*/
     public function seeData(){
+        $array=$this->getUser();
+        $user=$array[0];
+        $person=$array[1];
+        return view('user.detailUser',compact('user','person'));
+    }
+
+    public function editUser(){
+        $array=$this->getUser();
+        $user=$array[0];
+        $person=$array[1];
+        return view('user.user',compact('user','person'));
+    }
+    
+    public function getUser()
+    {
         $user = Auth::user();
         $person=App\Person::findOrFail($user->persons_id);
-        return view('user.user',compact('user','person'));
+        $array = [$user,$person];
+        return $array;
     }
 
     /*Funcion que actualiza los datos del usuario y la persona mediante el llamado de las funcion
@@ -21,7 +37,12 @@ class User extends Controller
     public function update( Request $request, $id){
         $idPerson=$this->updateUser( $request, $id);
         $this->updatePerson( $request, $idPerson);
-        return back();
+        //Obtiene el usuario logueado y envia a la vista de editar usuario
+        $array=$this->getUser();
+        $user=$array[0];
+        $person=$array[1];
+        session(['mensaje'=>'Usuario Actualizado']);
+        return view('user.detailUser',compact('user','person'));
     }
     /*
     Esta funcion agrega un usuario a la base de datos, previamente revisa si la persona 
@@ -111,7 +132,7 @@ class User extends Controller
     {
         $userUpdate= App\User::findOrFail($id);
         $userUpdate->email = $request->inputEmail;
-        $userUpdate->password = $request->inputPassword;    
+        $userUpdate->password = bcrypt($request->inputPassword);    
         $userUpdate->save();
         $id= DB::table('users')->where('id',$id)->value('persons_id');
         return $id;

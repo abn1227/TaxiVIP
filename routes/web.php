@@ -19,9 +19,11 @@ Rutas para la gestion de usuario
 --------------------------------------------------------------------------- 
 */
 Route::get('/form-create','User@showFormCreate')->name('form-create-user');
-Route::get('/user', 'User@seeData')->name('user');
+Route::get('/user', 'User@editUser')->name('user');
 Route::post('/add-user', 'User@createUser')->name('add-user');
 Route::put('/user/{id}', 'User@update')->name('update-user');
+Route::get('/user/detail', 'User@seeData')->name('detail-user');
+
 
 Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');

@@ -16,8 +16,6 @@
     <form method="POST" action="{{route('update-user',$user->id)}}" > 
     @method('PUT')
     @csrf
-
-
         <div class="form-group">
           <label for="exampleInputEmail1">Identificacion</label>
           <input type="text" class="form-control" 
@@ -56,7 +54,8 @@
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" 
                     name="inputPassword"
-                    value="{{ $user->password }}">
+                    placeholder="Nueva contraseña"
+                    value="">
         </div>
         
         <button type="submit" name="inputUpdate" class="btn btn-warning btn-block">Actualizar</button>

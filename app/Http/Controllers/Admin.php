@@ -10,7 +10,7 @@ class Admin extends Controller
     public function showHome()
     {
         $modules=$this->getModules();
-        session()->flush();
+        session()->forget('mensaje');
         return view('home-admin', compact('modules'));
     }
     private function getModules(){
