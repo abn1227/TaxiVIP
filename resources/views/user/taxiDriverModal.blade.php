@@ -12,7 +12,7 @@
         <!--
             Formulario para el ingreso de informacion del taxista
         -->
-      <form class="ui form" method="POST" action="{{route('new-taxiDriver')}}">
+      <form class="ui form" method="POST" action="{{route('new-taxidriver')}}">
             @csrf
             <div class="field">
               <label>Licencia de conducir</label>

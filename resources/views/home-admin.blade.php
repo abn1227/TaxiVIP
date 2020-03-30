@@ -5,7 +5,7 @@
 @endsection
 
 @section('body')
-@extends('templates/navBar')
+@extends('templates/navBarAdmin')
 <h5>Menú Principal</h5>
     <hr>
     <div class="container">
