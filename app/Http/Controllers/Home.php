@@ -29,15 +29,33 @@ class Home extends Controller
             ],
             [
                 'url' => 'control',
-                'name' => 'Control de conductores',
-                'description' => 'Visualice los conductores registrados en el sistema y toda la información requerida sobre vehículos y pagos.',
-                'img'=>'taxista'
-            ],
-            [
-                'url' => 'control',
                 'name' => 'Corte',
                 'description' => 'Gestione el pago que debe de hacer el conductor.',
                 'img'=>'corte'
+            ],
+            [
+                'url' => 'form-create-user',
+                'name' => 'Agregar Empleado',
+                'description' => 'Agregue un nuevo empleado a planilla.',
+                'img'=>'empleados'
+            ],
+            [
+                'url' => 'show-taxidrivers',
+                'name' => 'Control de conductores',
+                'description' => 'Mostrar todos los conductores registrados en el sistema.',
+                'img'=>'taxista'
+            ],
+            [
+                'url' => 'vehicles',
+                'name' => 'Vehículos',
+                'description' => 'Visualice los vehículos disponibles y acceda a toda la infomacion requerida.',
+                'img'=>'carrera'
+            ],
+            [
+                'url' => 'addresses',
+                'name' => 'Direcciones',
+                'description' => 'Visualice las direcciones disponibles y agregue nuevas direcciones para el gestion de rutas.',
+                'img'=>'carrera'
             ]
         ];
         return $modules;

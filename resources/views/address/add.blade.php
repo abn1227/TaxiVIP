@@ -1,4 +1,4 @@
-@extends('templates/mainTemplate')
+@extends('templates.mainTemplate')
 
 @section('head')
 {{-- LEAFLET  --}}
@@ -6,7 +6,7 @@
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 <style type="text/css">
     #map {
-        height: 500%;
+        height: 200%;
         padding: 0;
         margin: 0;
     }
@@ -27,9 +27,9 @@ Home
 @endsection
 
 @section('body')
-@extends('templates/navBar')
+@extends('templates.navBar')
 <h5>
-    Bienvenido a el modulo de control
+    Bienvenido a el modulo de direcciones
 </h5>
 <div class="container">
 
@@ -40,9 +40,7 @@ Home
 
     <div class="row mb-5">
         <div class="col-md-5">
-
-            <b>Address Lookup</b>
-
+            <b>Buscador de direcciones</b>
             <div class="ui search selection fluid dropdown">
                 <input type="hidden" name="addr" id="addr" onkeyup="custom()">
                 <i class="dropdown icon"></i>
@@ -50,8 +48,20 @@ Home
                 <div class="menu" id="menu">
                 </div>
             </div>
-            <br />
+
+            <br>
+            <b>Nombre de direccion</b>
+            <div class="ui fluid input mt-2">
+                <input type="text" placeholder="Nombre de direccion">
+            </div>
+
+            <br>
+            <b>Coordenadas</b>
+            <div class="ui fluid input mt-2">
+                <input id="coordinates" name="coordinates" type="text" placeholder="Coordenadas">
+            </div>
         </div>
+
         <div class="col-md-7">
             <div id="map"></div>
         </div>
@@ -74,6 +84,7 @@ Home
 
 
     dropdown.on('keydown', (e) => {
+        let query;
         if (e.which == 13) {
             query = $('input.search').val();
             dropdown.addClass('loading');
@@ -84,7 +95,6 @@ Home
                     let menu = $('#menu');
                     menu.empty();
                     console.log(res);
-
                     res.map(e => {
                         return {
                             text: e.display_name,
@@ -101,7 +111,7 @@ Home
     })
     // var startlat = 14.059781;
     // var startlon = -87.219243;
-    var options = {
+    let options = {
         center: [14.059781, -87.219243],
         zoom: 12
     }
@@ -109,8 +119,8 @@ Home
     // document.getElementById('lat').value = startlat;
     // document.getElementById('lon').value = startlon;
 
-    var map = L.map('map', options);
-    var nzoom = 12;
+    let map = L.map('map', options);
+    let nzoom = 12;
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -140,6 +150,7 @@ Home
         }
         document.getElementById('lat').value = lat;
         document.getElementById('lon').value = lon;
+        $('#coordinates').val(lat + ' ' + lon);
         myMarker.bindPopup("Latitud: " + lat + "<br />Longitud: " + lon).openPopup();
     });
 
@@ -152,6 +163,7 @@ Home
         document.getElementById('lat').value = lat;
         document.getElementById('lon').value = lon;
         myMarker.bindPopup("Lat " + lat + "<br />Lon " + lon).openPopup();
+        $('#coordinates').val(lat + ' ' + lon);
     }
 </script>
 

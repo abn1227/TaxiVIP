@@ -28,13 +28,19 @@ class Admin extends Controller
                 'img'=>'taxista'
             ],
             [
-                'url' => 'control',
+                'url' => 'vehicles',
                 'name' => 'Vehículos',
                 'description' => 'Visualice los vehículos disponibles y acceda a toda la infomacion requerida.',
                 'img'=>'carrera'
+            ],
+            [
+                'url' => 'control',
+                'name' => 'Control de conductores',
+                'description' => 'Visualice los conductores registrados en el sistema y toda la información requerida sobre vehículos y pagos.',
+                'img'=>'taxista'
             ]
         ];
         return $modules;
     }
-    
+
 }
