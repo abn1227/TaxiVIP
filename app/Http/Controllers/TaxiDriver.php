@@ -55,7 +55,7 @@ class TaxiDriver extends Controller
     public function showAll()
     { 
         //
-        $taxistas= App\Taxi_Driver::all();
+        $taxistas= App\Taxi_Driver::paginate();
         return view('user.taxiDriver',compact('taxistas'));
     }
 

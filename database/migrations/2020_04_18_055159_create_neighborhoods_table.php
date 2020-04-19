@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVehiclesTable extends Migration
+class CreateNeighborhoodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateVehiclesTable extends Migration
      */
     public function up()
     {
-        Schema::create('vehicles', function (Blueprint $table) {
+        Schema::create('neighborhoods', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
-            $table->string('cardBrand');
-            $table->string('model');
-            $table->string('licensePlate');
-            $table->string('active');
-            $table->string('taxyDrivers_id');
+            $table->string('name_neighborhood', 45);
+            $table->string('latitude', 45);
+            $table->string('longitude', 45);
+            $table->bigInteger('schedule_id')->unsigned();
+            $table->foreign('schedule_id')->references('id')->on('schedule');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateVehiclesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehicles');
+        Schema::dropIfExists('neighborhoods');
     }
 }

@@ -52,5 +52,5 @@
     
 @endforeach
 </table>
-
+{{ $taxistas->links() }}
 @endsection
