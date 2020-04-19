@@ -28,7 +28,7 @@ class Admin extends Controller
                 'img'=>'taxista'
             ],
             [
-                'url' => 'control',
+                'url' => 'carros',
                 'name' => 'Vehículos',
                 'description' => 'Visualice los vehículos disponibles y acceda a toda la infomacion requerida.',
                 'img'=>'carrera'

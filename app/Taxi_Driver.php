@@ -12,4 +12,8 @@ class Taxi_Driver extends Model
     {
         return $this->belongsTo('App\Person','persons_id');
     }
+
+    public function vehicle(){
+        return $this->hasMany('App\Vehicle', 'taxi_drivers_id');
+    }
 }

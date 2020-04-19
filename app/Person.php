@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Person extends Model
 {
     protected $table='persons';
-    /*
-    Aqui se encuentran las funciones que contiene las relaciones de la tabla persona
-    */
+    
+   // Aqui se encuentran las funciones que contiene las relaciones de la tabla persona
+    
     public function user(){
         return $this->hasOne('App\User','persons_id');
     }

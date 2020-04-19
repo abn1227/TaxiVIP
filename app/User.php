@@ -36,13 +36,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    /*
-        Aqui se encuentran las funciones que contienen las relaciones de la tabla user
-    */
-    public function person(){
-        return $this->belongsTo('App\Person');
-    }
-    public function typeUser(){
-        return $this->belongsTo('App\Type_User');
-    }
 }
