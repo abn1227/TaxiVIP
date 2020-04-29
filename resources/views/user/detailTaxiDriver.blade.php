@@ -49,8 +49,8 @@
             <td>{{$taxiDriver->person->mobile}}</td>
           </tr>
           <tr>
-            <td><label >Licencia</label></td>
-            <td>{{$taxiDriver->driving_license}}</td>
+            <td><label >Porcentaje</label></td>
+            <td>{{$taxiDriver->percentage}}</td>
           </tr>
           <tr>
             <td><label >Kilometraje</label></td>

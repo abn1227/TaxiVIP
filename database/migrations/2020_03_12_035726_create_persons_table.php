@@ -17,7 +17,7 @@ class CreatePersonsTable extends Migration
             $table->bigIncrements('id');
             $table->string('identification',13)->unique();
             $table->string('name');
-            $table->string('mobile',10);
+            $table->string('mobile',13);
             $table->timestamps();
         });
     }

@@ -75,11 +75,11 @@
             </td>
           </tr>
           <tr>
-            <td><label >Licencia</label></td>
+            <td><label >Porcentaje</label></td>
             <td>
               <input type="text" class="form-control"
-              name="inputTaxiDriverLicense" 
-              value="{{old('inputTaxiDriverLicense',$taxiDriver->driving_license)}}">
+              name="inputTaxiDriverPercentage" 
+              value="{{old('inputTaxiDriverPercentage',$taxiDriver->percentage)}}">
             </td>
           </tr>
           <tr>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App;
+use App\Http\Controllers\VehicleController;
 
 class TaxiDriver extends Controller
 {
@@ -26,11 +27,14 @@ class TaxiDriver extends Controller
     public function createTaxiDriving(Request $request){
         $taxiDrivers= new App\Taxi_Driver;
         $taxiDrivers->persons_id=$request->inputIdPerson;
-        $taxiDrivers->driving_license=$request->inputDrivingLicense;
         $taxiDrivers->mileage=0;
         $taxiDrivers->percentage=$request->inputPercentaje;
         $taxiDrivers->cut_date=$request->cut;
         $taxiDrivers->save();
+        $id= $taxiDrivers->id;
+        
+        $vehicle = new VehicleController;
+        $vehicle->insertVehicles($request, $id);
         session(['mensaje'=>'Taxista Agregado']);
         return view('user.createUser');
     }
@@ -90,36 +94,14 @@ class TaxiDriver extends Controller
     {
         $taxiDriver= App\Taxi_Driver::findOrFail($id);
         $personUpdate= App\Person::findOrFail($taxiDriver->persons_id);
-        $user= App\User::findOrFail($taxiDriver->persons_id);
-        $request->validate([
-            'inputTaxiDriverIdentification'=>'required|max:13','unique:persons,identification,$taxiDriver->person->identification',
-            'inputTaxiDriverName'=>'required',
-            'inputTaxiDriverMobile'=>'required',
-            'inputTaxiDriverLicense'=>'required',
-            'inputTaxiDriverEmail'=>'required','unique:users,email,$user->email',
-            'cut'=>'required',
-        ],
-        [
-            'inputTaxiDriverIdentification.required'=>'Campo identificacion es necesario',
-            'inputTaxiDriverIdentification.unique'=>'Ya existe una persona registrada con este id',
-            'inputTaxiDriverName.required'=>'Campo nombre es obligatorio',
-            'inputTaxiDriverMobile.required'=>'Es obligario que ingrese un numero de telefono',
-            'inputTaxiDriverLicense.required'=>'Campo obligatorio',
-            'inputTaxiDriverLicense.required'=>'email es un campo obligatorio',
-            'inputTaxiDriverEmail.unique'=>'ya existe un usuario con este correo',
-            'inputTaxiDriverEmail.required'=>'Email es un campo requerido',
-            'cut'=>'Debe seleccionar una fecha de corte'
-        ]);
-            
-            $taxiDriver->driving_license=$request->inputTaxiDriverLicense;
+        $user= App\User::findOrFail($taxiDriver->persons_id);          
+            $taxiDriver->percentage=$request->inputTaxiDriverPercentage;
             $taxiDriver->cut_date=$request->cut;
             $taxiDriver->save();
-
             $personUpdate->name = $request->inputTaxiDriverName;
             $personUpdate->identification = $request->inputTaxiDriverIdentification;
             $personUpdate->mobile = $request->inputTaxiDriverMobile;    
             $personUpdate->save();
-
             $user->email=$request->inputTaxiDriverEmail;
             $user->save();
             return view('user.detailTaxiDriver',compact('taxiDriver','user'));

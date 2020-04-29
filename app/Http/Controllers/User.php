@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App;
@@ -34,7 +34,7 @@ class User extends Controller
 
     /*Funcion que actualiza los datos del usuario y la persona mediante el llamado de las funcion
     que se encargan de cada una de estas tareas*/
-    public function update( Request $request, $id){
+    public function update( UserRequest  $request, $id){
         $idPerson=$this->updateUser( $request, $id);
         $this->updatePerson( $request, $idPerson);
         //Obtiene el usuario logueado y envia a la vista de editar usuario
@@ -45,52 +45,24 @@ class User extends Controller
         return view('user.detailUser',compact('user','person'));
     }
     /*
-    Esta funcion agrega un usuario a la base de datos, previamente revisa si la persona 
-    ya existe en la base de datos, de no existir llama la funcion que agrega a la persona. 
-    
-    En caso de que la persona ya exista se asegura que esa persona no cuente con un 
-    usuario, si no hay un usuario lo crea. 
+    Funcion que se encarga de crear al usuario, esta hace el llamado a user y person que son los metodos 
+    que agregan la informacion a las tablas
     */
-    public function createUser(Request $request){
-        //si la persona no existe, lo crea y obtiene su id. sino solo obtiene el id
-        // Inicio validaciones
-        $request->validate([
-            'inputNewidentification'=>'required|max:13|unique:persons,identification',
-            'inputNewName'=>'required',
-            'inputNewMobile'=>'required',
-            'inputNewEmail'=>'required|unique:users,email',
-            'inputNewPassword'=>'required',
-            'role'=>'required'
-        ],
-        [
-            'inputNewidentification.required'=>'Campo identificacion es necesario',
-            'inputNewidentification.unique'=>'Ya existe una persona registrada con este id',
-            'inputNewName.required'=>'Campo nombre es obligatorio',
-            'inputNewMobile.required'=>'Es obligario que ingrese un numero de telefono',
-            'inputNewEmail.required'=>'Campo obligatorio',
-            'inputNewEmail.unique'=>'ya existe un usuario con este correo',
-            'inputNewPassword.required'=>'RTN ya existe para otra empresa',
-            'role.required'=>'Debe seleccionar un rol'
-        ]);
-        // Fin validaciones
-        
-        if (DB::table('persons')->where('identification',$request->inputNewidentification)->doesntExist()) {
-            $id=$this->person($request);
+    public function createUser(UserRequest $request){
+        //Agregamos una persona a la base de datos y obtenemos el id
+        $id=$this->person($request);
+        $this->user($request, $id);
+        session(['mensaje'=>'Empleado agregado']);
+        // Validacion para activar la ventana model que contiene el formulario para agregar taxista y vehiculo
+        $typeUser=$request->role;
+        if ($typeUser==3) {
+           return view('user.createUser', ['id'=>$id,'typeUser'=>$typeUser]);
         }
-
-        //si la persona no tiene un usuario lo crea
-        if (DB::table('users')->where('persons_id',$id)->doesntExist()) {
-           $this->user($request, $id);
-           session(['mensaje'=>'Empleado agregado']);
-           $typeUser=$request->role;
-           if ($typeUser==3) {
-            return view('user.createUser', ['id'=>$id,'typeUser'=>$typeUser]);
-           }
-           else{
-               return view('user.createUser');
-           }
+        else{
+            return view('user.createUser');
+        }
            
-        }
+        
     }
     /*Funcion cuyo objetivo es mostrar el formulario para agregar un usuario*/
     public function showFormCreate(){

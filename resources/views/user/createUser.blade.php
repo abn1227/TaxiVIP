@@ -6,7 +6,7 @@
 
 @section('body')
         @extends('templates/navBarAdmin')
-        {{-- manejo de errosres --}}
+        {{-- manejo de errores --}}
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -115,7 +115,8 @@
               -->
               <div style="position: fixed; top: 30%;">
                 @includeWhen(isset($id,$typeUser),'user/taxiDriverModal')
-                {{-- @include('taxi-driver-modal') --}}
+
+                {{-- @include('user/taxiDriverModal') --}}
               </div>              
               <!--
               -------------------------------------------------------------------------------------------------------

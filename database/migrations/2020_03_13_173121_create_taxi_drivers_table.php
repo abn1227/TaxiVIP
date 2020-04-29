@@ -17,7 +17,6 @@ class CreateTaxiDriversTable extends Migration
             $table->bigIncrements('id')->unique();
             $table->integer('mileage');
             $table->integer('percentage');
-            $table->string('driving_license');
             $table->integer('cut_date');
             $table->foreignId('persons_id')->constrained();
             $table->timestamps();

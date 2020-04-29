@@ -6,6 +6,12 @@
 
 @section('body')
 @extends('templates/navBarAdmin')
+{{-- Barra de busqueda --}}
+<div class="ui fluid action input">
+  <input type="text" placeholder="Search...">
+  <div class="ui button">Search</div>
+</div>
+{{-- Fin barra de busqueda --}}
 
 <table class="ui yellow table">
   <thead>

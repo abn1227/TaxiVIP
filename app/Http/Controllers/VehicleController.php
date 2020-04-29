@@ -50,28 +50,29 @@ class VehicleController extends Controller
 
     }
 
-    public function insertVehicles(Request $request)
+    public function insertVehicles(Request $request, $id)
     {
 
-      $request->validate([
-        'id' => 'required',
-        'cardBrand' => 'required',
-        'model' => 'required',
-        'licensePlate' => 'required',
-        'active' => 'required',
-        'taxyDrivers_id' => 'required'
-         ]);
+    //   $request->validate([
+    //     'id' => 'required',
+    //     'cardBrand' => 'required',
+    //     'model' => 'required',
+    //     'licensePlate' => 'required',
+    //     'active' => 'required',
+    //     'taxyDrivers_id' => 'required'
+    //      ]);
        
 
         $autoNuevo = new App\Vehicle;
-        $autoNuevo->id = $request->id;
-        $autoNuevo->cardBrand = $request->cardBrand;
+        $autoNuevo->car_brand = $request->carBrand;
         $autoNuevo->model = $request->model; 
-        $autoNuevo->licensePlate = $request->licensePlate;
-        $autoNuevo->active = $request->active;
-        $autoNuevo->taxyDrivers_id = $request->taxyDrivers_id;
+        $autoNuevo->color = $request->color; 
+        $autoNuevo->license_plate = $request->licensePlate;
+        $autoNuevo->active = '1';
+        $autoNuevo->taxi_drivers_id = $id;
         $autoNuevo->save();
-        return back()->with('exito', 'Registro agregado');
+       // return back()->with('exito', 'Registro agregado');
+       return;
     }
 
     public function deleteVehicle($id){
@@ -105,11 +106,12 @@ public function newVehicle(Request $request, $id){
 
          $vehicleUpdate = App\Vehicle::FindOrfail($id);
          $vehicleUpdate->id = $request->id;
-         $vehicleUpdate->cardBrand = $request->cardBrand;
+         $vehicleUpdate->card_brand = $request->cardBrand;
          $vehicleUpdate->model = $request->model;
-         $vehicleUpdate->licensePlate = $request->licensePlate;
+         $vehicleUpdate->color = $request->color;
+         $vehicleUpdate->license_plate = $request->licensePlate;
          $vehicleUpdate->active = $request->active;
-         $vehicleUpdate->taxyDrivers_id = $request->taxyDrivers_id;
+         $vehicleUpdate->taxy_Drivers_id = $id;
          $vehicleUpdate->save();
          return back()->with('exito', 'Registro actualizado');
         }

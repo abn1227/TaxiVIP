@@ -7,26 +7,21 @@
       <div class="ui medium image">
         <img src="{{asset('img\taxista-ciudad.jpg')}}">
       </div>
-      <div class="description" style="width: 500px;">
+      <div class="description scrolling content " style="width: 500px; height: 300px">
         <div class="ui header">Informacion personal </div>
         <!--
             Formulario para el ingreso de informacion del taxista
         -->
       <form class="ui form" method="POST" action="{{route('new-taxidriver')}}">
             @csrf
-            <div class="field">
-              <label>Licencia de conducir</label>
-              <input type="text" name="inputDrivingLicense" placeholder="Licencia de conducir">
-            </div>
 
             <div class="field">
-                <label>Licencia de conducir</label>
             <input type="hidden" name="inputIdPerson" value="{{$id}}">
               </div>
 
             <div class="field">
               <label>porcentaje</label>
-              <input type="text" name="inputPercentaje" placeholder="porcentaje">
+              <input type="text" name="inputPercentaje" placeholder="ejemplo... 25">
             </div>
 
             <!--
@@ -56,6 +51,26 @@
                 </div>
               </div>
             <!--Fin radiobotones-->
+
+            <div class="ui header">Vehiculo </div>
+            <div class="field">
+              <label>Marca</label>
+              <input type="text" name="carBrand" placeholder="ejemplo... Toyota">
+            </div>
+            <div class="field">
+              <label>Modelo</label>
+              <input type="text" name="model" placeholder="ejemplo... hatchback">
+            </div>
+            <div class="field">
+              <label>Color</label>
+              <input type="text" name="color" placeholder="ejemplo... Rojo">
+            </div>
+            <div class="field">
+              <label>Placa</label>
+              <input type="text" name="licensePlate" placeholder="Ejemplo... H AB 2649"> 
+            </div>
+            
+
             <button type="submit" name="btnTaxiDriving"  class="ui blue button">Guardar</button>
 
           </form>
@@ -64,13 +79,11 @@
         -->
       </div>
     </div>
+
     <div class="actions">
       <div class="ui black deny button">
-        Nope
+        Cerrar
       </div>
-      <div class="ui positive right labeled icon button">
-        Yep, that's me
-        <i class="checkmark icon"></i>
-      </div>
+     
     </div>
   </div>
