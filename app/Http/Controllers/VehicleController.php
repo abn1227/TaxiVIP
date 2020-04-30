@@ -62,9 +62,14 @@ class VehicleController extends Controller
         return back();
     }
 
-    public function upadateVehicles($id){
+    public function updateVehicles(Request $request,$id){
         $vehicle = App\Vehicle::findOrFail($id);
-        return view('vehicles.updateVehicles', compact('vehicle'));
+        $vehicle->car_brand=$request->carBrand;
+        $vehicle->model=$request->model;
+        $vehicle->license_plate=$request->licensePlate;
+        $vehicle->active=$request->status;
+        $vehicle->save();
+        return back();
     }
 
 public function updateVehicle(Request $request, $id){

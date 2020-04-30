@@ -61,8 +61,7 @@ Route::POST('/add-vehicle', 'VehicleController@insertVehicles')->name('insert.ve
 
 Route::DELETE('/delete-vehicle/{id}', 'VehicleController@deleteVehicle')->name('delete.vehicles'); //Elimina los registros del formulario ShowVehicles
 
-Route::get('/vehicles-update-vehicles/{id}', 'VehicleController@updateVehicles')->name('update.vehicles');
+Route::put('/vehicles-update-vehicles/{id}', 'VehicleController@updateVehicles')->name('update-vehicle');
 
-Route::put('/vehicles-update-vehicles/{id}', 'VehicleController@newVehicle')->name('new.vehicle');
 
 

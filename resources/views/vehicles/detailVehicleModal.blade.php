@@ -1,16 +1,18 @@
-<div style="margin-left: 250px; height: 480px; margin-top: 50px; " class="ui modal">
+<div style="margin-left: 250px; height: 600px; margin-top: 50px; " class="ui modal">
     <i class="close icon"></i>
     <div class="header">
       Vehiculo
     </div>
-    <div class="image content">
+    <div class="image content" >
       <div class="ui medium image" >
-        <img src="{{asset('img\vehicle.jpg')}}">
+        <img style="margin-top: 50px" class="ui medium circular image" src="{{asset('img\vehicle.jpg')}}">
       </div>
-      <div class="description scrolling content " style="width: 500px; height: 300px">
+      <div class="description scrolling content " style="width: 500px;">
         <div >
-            <form action="" class="ui form">
+            <form action="{{route('update-vehicle',$vehicle->id)}}" method="post" class="ui form">
                 @method('Put')
+                @csrf
+                
                 <div class="field">
                     <label>Marca</label>
                     <input type="text" name="carBrand" placeholder="Marca"
