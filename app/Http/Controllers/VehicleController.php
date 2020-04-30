@@ -15,29 +15,9 @@ class VehicleController extends Controller
      */
     public function index()
     {
-
         $vehicles = App\Vehicle::paginate(10);
-       
-
-        return view('vehicles.showVehicles', compact('vehicles'));
-        
+        return view('vehicles.showVehicles', compact('vehicles'));   
     }
-
-
-    public function detailVehicle($id){
-
-        $vehicle = App\Vehicle::findOrFail($id);
-
-    return view('vehicles.detailVehicles', compact('vehicle'));
-
-
-    }
-
-
-
-
-    
-
 
     /**
      * Show the form for creating a new resource.
@@ -63,14 +43,14 @@ class VehicleController extends Controller
     //      ]);
        
 
-        $autoNuevo = new App\Vehicle;
-        $autoNuevo->car_brand = $request->carBrand;
-        $autoNuevo->model = $request->model; 
-        $autoNuevo->color = $request->color; 
-        $autoNuevo->license_plate = $request->licensePlate;
-        $autoNuevo->active = '1';
-        $autoNuevo->taxi_drivers_id = $id;
-        $autoNuevo->save();
+        $newvehicle = new App\Vehicle;
+        $newvehicle->car_brand = $request->carBrand;
+        $newvehicle->model = $request->model; 
+        $newvehicle->color = $request->color; 
+        $newvehicle->license_plate = $request->licensePlate;
+        $newvehicle->active = '1';
+        $newvehicle->taxi_drivers_id = $id;
+        $newvehicle->save();
        // return back()->with('exito', 'Registro agregado');
        return;
     }
@@ -79,20 +59,15 @@ class VehicleController extends Controller
 
         $deletVehicle = App\Vehicle::FindOrfail($id);
         $deletVehicle->delete();
-
         return back();
     }
 
     public function upadateVehicles($id){
-
-    
-
         $vehicle = App\Vehicle::findOrFail($id);
-
-           return view('vehicles.updateVehicles', compact('vehicle'));
+        return view('vehicles.updateVehicles', compact('vehicle'));
     }
 
-public function newVehicle(Request $request, $id){
+public function updateVehicle(Request $request, $id){
        
        $request->validate([
         'id' => 'required',

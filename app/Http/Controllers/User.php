@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -69,7 +68,7 @@ class User extends Controller
         return view('user.createUser');
     }
     /*funcion que inserta a la persona*/
-    public function person(Request $request)
+    public function person(UserRequest $request)
     {
         $person= new App\Person;
             $person->identification=$request->inputNewidentification;
@@ -80,7 +79,7 @@ class User extends Controller
             return $id;
     }
     /*funcion que inserta a el usuario*/
-    public function user(Request $request, $id)
+    public function user(UserRequest $request, $id)
     {
         $newUser= new App\User;
         $newUser->email=$request->inputNewEmail;

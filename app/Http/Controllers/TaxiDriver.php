@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App;
 use App\Http\Controllers\VehicleController;
 
@@ -59,7 +59,7 @@ class TaxiDriver extends Controller
     public function showAll()
     { 
         //
-        $taxistas= App\Taxi_Driver::paginate();
+        $taxistas= App\Taxi_Driver::paginate(7);
         return view('user.taxiDriver',compact('taxistas'));
     }
 
@@ -80,7 +80,8 @@ class TaxiDriver extends Controller
     {
         $taxiDriver= App\Taxi_Driver::findOrFail($id);
         $user= App\User::findOrFail($taxiDriver->persons_id);
-        return view('user.detailTaxiDriver',compact('taxiDriver','user'));
+        $vehicle=DB::table('vehicles')->where('taxi_drivers_id',$taxiDriver->id)->first();
+        return view('user.detailTaxiDriver',compact('taxiDriver','user','vehicle'));
     }
 
     /**

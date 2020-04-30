@@ -32,8 +32,9 @@
       <div class="col-lg-6" style="padding-top:30px; ">
        <table class="ui yellow table">
         <thead>
-          <th>Campo</th>
-          <th>Datos</th>
+          <th colspan="2" style="text-align: center">
+            <h3>Informacion personal del Taxista</h3>
+          </th>
         </thead>
         <tbody>
           <tr>
@@ -65,10 +66,15 @@
             <td>{{$user->email}}</td>
           </tr>
           <tr>
-            <td colspan="2">
+            <td >
              <form action="{{route('edit-taxidriver',$taxiDriver->id)}}" method="get">
-               <button type="submit" class="btn btn-warning btn-block">Editar</button>
+               <button type="submit" class="btn btn-warning btn-block">
+                <i class="edit outline icon"></i>Editar</button>
              </form>
+            </td>
+            <td>
+                <button class="btn btn-info btn-block" name="vehicle" id="vehicle">
+                  <i class="eye  icon"></i>   Vehiculo</button>
             </td>
           </tr>
         </tbody>
@@ -79,6 +85,25 @@
     </div>
     
   </div>
-    
+  {{-- Incluir Modal --}}
+  @include('vehicles.detailVehicleModal')
+  {{-- Fin Modal --}}
 </div>
+@endsection
+
+@section('executionScripts')
+<script>
+
+//modal
+$("#vehicle").click(
+  function(){
+
+ $('.ui.modal')
+  .modal('show');
+  }
+
+);
+//
+</script>
+    
 @endsection

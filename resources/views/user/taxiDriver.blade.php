@@ -20,7 +20,6 @@
       <th>Name</th>
       <th>Celular</th>
       <th>Porcentaje</th>
-      <th>Licencia</th>
       <th>Fecha de corte</th>
       <th>Informacion</th>
     </tr>
@@ -46,8 +45,7 @@
         <td>{{$item->person->identification}}</td>
         <td>{{$item->person->name}}</td>
         <td>{{$item->person->mobile}}</td> 
-        <td>{{$item->percentage}}</td> 
-        <td>{{$item->driving_license}}</td> 
+        <td>{{$item->percentage}}</td>
         <td>{{$corte}}</td>
         <td>
           <a href="{{route('detail-taxidriver',$item->id)}}" class="ui yellow button"> Detalle </a>
