@@ -51,16 +51,10 @@ Rutas para vehiculos
 ----------------------------------------------------
 */
 
-Route::get('/vehicles', 'VehicleController@index')->name('vehicles');//visualizacion de los vehiculos existentes
-Route::get('/vehicles-detail-vehicles/{id}', 'VehicleController@detailVehicle')->name('detailVehicles'); //detalle de informacion por vahiculo
 
-Route::get('/vehicles-create-vehicles', 'VehicleController@create')->name('create'); //Envia al formulario para crear vehiculos
-
+Route::post('/vehicles-create-vehicles/{id}', 'VehicleController@newVehicle')->name('create-vehicle');
 Route::POST('/add-vehicle', 'VehicleController@insertVehicles')->name('insert.vehicles'); //Registra la informacion obtenida del formulario de crear vehiculos
-
-
-Route::DELETE('/delete-vehicle/{id}', 'VehicleController@deleteVehicle')->name('delete.vehicles'); //Elimina los registros del formulario ShowVehicles
-
+Route::DELETE('/delete-vehicle/{id}', 'VehicleController@deleteVehicle')->name('delete-vehicle'); //Elimina los registros del formulario ShowVehicles
 Route::put('/vehicles-update-vehicles/{id}', 'VehicleController@updateVehicles')->name('update-vehicle');
 
 

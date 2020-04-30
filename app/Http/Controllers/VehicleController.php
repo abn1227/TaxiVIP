@@ -24,25 +24,17 @@ class VehicleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    //Este metodo es para insertar vehiculo desde la vista en donde se muestra la informacion del taxista
+    public function newVehicle(Request $request,$id)
     {
-        return view('vehicles.createVehicles');
-
+       $this->insertVehicles($request, $id);
+       session(['mensaje'=>'Vehiculo ingresado a la base']);
+        return back();
     }
 
     public function insertVehicles(Request $request, $id)
     {
-
-    //   $request->validate([
-    //     'id' => 'required',
-    //     'cardBrand' => 'required',
-    //     'model' => 'required',
-    //     'licensePlate' => 'required',
-    //     'active' => 'required',
-    //     'taxyDrivers_id' => 'required'
-    //      ]);
-       
-
+    
         $newvehicle = new App\Vehicle;
         $newvehicle->car_brand = $request->carBrand;
         $newvehicle->model = $request->model; 
@@ -51,14 +43,13 @@ class VehicleController extends Controller
         $newvehicle->active = '1';
         $newvehicle->taxi_drivers_id = $id;
         $newvehicle->save();
-       // return back()->with('exito', 'Registro agregado');
        return;
     }
 
     public function deleteVehicle($id){
 
-        $deletVehicle = App\Vehicle::FindOrfail($id);
-        $deletVehicle->delete();
+        App\Vehicle::destroy($id);
+
         return back();
     }
 

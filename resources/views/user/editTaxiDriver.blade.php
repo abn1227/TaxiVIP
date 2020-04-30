@@ -36,11 +36,14 @@
       {{-- Imagen taxista  --}}
       <div class="col-lg-6" align="left" >
         <img src="{{ asset('img/taxista.jpg') }}" >
+        
       </div>
+      
       {{-- Fin imagen --}}
       {{-- Datos taxista --}}
-
+      
       <div class="col-lg-6" style="padding-top:20px; ">
+        
       <form action="{{route('update-taxidriver',$taxiDriver->id)}}" method="post">
         @method('put')
         @csrf
@@ -134,30 +137,29 @@
           <tr>
             <td colspan="2">
                <button type="submit" class="btn btn-warning btn-block">Actualizar</button>
+          
             </td>
           </tr>
         </tbody>
        </table>
       </form>
       </div>
-    
-      
-      
 
       {{-- Fin datos taxista --}}
     </div>
     
   </div>
-    
+    @include('vehicles/createVehiclesModal')
 </div>
 @endsection
 @section('executionScripts')
-<script>
 
+<script>
+  //Ventana Modal
+$("#showModal").click(
+  function(){$('.ui.modal').modal('show');});
 //radiobotones
-$('.ui.radio.checkbox')
-  .checkbox()
-;
+$('.ui.radio.checkbox').checkbox();
 //
 </script>
 @endsection

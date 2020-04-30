@@ -46,12 +46,6 @@ class Home extends Controller
                 'img'=>'taxista'
             ],
             [
-                'url' => 'vehicles',
-                'name' => 'Vehículos',
-                'description' => 'Visualice los vehículos disponibles y acceda a toda la infomacion requerida.',
-                'img'=>'carrera'
-            ],
-            [
                 'url' => 'addresses',
                 'name' => 'Direcciones',
                 'description' => 'Visualice las direcciones disponibles y agregue nuevas direcciones para el gestion de rutas.',

@@ -19,6 +19,13 @@
     @default
         
 @endswitch
+{{-- Guardado exitoso --}}
+@if (session('mensaje'))
+<div class="alert alert-success">
+    {{session('mensaje')}}
+</div>
+@endif
+{{-- fin guardado exitoso --}}
 <div class="container" >
   <div class="container" >
     <div class="row">
@@ -86,7 +93,8 @@
     
   </div>
   {{-- Incluir Modal --}}
-  @include('vehicles.detailVehicleModal')
+  @includeWhen(isset($vehicle),'vehicles.detailVehicleModal')
+  @include('vehicles.createVehiclesModal')
   {{-- Fin Modal --}}
 </div>
 @endsection
@@ -95,15 +103,15 @@
 <script>
 
 //modal
-$("#vehicle").click(
-  function(){
 
- $('.ui.modal')
-  .modal('show');
-  }
-
-);
-//
+$('.coupled.modal').modal({allowMultiple: false,});
+$("#vehicle").click(function(){
+  $('.detail.modal').modal('show');
+});
+// $("#callNewVehicle").click(function(){
+//   $('.create.modal').modal('show');
+// });
+$('#create.modal').modal('attach events', '.detail.modal #callCreate');
 </script>
     
 @endsection
