@@ -9,7 +9,7 @@ class Order extends Model
     protected $table = 'orders';
 
     public function vehicle(){
-        return $this->belongsTo('App\Vehicle', 'vehicles_id');
+        return $this->belongsTo('App\Taxi_Drivers', 'taxi_drivers_id');
     }
 
     public function client(){

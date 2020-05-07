@@ -16,4 +16,12 @@ class Taxi_Driver extends Model
     public function vehicle(){
         return $this->hasMany('App\Vehicle', 'taxi_drivers_id');
     }
+
+    public function order(){
+        return $this->hasMany('App\Order','taxi_drivers_id');
+    }
+
+    public function cut(){
+        return $this->hasMany('App\Cut','taxi_drivers_id');
+    }
 }

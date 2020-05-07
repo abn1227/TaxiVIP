@@ -16,7 +16,9 @@ class CreateCutTable extends Migration
         Schema::create('cut', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->double('payment',6, 2);
-            $table->timestamp('cut_date');
+            $table->dateTime('cut_date');
+            $table->bigInteger('taxi_drivers_id')->unsigned();
+            $table->foreign('taxi_drivers_id')->references('id')->on('taxi_drivers');
             $table->timestamps();
         });
     }

@@ -15,9 +15,11 @@ class CreateTaxiDriversTable extends Migration
     {
         Schema::create('taxi_drivers', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
-            $table->integer('mileage');
+            $table->integer('mileage'); //  es para acumular kilometraje
             $table->integer('percentage');
             $table->integer('cut_date');
+            $table->date('current_driver_license');
+            $table->string('status', 1);
             $table->foreignId('persons_id')->constrained();
             $table->timestamps();
         });

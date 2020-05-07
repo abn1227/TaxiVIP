@@ -18,6 +18,7 @@ class CreatePersonsTable extends Migration
             $table->string('identification',13)->unique();
             $table->string('name');
             $table->string('mobile',13);
+            $table->string('status', 1);
             $table->timestamps();
         });
     }

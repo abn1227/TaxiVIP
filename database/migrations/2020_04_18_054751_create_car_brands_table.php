@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClientsTable extends Migration
+class CreateCarBrandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateClientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('status', 1);
-            $table->foreignId('persons_id')->contrained();
+        Schema::create('car_brands', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 25);
+            $table->bigInteger('car_models_id')->unsigned();
+            $table->foreign('car_models_id')->references('id')->on('car_models');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('car_brands');
     }
 }

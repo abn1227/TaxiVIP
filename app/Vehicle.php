@@ -16,7 +16,7 @@ class Vehicle extends Model
         return $this->belongsTo('App\Taxi_Driver','taxi_drivers_id');
     }
 
-    public function order(){
-        return $this->hasMany('App\Order','vehicles_id');
-    }
+    public function carBrands(){
+        return $this->belongs('App\Car_Brand', 'car_brands_id');
+    }// este es el cambio
 }

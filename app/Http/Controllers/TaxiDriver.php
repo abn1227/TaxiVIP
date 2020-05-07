@@ -9,21 +9,9 @@ use App\Http\Controllers\VehicleController;
 
 class TaxiDriver extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //--------------------------------------------------------------------------------------
+    // Crear un nuevo taxista y su respectivo vehiculo desde la funcion de agregar empleado
+    //--------------------------------------------------------------------------------------
     public function createTaxiDriving(Request $request){
         $taxiDrivers= new App\Taxi_Driver;
         $taxiDrivers->persons_id=$request->inputIdPerson;
@@ -39,43 +27,30 @@ class TaxiDriver extends Controller
         return view('user.createUser');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   //--------------------------------------------------------------------------------------
+   //Mostrar todos los taxistas 
+   //--------------------------------------------------------------------------------------
     public function showAll()
     { 
         //
         $taxistas= App\Taxi_Driver::paginate(7);
         return view('user.taxiDriver',compact('taxistas'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //--------------------------------------------------------------------------------------
+    //Retorna los datos de un determinado taxista al formulario donde se puede modificar 
+    // los datos del taxista
+    //--------------------------------------------------------------------------------------
     public function editTaxiDriver($id)
     {
         //
         $taxiDriver= App\Taxi_Driver::findOrFail($id);
         $user= App\User::findOrFail($taxiDriver->persons_id);
-        return view('user.editTaxiDriver',compact('taxiDriver','user'));
+        $vehicle=DB::table('vehicles')->where('taxi_drivers_id',$taxiDriver->id)->first();
+        return view('user.editTaxiDriver',compact('taxiDriver','user','vehicle'));
     }
+    //--------------------------------------------------------------------------------------
+    //Envia los datos del taxista a la pantalla donde se muestran los detalle del taxista
+    //--------------------------------------------------------------------------------------
     public function showTaxiDriver($id)
     {
         $taxiDriver= App\Taxi_Driver::findOrFail($id);
@@ -83,14 +58,10 @@ class TaxiDriver extends Controller
         $vehicle=DB::table('vehicles')->where('taxi_drivers_id',$taxiDriver->id)->first();
         return view('user.detailTaxiDriver',compact('taxiDriver','user','vehicle'));
     }
+    //--------------------------------------------------------------------------------------
+    //Funcion que actualiza los datos del taxista
+    //--------------------------------------------------------------------------------------
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function updateTaxiDriver(Request $request, $id)
     {
         $taxiDriver= App\Taxi_Driver::findOrFail($id);
@@ -108,14 +79,9 @@ class TaxiDriver extends Controller
             return view('user.detailTaxiDriver',compact('taxiDriver','user'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
-        //
+        
     }
 }

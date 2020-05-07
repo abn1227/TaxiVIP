@@ -23,8 +23,8 @@ class CreateOrdersTable extends Migration
             $table->foreign('neighborhoods_origin_id')->references('id')->on('neighborhoods');
             $table->bigInteger('neighborhoods_destination_id')->unsigned();
             $table->foreign('neighborhoods_destination_id')->references('id')->on('neighborhoods');
-            $table->bigInteger('vehicles_id')->unsigned();
-            $table->foreign('vehicles_id')->references('id')->on('vehicles');
+            $table->bigInteger('taxi_drivers_id')->unsigned();
+            $table->foreign('taxi_drivers_id')->references('id')->on('taxi_drivers');
             $table->bigInteger('clients_id')->unsigned();
             $table->foreign('clients_id')->references('id')->on('clients');
             $table->timestamps();

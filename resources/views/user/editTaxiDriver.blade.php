@@ -136,8 +136,13 @@
           </tr>
           <tr>
             <td colspan="2">
-               <button type="submit" class="btn btn-warning btn-block">Actualizar</button>
-          
+              <div class="ui fluid buttons">
+               <button type="submit" class="ui yellow button">
+                <i class="undo icon"></i>Actualizar</button>
+               <div class="or"></div>
+               <button class="ui teal button" type="button" id="vehicle" name="vehicle">
+                <i class="eye icon"></i>Vehiculo</button>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -149,16 +154,30 @@
     </div>
     
   </div>
-    @include('vehicles/createVehiclesModal')
+  {{-- Incluir Modal --}}
+  @includeWhen(isset($vehicle),'vehicles.detailVehicleModal')
+  @include('vehicles.createVehiclesModal')
+  {{-- Fin Modal --}}
 </div>
 @endsection
 @section('executionScripts')
 
 <script>
-  //Ventana Modal
-$("#showModal").click(
-  function(){$('.ui.modal').modal('show');});
+//---------------------------------------------------------------
+//Ventana Modalx
+//---------------------------------------------------------------
+$('.coupled.modal').modal({allowMultiple: false,});
+$("#vehicle").click(function(){
+  $('.detail.modal').modal('show');
+});
+$('#create.modal').modal('attach events', '.detail.modal #callCreate');
+//---------------------------------------------------------------
+//Fin ventana modal
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
 //radiobotones
+//---------------------------------------------------------------
 $('.ui.radio.checkbox').checkbox();
 //
 </script>

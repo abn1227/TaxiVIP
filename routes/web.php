@@ -14,7 +14,6 @@
 Route::get('/', 'Home@init')->name('home');
 Route::get('/control', 'Home@init')->name('control');
 Route::get('/address', 'Address@init')->name('addresses');
-
 /*
 ---------------------------------------------------------------------------
 Rutas para la gestion de usuario
@@ -56,6 +55,9 @@ Route::post('/vehicles-create-vehicles/{id}', 'VehicleController@newVehicle')->n
 Route::POST('/add-vehicle', 'VehicleController@insertVehicles')->name('insert.vehicles'); //Registra la informacion obtenida del formulario de crear vehiculos
 Route::DELETE('/delete-vehicle/{id}', 'VehicleController@deleteVehicle')->name('delete-vehicle'); //Elimina los registros del formulario ShowVehicles
 Route::put('/vehicles-update-vehicles/{id}', 'VehicleController@updateVehicles')->name('update-vehicle');
+/*---------------------------------------------------------------------------
+Rutas para los controladores de taxista
+---------------------------------------------------------------------------
+*/
 
-
-
+Route::get('/order', 'Order@init')->name('order');
