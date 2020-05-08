@@ -5,6 +5,7 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App;
+use App\Http\Controllers\Person;
 
 class User extends Controller
 {
@@ -49,7 +50,8 @@ class User extends Controller
     */
     public function createUser(UserRequest $request){
         //Agregamos una persona a la base de datos y obtenemos el id
-        $id=$this->person($request);
+        $person = new Person;
+        $id=$person->person($request);
         $this->user($request, $id);
         session(['mensaje'=>'Empleado agregado']);
         // Validacion para activar la ventana model que contiene el formulario para agregar taxista y vehiculo
@@ -68,16 +70,7 @@ class User extends Controller
         return view('user.createUser');
     }
     /*funcion que inserta a la persona*/
-    public function person(UserRequest $request)
-    {
-        $person= new App\Person;
-            $person->identification=$request->inputNewidentification;
-            $person->name=$request->inputNewName;
-            $person->mobile=$request->inputNewMobile;
-            $person->save();
-            $id= DB::table('persons')->where('identification',$request->inputNewidentification)->value('id');
-            return $id;
-    }
+    
     /*funcion que inserta a el usuario*/
     public function user(UserRequest $request, $id)
     {
@@ -85,19 +78,12 @@ class User extends Controller
         $newUser->email=$request->inputNewEmail;
         $newUser->password=bcrypt($request->inputNewPassword);
         $newUser->type_users_id=$request->role;
+        $newUser->status='1';
         $newUser->persons_id=$id;
         $newUser->save();
         return;
     }
-    //Actualiza los datos de la persona
-    public function updatePerson(Request $request, $id)
-    {
-        $personUpdate= App\Person::findOrFail($id);
-        $personUpdate->name = $request->inputName;
-        $personUpdate->identification = $request->inputIdentification;
-        $personUpdate->mobile = $request->inputMobile;    
-        $personUpdate->save();
-    }
+   
     //Actualiza el usuario
     public function updateUser(Request $request, $id)
     {

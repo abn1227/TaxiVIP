@@ -79,10 +79,6 @@
                 <i class="edit outline icon"></i>Editar</button>
              </form>
             </td>
-            {{-- <td>
-                <button class="btn btn-info btn-block" name="vehicle" id="vehicle">
-                  <i class="eye  icon"></i>   Vehiculo</button>
-            </td> --}}
           </tr>
         </tbody>
        </table>
@@ -92,26 +88,7 @@
     </div>
     
   </div>
-  {{-- Incluir Modal --}}
-  @includeWhen(isset($vehicle),'vehicles.detailVehicleModal')
-  @include('vehicles.createVehiclesModal')
-  {{-- Fin Modal --}}
+  
 </div>
 @endsection
 
-@section('executionScripts')
-<script>
-
-// //modal
-
-// $('.coupled.modal').modal({allowMultiple: false,});
-// $("#vehicle").click(function(){
-//   $('.detail.modal').modal('show');
-// });
-// // $("#callNewVehicle").click(function(){
-// //   $('.create.modal').modal('show');
-// // });
-// $('#create.modal').modal('attach events', '.detail.modal #callCreate');
-</script>
-    
-@endsection

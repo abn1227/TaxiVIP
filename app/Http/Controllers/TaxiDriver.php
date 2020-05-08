@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App;
 use App\Http\Controllers\VehicleController;
+use App\Http\Requests\UserRequest;
 
 class TaxiDriver extends Controller
 {
@@ -18,6 +19,8 @@ class TaxiDriver extends Controller
         $taxiDrivers->mileage=0;
         $taxiDrivers->percentage=$request->inputPercentaje;
         $taxiDrivers->cut_date=$request->cut;
+        $taxiDrivers->current_driver_license=$request->inputCurrentDriverLicense;
+        $taxiDrivers->status='1';
         $taxiDrivers->save();
         $id= $taxiDrivers->id;
         

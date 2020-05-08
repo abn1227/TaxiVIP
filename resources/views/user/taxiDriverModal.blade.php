@@ -23,7 +23,12 @@
               <label>porcentaje</label>
               <input type="text" name="inputPercentaje" placeholder="ejemplo... 25">
             </div>
-
+            <div class="field">
+              <label>Vencimiento de licensia</label>
+              {{-- Calendario --}}
+             <input type="date" name="inputCurrentDriverLicense">
+              {{-- Fin Calendario --}}
+            </div>
             <!--
             Radio botones
             -->

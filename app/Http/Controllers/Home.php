@@ -22,7 +22,7 @@ class Home extends Controller
     private function getModules(){
         $modules = [
             [
-                'url' => 'order',
+                'url' => 'control',
                 'name' => 'Control de carreras',
                 'description' => 'Gestione las solicitudes de servicios de taxi.',
                 'img'=>'operador'
@@ -52,10 +52,16 @@ class Home extends Controller
                 'img'=>'mapa'
             ],
             [
-                'url' => 'addresses',
+                'url' => 'create-brand',
                 'name' => 'Marcas y modelos',
                 'description' => 'agregue marcas y modelos de auto a la base de datos de la empresa.',
                 'img'=>'carrera'
+            ],
+            [
+                'url' => 'create-brand',
+                'name' => 'Control de empleados',
+                'description' => 'Gestion de la informacion de los empleados agregados a la planilla.',
+                'img'=>'control-empleados'
             ]
         ];
         return $modules;

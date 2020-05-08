@@ -56,8 +56,10 @@ Route::POST('/add-vehicle', 'VehicleController@insertVehicles')->name('insert.ve
 Route::DELETE('/delete-vehicle/{id}', 'VehicleController@deleteVehicle')->name('delete-vehicle'); //Elimina los registros del formulario ShowVehicles
 Route::put('/vehicles-update-vehicles/{id}', 'VehicleController@updateVehicles')->name('update-vehicle');
 /*---------------------------------------------------------------------------
-Rutas para los controladores de taxista
+Rutas para los controladores de marca y modelo
 ---------------------------------------------------------------------------
 */
 
-Route::get('/order', 'Order@init')->name('order');
+Route::get('/vehicle/brand-and-model', 'CarBrand@init')->name('create-brand');
+Route::get('/vehicle/brand', 'CarBrand@showBrand')->name('show-brand');
+Route::post('/vehicle/brand-save', 'CarBrand@save')->name('brand-save');
