@@ -21,8 +21,8 @@ class CreateVehiclesTable extends Migration
             $table->string('status', 1);
             $table->bigInteger('taxi_drivers_id')->unsigned();
             $table->foreign('taxi_drivers_id')->references('id')->on('taxi_drivers');
-            $table->bigInteger('car_brands_id')->unsigned();
-            $table->foreign('car_brands_id')->references('id')->on('car_brands');
+            $table->bigInteger('car_models_id')->unsigned();
+            $table->foreign('car_models_id')->references('id')->on('car_models');
             $table->timestamps();
         });
     }

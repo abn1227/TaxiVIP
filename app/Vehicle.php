@@ -17,6 +17,6 @@ class Vehicle extends Model
     }
 
     public function carBrands(){
-        return $this->belongs('App\Car_Brand', 'car_brands_id');
+        return $this->belongs('App\Car_Model', 'car_models_id');
     }// este es el cambio
 }
