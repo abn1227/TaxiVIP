@@ -8,7 +8,7 @@
   <a class="teal item">Modelo
     <i class="eye icon blue"></i>
   </a>
-  <a class="item ">Crear Modelo 
+  <a class="item " href="{{route('create-model')}}">Crear Modelo 
     <i class="plus icon green"></i>
   </a>
   

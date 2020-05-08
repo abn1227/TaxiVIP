@@ -60,6 +60,8 @@ Rutas para los controladores de marca y modelo
 ---------------------------------------------------------------------------
 */
 
-Route::get('/vehicle/brand-and-model', 'CarBrand@init')->name('create-brand');
+Route::get('/vehicle/brand-form', 'CarBrand@init')->name('create-brand');
 Route::get('/vehicle/brand', 'CarBrand@showBrand')->name('show-brand');
 Route::post('/vehicle/brand-save', 'CarBrand@save')->name('brand-save');
+Route::get('/vehicle/model-form', 'CarModel@init')->name('create-model');
+Route::post('/vehicle/model-save', 'CarModel@save')->name('model-save');

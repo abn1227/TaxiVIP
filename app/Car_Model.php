@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Car_Model extends Model
 {
+    protected $table='car_models';
     public function car_brand(){
         return $this->hasMany('App\Car_Brand', 'car_brands_id');
     }

@@ -46,11 +46,8 @@
                             {{$Brand->name}}
                         </td>
                         <td>
-                            <div class=" ui buttons fluid">
-                                <button class="ui button yellow">Editar</button>
-                                <div class="or"></div>
-                                <button class="ui button black">Eliminar</button>
-                            </div>
+                            <button class="ui button teal fluid">
+                                <i class="info icon"></i> Detalle </button>
                         </td>
                     </tr>
                 @endforeach
