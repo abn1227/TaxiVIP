@@ -14,8 +14,10 @@ class CreateCarModelsTable extends Migration
     public function up()
     {
         Schema::create('car_models', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements();
             $table->string('name', 25);
+            $table->bigInteger('car_brands_id')->unsigned();
+            $table->foreign('car_brands_id')->references('id')->on('car_brands');
             $table->timestamps();
         });
     }
