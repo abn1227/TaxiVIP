@@ -65,3 +65,4 @@ Route::get('/vehicle/brand', 'CarBrand@showBrand')->name('show-brand');
 Route::post('/vehicle/brand-save', 'CarBrand@save')->name('brand-save');
 Route::get('/vehicle/model-form', 'CarModel@init')->name('create-model');
 Route::post('/vehicle/model-save', 'CarModel@save')->name('model-save');
+Route::get('/vehicle/model', 'CarModel@showModel')->name('show-model');
