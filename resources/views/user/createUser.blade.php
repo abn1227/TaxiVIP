@@ -5,7 +5,7 @@
 @endsection
 
 @section('body')
-        @extends('templates/navBarAdmin')
+        @extends('templates/navBar')
         {{-- manejo de errores --}}
         @if ($errors->any())
             <div class="alert alert-danger">

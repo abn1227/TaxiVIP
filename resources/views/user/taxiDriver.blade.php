@@ -5,7 +5,7 @@
 @endsection
 
 @section('body')
-@extends('templates/navBarAdmin')
+@extends('templates/navBar')
 {{-- Barra de busqueda --}}
 <div class="ui fluid action input">
   <input type="text" placeholder="Search...">

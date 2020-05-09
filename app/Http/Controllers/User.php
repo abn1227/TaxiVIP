@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App;
 use App\Http\Controllers\Person;
+use App\Http\Controllers\CarModel;
 
 class User extends Controller
 {
@@ -23,7 +24,7 @@ class User extends Controller
         $person=$array[1];
         return view('user.user',compact('user','person'));
     }
-    
+    /*Obtiene el usuario logueado y retorna esos valores en un array*/
     public function getUser()
     {
         $user = Auth::user();
@@ -49,15 +50,18 @@ class User extends Controller
     que agregan la informacion a las tablas
     */
     public function createUser(UserRequest $request){
-        //Agregamos una persona a la base de datos y obtenemos el id
+        //Instancias de controladores para llamar informacion de la base de datos 
         $person = new Person;
+        $model = new CarModel;
+        $models=$model->getCarModel();
         $id=$person->person($request);
         $this->user($request, $id);
+        
         session(['mensaje'=>'Empleado agregado']);
-        // Validacion para activar la ventana model que contiene el formulario para agregar taxista y vehiculo
+        // Validacion para activar la ventana modal que contiene el formulario para agregar taxista y vehiculo
         $typeUser=$request->role;
         if ($typeUser==3) {
-           return view('user.createUser', ['id'=>$id,'typeUser'=>$typeUser]);
+           return view('user.createUser', ['id'=>$id,'typeUser'=>$typeUser,'models'=>$models]);
         }
         else{
             return view('user.createUser');

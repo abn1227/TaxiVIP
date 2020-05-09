@@ -5,7 +5,7 @@
 @endsection
 
 @section('body')
-@extends('templates/navBarAdmin')
+@extends('templates/navBar')
 @switch($taxiDriver->cut_date)
     @case(1)
         <?php $corte='Diario' ?>
@@ -127,11 +127,16 @@
             </td>
           </tr>
           <tr>
-            <td><label >Email</label></td>
-            <td>
-              <input type="text" class="form-control"
-              name="inputTaxiDriverEmail" 
-              value="{{old('inputTaxiDriverEmail',$user->email)}}">
+            <td><label >Vehiculo activo</label></td>
+            <td >
+              <select class="ui search dropdown" name="selectVehicle">
+                <option value="">Seleccione un vehiculo</option>
+                 @foreach ($vehicle as $item)
+                     <option value="{{$item->id}}"
+                      {{old('selectVehicle',$item->id) == "$vehicleActivate->id" ? "selected" : "" }} >{{$item->license_plate}}</option>
+                 @endforeach              
+              </select>
+              {{-- <label for="">{{$vehicle}}</label> --}}
             </td>
           </tr>
           <tr>

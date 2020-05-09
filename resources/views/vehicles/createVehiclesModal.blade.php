@@ -12,15 +12,14 @@
             <form action="{{route('create-vehicle',$taxiDriver->id)}}" method="post" class="ui form">
                 @csrf
                 <div class="field">
-                    <label>Marca</label>
-                    <input type="text" name="carBrand" placeholder="Marca"
-                    value="{{old('cardBrand')}}">
-                  </div>
-                <div class="field">
-                    <label >Modelo</label>
-                    <input type="text" name="model" placeholder="Modelo"
-                    value="{{old('model')}}">
-                </div>
+                  <label >Modelo</label>
+                  <select class="ui search dropdown" name="model">
+                    <option value="">Seleccione un modelo</option>
+                    @foreach ($models as $model)
+                        <option value="{{$model->id}}" {{ old('model',$model->id) }} >{{$model->name}}</option>
+                    @endforeach                        
+                  </select>
+              </div>
                 <div class="field">
                     <label >Color</label>
                     <input type="text" name="color" placeholder="Color"

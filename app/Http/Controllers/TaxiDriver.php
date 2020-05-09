@@ -25,6 +25,8 @@ class TaxiDriver extends Controller
         $id= $taxiDrivers->id;
         
         $vehicle = new VehicleController;
+        $model = new CarModel;
+        $models=$model->getCarModel();
         $vehicle->insertVehicles($request, $id);
         session(['mensaje'=>'Taxista Agregado']);
         return view('user.createUser');
@@ -48,8 +50,12 @@ class TaxiDriver extends Controller
         //
         $taxiDriver= App\Taxi_Driver::findOrFail($id);
         $user= App\User::findOrFail($taxiDriver->persons_id);
-        $vehicle=DB::table('vehicles')->where('taxi_drivers_id',$taxiDriver->id)->first();
-        return view('user.editTaxiDriver',compact('taxiDriver','user','vehicle'));
+        $vehicle=DB::table('vehicles')->where('taxi_drivers_id',$taxiDriver->id)->get();
+        $model = new CarModel;
+        $vehicleAct = new VehicleController;
+        $models=$model->getCarModel();
+        $vehicleActivate=$vehicleAct->getVehicle($taxiDriver->id);
+        return view('user.editTaxiDriver',compact('taxiDriver','user','vehicle','models','vehicleActivate'));
     }
     //--------------------------------------------------------------------------------------
     //Envia los datos del taxista a la pantalla donde se muestran los detalle del taxista
@@ -59,7 +65,9 @@ class TaxiDriver extends Controller
         $taxiDriver= App\Taxi_Driver::findOrFail($id);
         $user= App\User::findOrFail($taxiDriver->persons_id);
         $vehicle=DB::table('vehicles')->where('taxi_drivers_id',$taxiDriver->id)->first();
-        return view('user.detailTaxiDriver',compact('taxiDriver','user','vehicle'));
+        $vehicleAct = new VehicleController;
+        $vehicleActivate=$vehicleAct->getVehicle($taxiDriver->id);
+        return view('user.detailTaxiDriver',compact('taxiDriver','user','vehicle','vehicleActivate'));
     }
     //--------------------------------------------------------------------------------------
     //Funcion que actualiza los datos del taxista
@@ -69,7 +77,10 @@ class TaxiDriver extends Controller
     {
         $taxiDriver= App\Taxi_Driver::findOrFail($id);
         $personUpdate= App\Person::findOrFail($taxiDriver->persons_id);
-        $user= App\User::findOrFail($taxiDriver->persons_id);          
+        $user= App\User::findOrFail($taxiDriver->persons_id);       
+        $vehicle =new VehicleController;
+        $vehicle->status($request->selectVehicle);   
+        $vehicleActivate=$vehicle->getVehicle($id);
             $taxiDriver->percentage=$request->inputTaxiDriverPercentage;
             $taxiDriver->cut_date=$request->cut;
             $taxiDriver->save();
@@ -77,9 +88,8 @@ class TaxiDriver extends Controller
             $personUpdate->identification = $request->inputTaxiDriverIdentification;
             $personUpdate->mobile = $request->inputTaxiDriverMobile;    
             $personUpdate->save();
-            $user->email=$request->inputTaxiDriverEmail;
             $user->save();
-            return view('user.detailTaxiDriver',compact('taxiDriver','user'));
+            return view('user.detailTaxiDriver',compact('taxiDriver','user','vehicleActivate'));
     }
 
    

@@ -25,18 +25,8 @@
     {{-- Fin Columna numero 1   --}}
     
     {{-- Columna numero 2 --}}
-    <div class="col-lg-8" style="margin-left: 0px" >
-    {{-- Seleccionar Marca --}}
-    <select class="ui search dropdown fluid" name="selectCarBrand">
-        <option value="">Marcas</option>
-        @foreach ($brands as $brand)
-            <option value="{{$brand->id}}">{{$brand->name}}</option>
-        @endforeach                        
-      </select>
-      {{-- Fin seleccionar Marca --}}
-     
-    
-        <table class="ui table">
+    <div class="col-lg-8" style="margin-left: 0px" >  
+        <table class="ui table yellow">
            <thead>
                <tr>
                    <th>Marca</th>
@@ -52,6 +42,7 @@
               @endforeach
             </tbody>
           </table>    
+          {{ $models->links() }}
     </div>
       
     {{-- Fin Columna numero 1   --}}

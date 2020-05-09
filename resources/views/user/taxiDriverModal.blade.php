@@ -58,13 +58,15 @@
             <!--Fin radiobotones-->
 
             <div class="ui header">Vehiculo </div>
-            <div class="field">
-              <label>Marca</label>
-              <input type="text" name="carBrand" placeholder="ejemplo... Toyota">
-            </div>
+
             <div class="field">
               <label>Modelo</label>
-              <input type="text" name="model" placeholder="ejemplo... hatchback">
+              <select class="ui search dropdown" name="model">
+                <option value="">Modelos</option>
+                @foreach ($models as $model)
+                    <option value="{{$model->id}}">{{$model->name}}</option>
+                @endforeach                        
+              </select>
             </div>
             <div class="field">
               <label>Color</label>

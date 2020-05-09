@@ -5,7 +5,7 @@
 @endsection
 
 @section('body')
-@extends('templates/navBarAdmin')
+@extends('templates/navBar')
 @switch($taxiDriver->cut_date)
     @case(1)
         <?php $corte='Diario' ?>
@@ -69,8 +69,8 @@
             <td>{{$corte}}</td>
           </tr>
           <tr>
-            <td><label >Email</label></td>
-            <td>{{$user->email}}</td>
+            <td><label >Vehiculo</label></td>
+            <td>{{$vehicleActivate->license_plate}}</td>
           </tr>
           <tr>
             <td colspan="2" >
