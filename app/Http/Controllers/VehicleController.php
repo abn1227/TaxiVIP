@@ -43,6 +43,9 @@ class VehicleController extends Controller
         $newvehicle->status = '1';
         $newvehicle->taxi_drivers_id = $id;
         $newvehicle->save();
+        $this->status($newvehicle->id);
+
+
        return;
     }
 //--------------------------------------------------------------------------------------
