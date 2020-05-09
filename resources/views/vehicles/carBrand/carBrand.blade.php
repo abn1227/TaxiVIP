@@ -32,7 +32,7 @@
             <div class="ui button">Search</div>
         </div>
         {{-- Fin barra de busqueda --}}
-        <table class="ui table">
+        <table class="ui table yellow">
             <thead>
                 <tr>
                     <th>Marca</th>
@@ -46,8 +46,13 @@
                             {{$Brand->name}}
                         </td>
                         <td>
-                            <button class="ui button teal fluid">
-                                <i class="info icon"></i> Detalle </button>
+                            <form method="GET" action="{{route('edit-brand',$Brand->id)}}">
+                                @csrf
+                                <button class="ui button yellow fluid">
+                                    <i class="info icon"></i> Editar 
+                                </button>
+                            </form>
+                            
                         </td>
                     </tr>
                 @endforeach

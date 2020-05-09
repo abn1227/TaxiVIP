@@ -93,8 +93,4 @@ class TaxiDriver extends Controller
     }
 
    
-    public function destroy($id)
-    {
-        
-    }
 }

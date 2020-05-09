@@ -31,6 +31,7 @@
                <tr>
                    <th>Marca</th>
                    <th>Modelo</th>
+                   <th>Acciones</th>
                </tr>
            </thead>
             <tbody>
@@ -38,6 +39,14 @@
                   <tr>
                       <td>{{$model->car_brand->name}}</td>
                       <td>{{$model->name}}</td>
+            
+                      <td>
+                        <form action="{{route('edit-model',$model->id)}}" method="GET">
+                          @csrf
+                          <button class="ui button yellow fluid">
+                            <i class="info icon"></i>Editar</button>
+                        </form>
+                      </td>
                   </tr>
               @endforeach
             </tbody>

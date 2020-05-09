@@ -29,4 +29,20 @@ class CarModel extends Controller
         $models= App\Car_Model::all();
         return $models;
     }
+    public function edit($id)
+    {
+        $brand = new CarBrand;
+        $brands= $brand->getCarBrand();
+        $model= App\Car_Model::findOrFail($id);
+        return view('vehicles.model.editCarModel', compact('model','brands'));
+    }
+    public function update(Request $request,$id)
+    {
+        $model= App\Car_Model::findOrFail($id);
+        $model->name=$request->editCarModel;
+        $model->car_brands_id=$request->editSearchCarBrand;
+        $model->save();
+        session(['mensaje'=>'Modelo actualizado exitosamente']);
+        return back();
+    }
 }

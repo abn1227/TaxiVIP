@@ -25,4 +25,17 @@ class CarBrand extends Controller
         $Brands= App\Car_Brand::all();
         return $Brands;
     }
+    public function edit($id)
+    {
+        $Brands= App\Car_Brand::findOrFail($id);
+        return view('vehicles.carBrand.editCarBrand',compact('Brands'));
+    }
+    public function update($id, Request $request)
+    {
+        $brands= App\Car_Brand::findOrFail($id);
+        $brands->name=$request->inputEditBrandName;
+        $brands->save();
+        session(['mensaje'=>'Marca actualizada exitosamente']);
+        return back();
+    }
 }
