@@ -10,12 +10,6 @@ use App;
 class VehicleController extends Controller
 {
     
-    public function index()
-    {
-        $vehicles = App\Vehicle::paginate(10);
-        return view('vehicles.showVehicles', compact('vehicles'));   
-    }
-
 
     //--------------------------------------------------------------------------------------
     //Este metodo es para insertar vehiculo desde la vista en donde se muestra la 
@@ -83,13 +77,5 @@ public function status($id)
     DB::table('vehicles')->where('active','1')->update(['active'=>'0']);
     DB::table('vehicles')->where('id',$id)->update(['active'=>'1']);
     return;
-}
-//--------------------------------------------------------------------------------------
-//Funcion para traer todos las placas registradas en la base de datos
-//--------------------------------------------------------------------------------------
-public function getLicensePlate()
-{
-    $licensePlate=App\Vehicle::all('license_plate');
-    return $licensePlate;
 }
 }
