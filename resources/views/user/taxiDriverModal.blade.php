@@ -12,21 +12,21 @@
         <!--
             Formulario para el ingreso de informacion del taxista
         -->
-      <form class="ui form" method="POST" action="{{route('new-taxidriver')}}">
+      <form class="ui form" method="POST" action="{{route('new-taxidriver')}}" >
             @csrf
 
             <div class="field">
-            <input type="hidden" name="inputIdPerson" value="{{$id}}">
+            <input type="hidden" name="inputIdPerson" value="{{old('inputIdPerson',$id)}}" >
               </div>
 
             <div class="field">
               <label>porcentaje</label>
-              <input type="text" name="inputPercentaje" placeholder="ejemplo... 25" required>
+              <input type="text" name="inputPercentaje" placeholder="ejemplo... 25" required value="{{old('inputPercentaje')}}">
             </div>
             <div class="field">
               <label>Vencimiento de licencia</label>
               {{-- Calendario --}}
-             <input type="date" name="inputCurrentDriverLicense" required>
+             <input type="date" name="inputCurrentDriverLicense" required value="{{old('inputCurrentDriverLicense')}}">
               {{-- Fin Calendario --}}
             </div>
             <!--
@@ -37,19 +37,22 @@
                   <label>Fecha Corte</label>
                   <div class="field">
                     <div class="ui radio checkbox">
-                      <input type="radio" name="cut" value="1">
+                      <input type="radio" name="cut" value="1"
+                      {{ old('cut') == "1" ? "checked" : "" }}>
                       <label>Diario</label>
                     </div>
                   </div>
                   <div class="field">
                     <div class="ui radio checkbox">
-                      <input type="radio" name="cut" value="2">
+                      <input type="radio" name="cut" value="2"
+                      {{ old('cut') == "2" ? "checked" : "" }}>
                       <label>Semanal</label>
                     </div>
                   </div>
                   <div class="field">
                     <div class="ui radio checkbox">
-                      <input type="radio" name="cut" value="3">
+                      <input type="radio" name="cut" value="3"
+                      {{ old('cut') == "3" ? "checked" : "" }}>
                       <label>Quincenal</label>
                     </div>
                   </div>
@@ -64,17 +67,19 @@
               <select class="ui search dropdown" name="model" required>
                 <option value="">Modelos</option>
                 @foreach ($models as $model)
-                    <option value="{{$model->id}}">{{$model->name}}</option>
+                    <option value="{{$model->id}}" 
+                      {{old('model') == "$model->id" ? "selected" : "" }}
+                      >{{$model->name}}</option>
                 @endforeach                        
               </select>
             </div>
             <div class="field">
               <label>Color</label>
-              <input type="text" name="color" placeholder="ejemplo... Rojo" required>
+              <input type="text" name="color" placeholder="ejemplo... Rojo" required value="{{old('color')}}">
             </div>
             <div class="field">
               <label>Placa</label>
-              <input type="text" name="licensePlate" placeholder="Ejemplo... H AB 2649" required> 
+              <input type="text" name="licensePlate" placeholder="Ejemplo... H AB 2649" value="{{old('licensePlate')}}" required> 
             </div>
             
 

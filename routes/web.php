@@ -21,6 +21,7 @@ Rutas para la gestion de usuario
 */
 Route::get('/form-create','User@showFormCreate')->name('form-create-user');
 Route::get('/user', 'User@editUser')->name('user');
+Route::get('/add-user', 'User@showFormCreateId')->name('add-user');//Ruta creada para evitar fallo despues de la validacion
 Route::post('/add-user', 'User@createUser')->name('add-user');
 Route::put('/user/{id}', 'User@update')->name('update-user');
 Route::get('/user/detail', 'User@seeData')->name('detail-user');

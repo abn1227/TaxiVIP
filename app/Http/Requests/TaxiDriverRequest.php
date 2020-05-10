@@ -7,7 +7,6 @@ use App;
 
 class TaxiDriverRequest extends FormRequest
 {
-    protected $redirectRoute = 'form-create-user';
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -74,6 +73,7 @@ class TaxiDriverRequest extends FormRequest
             'model.required'=>'Debe seleccionar un modelo de vehiculo',
             'color.required'=>'Debe ingresar el color del vehiculo',
             'licensePlate.required'=>'Debe ingresar la placa del vehiculo',
+            'licensePlate.unique'=>'Este vehiculo ya se encuentra registrado',
         ];
     }
 }

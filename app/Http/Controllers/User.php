@@ -7,24 +7,31 @@ use Illuminate\Support\Facades\DB;
 use App;
 use App\Http\Controllers\Person;
 use App\Http\Controllers\CarModel;
+use App\Http\Controllers\VehicleController;
 
 class User extends Controller
 {
+    //--------------------------------------------------------------------------------------
     /*Muestra los datos de el usuario logueado*/
+    //--------------------------------------------------------------------------------------
     public function seeData(){
         $array=$this->getUser();
         $user=$array[0];
         $person=$array[1];
         return view('user.detailUser',compact('user','person'));
     }
-
+    //--------------------------------------------------------------------------------------
+    //Muestra los datos del usuario al cual se le haran modificaciones
+    //--------------------------------------------------------------------------------------
     public function editUser(){
         $array=$this->getUser();
         $user=$array[0];
         $person=$array[1];
         return view('user.user',compact('user','person'));
     }
+    //--------------------------------------------------------------------------------------
     /*Obtiene el usuario logueado y retorna esos valores en un array*/
+    //--------------------------------------------------------------------------------------
     public function getUser()
     {
         $user = Auth::user();
@@ -32,9 +39,10 @@ class User extends Controller
         $array = [$user,$person];
         return $array;
     }
-
+    //--------------------------------------------------------------------------------------
     /*Funcion que actualiza los datos del usuario y la persona mediante el llamado de las funcion
     que se encargan de cada una de estas tareas*/
+    //--------------------------------------------------------------------------------------
     public function update( UserRequest  $request, $id){
         $idPerson=$this->updateUser( $request, $id);
         $this->updatePerson( $request, $idPerson);
@@ -45,19 +53,29 @@ class User extends Controller
         session(['mensaje'=>'Usuario Actualizado']);
         return view('user.detailUser',compact('user','person'));
     }
+    //--------------------------------------------------------------------------------------
     /*
     Funcion que se encarga de crear al usuario, esta hace el llamado a user y person que son los metodos 
     que agregan la informacion a las tablas
     */
+    //--------------------------------------------------------------------------------------
     public function createUser(UserRequest $request){
         //Instancias de controladores para llamar informacion de la base de datos 
         $person = new Person;
         $model = new CarModel;
+        //--------------------------------------------------------------------------------------
+        //Llamado a los metodos necesarios para cargar el formulario de taxista
+        //Asi como la creacion de la persona en la base de datos
+        //--------------------------------------------------------------------------------------
         $models=$model->getCarModel();
         $id=$person->person($request);
+        session(['id'=>$id]);
+        //--------------------------------------------------------------------------------------
+        //Llamado al metodo que crea al usuario
+        //--------------------------------------------------------------------------------------
         $this->user($request, $id);
         
-        session(['mensaje'=>'Empleado agregado']);
+        $request->session()->flash('mensaje','empleado Agregado');
         // Validacion para activar la ventana modal que contiene el formulario para agregar taxista y vehiculo
         $typeUser=$request->role;
         if ($typeUser==3) {
@@ -73,7 +91,13 @@ class User extends Controller
     public function showFormCreate(){
         return view('user.createUser');
     }
-    /*funcion que inserta a la persona*/
+    public function showFormCreateId(){
+        $model = new CarModel;
+        $models=$model->getCarModel();
+        $typeUser=3;
+        $id=session('id');
+        return view('user.createUser', ['id'=>$id,'typeUser'=>$typeUser,'models'=>$models]);
+    }
     
     /*funcion que inserta a el usuario*/
     public function user(UserRequest $request, $id)

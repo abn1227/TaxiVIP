@@ -31,7 +31,7 @@
               <img src="{{ asset('img/empleados.jpg') }}" alt="" style="width: 500px; height: 500px; ">
               </div>
               <div class="col-lg-6" style="padding-top:60px; padding-right:120px;">
-              <form method="POST" action="{{route('add-user')}}"> 
+              <form method="POST" action="{{route('add-user')}}" > 
               @csrf
                   <div class="form-group">
                     <label for="exampleInputEmail1">Identificacion</label>
@@ -39,7 +39,7 @@
                             name="inputNewidentification" 
                             aria-describedby="emailHelp"
                             value="{{old('inputNewidentification')}}"
-                            >
+                            required>
                   </div>
                 
                   <div class="form-group">
@@ -47,7 +47,8 @@
                       <input type="text" class="form-control" 
                               name="inputNewName" 
                               aria-describedby="emailHelp"
-                              value="{{old('inputNewName')}}">
+                              value="{{old('inputNewName')}}"
+                              required>
                   </div>    
 
                   <div class="form-group">
@@ -55,7 +56,8 @@
                       <input type="email" class="form-control" 
                               name="inputNewEmail" 
                               aria-describedby="emailHelp"
-                              value="{{old('inputNewEmail')}}">
+                              value="{{old('inputNewEmail')}}"
+                              required>
                   </div>
 
                   <div class="form-group">
@@ -63,14 +65,16 @@
                     <input type="text" class="form-control" 
                             name="inputNewMobile" 
                             aria-describedby="emailHelp"
-                            value="{{old('inputNewMobile')}}">
+                            value="{{old('inputNewMobile')}}"
+                            required>
                   </div>
 
                   <div class="form-group">
                       <label for="exampleInputPassword1">Password</label>
                       <input type="password" class="form-control" 
                               name="inputNewPassword"
-                              value="{{old('inputNewPassword')}}">
+                              value="{{old('inputNewPassword')}}"
+                              required>
                   </div>
 
                   <div class="form-group">
@@ -81,19 +85,22 @@
                           
                           <div class="field">
                             <div class="ui radio checkbox">
-                              <input type="radio" name="role" value="2" tabindex="0" class="hidden">
+                              <input type="radio" name="role" value="2" tabindex="0" class="hidden" 
+                              {{ old('role') == "2" ? "checked" : "" }}>
                               <label>Operario</label>
                             </div>
                           </div>
                           <div class="field">
                             <div class="ui radio checkbox">
-                              <input type="radio" name="role" value="3" tabindex="0" class="hidden">
+                              <input type="radio" name="role" value="3" tabindex="0" class="hidden"
+                              {{ old('role') == "3" ? "checked" : "" }}>
                               <label>Taxista</label>
                             </div>
                           </div>
                           <div class="field">
                             <div class="ui radio checkbox">
-                              <input type="radio" name="role" value="1" tabindex="0" class="hidden">
+                              <input type="radio" name="role" value="1" tabindex="0" class="hidden"
+                              {{ old('role') == "1" ? "checked" : "" }}>
                               <label>Administrador</label>
                             </div>
                           </div>
@@ -113,15 +120,12 @@
               <!--
               Aqui esta contenida la ventana modal que sirve para registrar los datos de el taxista
               -->
+              <input type="hidden" name="pruebaid" id="pruebaid" value="{{session('id')}}">
               <div style="position: fixed; top: 30%;">
                 @includeWhen(isset($id,$typeUser),'user/taxiDriverModal')
-
                 {{-- @include('user/taxiDriverModal') --}}
               </div>              
-              <!--
-              -------------------------------------------------------------------------------------------------------
-              -------------------------------------------------------------------------------------------------------
-              -->
+            
               </div>
             </div>
             
@@ -130,7 +134,6 @@
 
 @section('executionScripts')
 <script>
-
 //radiobotones
 $('.ui.radio.checkbox')
   .checkbox()

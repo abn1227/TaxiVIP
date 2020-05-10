@@ -84,4 +84,12 @@ public function status($id)
     DB::table('vehicles')->where('id',$id)->update(['active'=>'1']);
     return;
 }
+//--------------------------------------------------------------------------------------
+//Funcion para traer todos las placas registradas en la base de datos
+//--------------------------------------------------------------------------------------
+public function getLicensePlate()
+{
+    $licensePlate=App\Vehicle::all('license_plate');
+    return $licensePlate;
+}
 }
