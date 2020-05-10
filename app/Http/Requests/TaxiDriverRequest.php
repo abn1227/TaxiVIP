@@ -3,9 +3,11 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App;
 
 class TaxiDriverRequest extends FormRequest
 {
+    protected $redirectRoute = 'form-create-user';
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -23,28 +25,55 @@ class TaxiDriverRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-            'inputTaxiDriverIdentification'=>'required|max:13','unique:persons,identification,$taxiDriver->person->identification',
-            'inputTaxiDriverName'=>'required',
-            'inputTaxiDriverMobile'=>'required',
-            'inputTaxiDriverPercentage'=>'required',
-            'inputTaxiDriverEmail'=>'required','unique:users,email,$user->email',
-            'cut'=>'required',
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                {
+                    return [
+                        //
+                        'inputPercentaje'=>'required',
+                        'inputCurrentDriverLicense'=>'required',
+                        'cut'=>'required',
+                        'model'=>'required',
+                        'color'=>'required',
+                        'licensePlate'=>'required|unique:vehicles,license_plate',
+                    ];
+                }
+              
+                break;
+            case 'PUT':
+                {
+                    $taxiDriver=App\Taxi_Driver::findOrFail($this->id);
+                    
+                    return [
+                        //
+                        'inputTaxiDriverIdentification'=>'required|unique:persons,identification,'.$taxiDriver->persons_id,
+                        'inputTaxiDriverName'=>'required',
+                        'inputTaxiDriverMobile'=>'required',
+                        'inputTaxiDriverPercentage'=>'required',
+                        'cut'=>'required',
+                    ];
+                   }
+                break;
+            default:
+                # code...
+                break;
+        }
+       
     }
     public function messages()
     {
         return[
-            'inputTaxiDriverIdentification.required'=>'Campo identificacion es necesario',
-            'inputTaxiDriverIdentification.unique'=>'Ya existe una persona registrada con este id',
-            'inputTaxiDriverName.required'=>'Campo nombre es obligatorio',
-            'inputTaxiDriverMobile.required'=>'Es obligario que ingrese un numero de telefono',
-            'inputTaxiDriverPercentage.required'=>'Campo obligatorio',
-            'inputTaxiDriverPercentage.required'=>'email es un campo obligatorio',
-            'inputTaxiDriverEmail.unique'=>'ya existe un usuario con este correo',
-            'inputTaxiDriverEmail.required'=>'Email es un campo requerido',
-            'cut'=>'Debe seleccionar una fecha de corte'
+            'inputTaxiDriverIdentification.required'=>'Debe ingresar la identidad',
+            'inputTaxiDriverIdentification.required'=>'Existe otro empleado con ese id',
+            'inputTaxiDriverName.required'=>'Debe ingresar el nombre del conductor',
+            'inputTaxiDriverMobile.required'=>'Ingrese el numero de telefono',
+            'inputTaxiDriverPercentage.required'=>'Debe ingresar el porcentaje',
+            'cut.required'=>'Debe seleccionar una fecha de corte',
+            'inputPercentaje.required'=>'Debe ingresar el porcentaje',
+            'inputCurrentDriverLicense.required'=>'Debe ingresar la fecha de vencimiento de la licencia',
+            'model.required'=>'Debe seleccionar un modelo de vehiculo',
+            'color.required'=>'Debe ingresar el color del vehiculo',
+            'licensePlate.required'=>'Debe ingresar la placa del vehiculo',
         ];
     }
 }

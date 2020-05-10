@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App;
 use App\Http\Controllers\VehicleController;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\VehicleRequest;
+use App\Http\Requests\TaxiDriverRequest;
 
 class TaxiDriver extends Controller
 {
     //--------------------------------------------------------------------------------------
     // Crear un nuevo taxista y su respectivo vehiculo desde la funcion de agregar empleado
     //--------------------------------------------------------------------------------------
-    public function createTaxiDriving(Request $request){
+    public function createTaxiDriving(TaxiDriverRequest $request){
+      
         $taxiDrivers= new App\Taxi_Driver;
         $taxiDrivers->persons_id=$request->inputIdPerson;
         $taxiDrivers->mileage=0;
@@ -23,11 +25,27 @@ class TaxiDriver extends Controller
         $taxiDrivers->status='1';
         $taxiDrivers->save();
         $id= $taxiDrivers->id;
-        
-        $vehicle = new VehicleController;
+        //----------------------------------------------------------------------------------
+        //Desplegar los modelos disponibles
+        //----------------------------------------------------------------------------------
         $model = new CarModel;
         $models=$model->getCarModel();
-        $vehicle->insertVehicles($request, $id);
+        //----------------------------------------------------------------------------------
+        //Agregar Nuevo Vehiculo
+        //----------------------------------------------------------------------------------
+        $newvehicle = new App\Vehicle;
+        $newvehicle->car_models_id = $request->model; 
+        $newvehicle->color = $request->color; 
+        $newvehicle->license_plate = $request->licensePlate;
+        $newvehicle->active = '1';
+        $newvehicle->status = '1';
+        $newvehicle->taxi_drivers_id = $id;
+        $newvehicle->save();
+        //----------------------------------------------------------------------------------
+        //Estatus del vehiculo
+        //----------------------------------------------------------------------------------
+        $vehicle = new VehicleController;
+        $vehicle->status($newvehicle->id);
         session(['mensaje'=>'Taxista Agregado']);
         return view('user.createUser');
     }
@@ -73,7 +91,7 @@ class TaxiDriver extends Controller
     //Funcion que actualiza los datos del taxista
     //--------------------------------------------------------------------------------------
 
-    public function updateTaxiDriver(Request $request, $id)
+    public function updateTaxiDriver(TaxiDriverRequest $request, $id)
     {
         $taxiDriver= App\Taxi_Driver::findOrFail($id);
         $personUpdate= App\Person::findOrFail($taxiDriver->persons_id);

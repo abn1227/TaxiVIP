@@ -21,12 +21,12 @@
 
             <div class="field">
               <label>porcentaje</label>
-              <input type="text" name="inputPercentaje" placeholder="ejemplo... 25">
+              <input type="text" name="inputPercentaje" placeholder="ejemplo... 25" required>
             </div>
             <div class="field">
-              <label>Vencimiento de licensia</label>
+              <label>Vencimiento de licencia</label>
               {{-- Calendario --}}
-             <input type="date" name="inputCurrentDriverLicense">
+             <input type="date" name="inputCurrentDriverLicense" required>
               {{-- Fin Calendario --}}
             </div>
             <!--
@@ -61,7 +61,7 @@
 
             <div class="field">
               <label>Modelo</label>
-              <select class="ui search dropdown" name="model">
+              <select class="ui search dropdown" name="model" required>
                 <option value="">Modelos</option>
                 @foreach ($models as $model)
                     <option value="{{$model->id}}">{{$model->name}}</option>
@@ -70,11 +70,11 @@
             </div>
             <div class="field">
               <label>Color</label>
-              <input type="text" name="color" placeholder="ejemplo... Rojo">
+              <input type="text" name="color" placeholder="ejemplo... Rojo" required>
             </div>
             <div class="field">
               <label>Placa</label>
-              <input type="text" name="licensePlate" placeholder="Ejemplo... H AB 2649"> 
+              <input type="text" name="licensePlate" placeholder="Ejemplo... H AB 2649" required> 
             </div>
             
 

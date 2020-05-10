@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Requests\VehicleRequest;
 use App;
 
 class VehicleController extends Controller
@@ -21,7 +21,7 @@ class VehicleController extends Controller
     //Este metodo es para insertar vehiculo desde la vista en donde se muestra la 
     //informacion del taxista
     //--------------------------------------------------------------------------------------
-    public function newVehicle(Request $request,$id)
+    public function newVehicle(VehicleRequest  $request,$id)
     {
        $this->insertVehicles($request, $id);
        session(['mensaje'=>'Vehiculo ingresado a la base']);
@@ -32,7 +32,7 @@ class VehicleController extends Controller
 //taxista, que tambien permite agregar un vehiculo adicional al taxista
 //--------------------------------------------------------------------------------------
 
-    public function insertVehicles(Request $request, $id)
+    public function insertVehicles(VehicleRequest $request, $id)
     {
     
         $newvehicle = new App\Vehicle;
@@ -53,10 +53,11 @@ class VehicleController extends Controller
 //--------------------------------------------------------------------------------------
 
 
-    public function updateVehicles(Request $request,$id){
+    public function updateVehicles(VehicleRequest $request,$id){
         $vehicle = App\Vehicle::findOrFail($id);
         $vehicle->car_models_id=$request->model;
         $vehicle->license_plate=$request->licensePlate;
+        $vehicle->color=$request->color;
         $vehicle->active=$request->status;
         $vehicle->save();
         return back();

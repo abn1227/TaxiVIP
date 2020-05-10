@@ -12,7 +12,7 @@
             <form action="{{route('update-vehicle',$vehicleActivate->id)}}" method="post" class="ui form">
                 @method('Put')
                 @csrf
-              
+             
                 <div class="field">
                     <label >Modelo</label>
                     <select class="ui search dropdown" name="model">
