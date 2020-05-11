@@ -58,7 +58,7 @@ class Home extends Controller
                 'img'=>'carrera'
             ],
             [
-                'url' => 'create-brand',
+                'url' => 'employees',
                 'name' => 'Control de empleados',
                 'description' => 'Gestion de la informacion de los empleados agregados a la planilla.',
                 'img'=>'control-empleados'

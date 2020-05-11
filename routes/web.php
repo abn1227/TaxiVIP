@@ -71,3 +71,9 @@ Route::get('/vehicle/model-edit/{id}', 'CarModel@edit')->name('edit-model');
 Route::put('/vehicle/model-update/{id}', 'CarModel@update')->name('update-model');
 Route::post('/vehicle/model-save', 'CarModel@save')->name('model-save');
 Route::get('/vehicle/model', 'CarModel@showModel')->name('show-model');
+//-------------------------------------------------------------------------------------------------
+//Rutas para gestionar empleados
+//-------------------------------------------------------------------------------------------------
+Route::get('/users/employees','Employees@getEmployees')->name('employees');
+Route::get('/users/employees/edit/{id}','Employees@editEmployees')->name('edit-employees');
+Route::put('/users/employees/update/{id}','Employees@updateEmployees')->name('update-employees');

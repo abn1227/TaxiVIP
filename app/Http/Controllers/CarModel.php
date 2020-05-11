@@ -18,7 +18,7 @@ class CarModel extends Controller
         $model->name=$request->carModel;
         $model->car_brands_id=$request->searchCarBrand;
         $model->save();
-        session(['mensaje'=>'Modelo agregada exitosamente']);
+        $request->session()->flash('mensaje','Modelo actualizado con exito');
         return back();
     }
     public function showModel(){

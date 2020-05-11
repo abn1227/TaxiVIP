@@ -14,7 +14,7 @@ class CarBrand extends Controller
         $brand= new App\Car_Brand;
         $brand->name=$request->inputBrandName;
         $brand->save();
-        session(['mensaje'=>'Marca agregada exitosamente']);
+        $request->session()->flash('mensaje','Marca agregada con exito');
         return view('vehicles.carBrand.createCarBrand');
     }
     public function showBrand(){
@@ -35,7 +35,7 @@ class CarBrand extends Controller
         $brands= App\Car_Brand::findOrFail($id);
         $brands->name=$request->inputEditBrandName;
         $brands->save();
-        session(['mensaje'=>'Marca actualizada exitosamente']);
+        $request->session()->flash('mensaje','Marca actualizada con exito');
         return back();
     }
 }
