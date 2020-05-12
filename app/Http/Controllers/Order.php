@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App;
 
-class Address extends Controller
+class Order extends Controller
 {
     public function init(){
-        return view('Address/add');
+        return view('Address/order');
     }
 }

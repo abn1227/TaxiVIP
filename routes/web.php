@@ -77,3 +77,8 @@ Route::get('/vehicle/model', 'CarModel@showModel')->name('show-model');
 Route::get('/users/employees','Employees@getEmployees')->name('employees');
 Route::get('/users/employees/edit/{id}','Employees@editEmployees')->name('edit-employees');
 Route::put('/users/employees/update/{id}','Employees@updateEmployees')->name('update-employees');
+//-------------------------------------------------------------------------------------------------
+//Rutas para gestionar la creacion de ordenes
+//-------------------------------------------------------------------------------------------------
+
+Route::get('/address/order', 'Order@init')->name('order');

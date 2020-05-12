@@ -22,7 +22,7 @@ class Home extends Controller
     private function getModules(){
         $modules = [
             [
-                'url' => 'control',
+                'url' => 'order',
                 'name' => 'Control de carreras',
                 'description' => 'Gestione las solicitudes de servicios de taxi.',
                 'img'=>'operador'
