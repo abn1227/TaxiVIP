@@ -100,7 +100,7 @@ class TaxiDriver extends Controller
         $personUpdate= App\Person::findOrFail($taxiDriver->persons_id);
         $user= App\User::findOrFail($taxiDriver->persons_id);       
         $vehicle =new VehicleController;
-        $vehicle->status($request->selectVehicle);   
+        $vehicle->status($request->selectVehicle,$id);   
         $vehicleActivate=$vehicle->getVehicle($id);
             $taxiDriver->percentage=$request->inputTaxiDriverPercentage;
             $taxiDriver->cut_date=$request->cut;

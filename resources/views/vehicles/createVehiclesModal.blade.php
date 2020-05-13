@@ -1,4 +1,4 @@
-<div style="margin-left: 250px; height: 600px; margin-top: 50px; " class="ui modal create coupled " id="create">
+<div style="margin-left: 250px; height: 530px; margin-top: 50px; " class="ui modal create coupled " id="create">
     <i class="close icon"></i>
     <div class="header">
       Nuevo Vehiculo
@@ -29,11 +29,6 @@
                     <label >Placa</label>
                     <input type="text" name="licensePlate" placeholder="Placa"
                     value="{{old('licensePlate')}}">
-                </div>
-                <div class="field">
-                    <label >Estado</label>
-                    <input type="text" placeholder="Estatus" name="status"
-                    value="{{old('status')}}">
                 </div>
                 <div>
                     <button class="ui teal button">Guardar</button>

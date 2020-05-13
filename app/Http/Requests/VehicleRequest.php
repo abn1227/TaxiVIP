@@ -31,8 +31,7 @@ class VehicleRequest extends FormRequest
             
                         'model'=>'required',
                         'color'=>'required',
-                        'licensePlate'=>'required|unique:vehicles,license_plate',
-                        'status'=>'required'
+                        'licensePlate'=>'required|unique:vehicles,license_plate'
                     ];
 
                 }
@@ -43,8 +42,7 @@ class VehicleRequest extends FormRequest
                        
                         'model'=>'required',
                         'color'=>'required',
-                        'licensePlate'=>'required|unique:vehicles,license_plate,'.$this->id,
-                        'status'=>'required'
+                        'licensePlate'=>'required|unique:vehicles,license_plate,'.$this->id
                     ]; 
                 }
                 break;
@@ -61,8 +59,7 @@ class VehicleRequest extends FormRequest
             'color.required'=>'Debe ingresar el color del vehiculo',
             'licensePlate.required'=>'Debe ingresar la placa del vehiculo',
             'licensePlate.unique'=>'Este vehiculo ya se encuentra registrado',
-            'status.required'=>'Debe ingresar el estado el vehiculo',
-            
+                        
         ];
     }
 }
