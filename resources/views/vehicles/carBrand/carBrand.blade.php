@@ -26,12 +26,6 @@
     
     {{-- Columna numero 2 --}}
     <div class="col-lg-8" style="margin-left: 0px" >
-        {{-- Barra de busqueda --}}
-        <div class="ui fluid action input">
-            <input type="text" placeholder="Search...">
-            <div class="ui button">Search</div>
-        </div>
-        {{-- Fin barra de busqueda --}}
         <table class="ui table yellow">
             <thead>
                 <tr>
