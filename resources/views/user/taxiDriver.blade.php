@@ -6,12 +6,14 @@
 
 @section('body')
 @extends('templates/navBar')
-{{-- Barra de busqueda --}}
-<div class="ui fluid action input">
-  <input type="text" placeholder="Search...">
-  <div class="ui button">Search</div>
-</div>
-{{-- Fin barra de busqueda --}}
+ {{-- Guardado exitoso --}}
+        @if (session('mensaje'))
+            <div class="alert alert-success">
+                {{session('mensaje')}}
+            </div>
+        @endif
+        {{-- fin guardado exitoso --}}
+
 
 <table class="ui yellow table">
   <thead>
@@ -24,7 +26,7 @@
       <th>Informacion</th>
     </tr>
   </thead>
-@foreach ($taxistas as $item)
+@foreach ($taxiDrivers as $item)
 @switch($item->cut_date)
     @case(1)
         <?php $corte='Diario' ?>
@@ -56,5 +58,5 @@
     
 @endforeach
 </table>
-{{ $taxistas->links() }}
+{{ $taxiDrivers->links() }}
 @endsection

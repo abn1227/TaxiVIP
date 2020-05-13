@@ -126,6 +126,17 @@
           <!--Fin radiobotones-->
             </td>
           </tr>
+
+          <tr>
+            <td><label >Vigencia de licencia</label></td>
+            <td>
+              <input type="date" class="form-control"
+              name="inputTaxiDriverDate" 
+              value="{{old('inputTaxiDriverPercentage',$taxiDriver->current_driver_license)}}">
+            </td>
+          </tr>
+
+
           <tr>
             <td><label >Vehiculo activo</label></td>
             <td >

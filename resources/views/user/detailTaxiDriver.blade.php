@@ -69,6 +69,10 @@
             <td>{{$corte}}</td>
           </tr>
           <tr>
+            <td><label >Vigencia de licencia</label></td>
+            <td>{{$taxiDriver->current_driver_license}}</td>
+          </tr>
+          <tr>
             <td><label >Vehiculo</label></td>
             <td>{{$vehicleActivate->license_plate}}</td>
           </tr>

@@ -47,7 +47,7 @@ class TaxiDriver extends Controller
         //Estatus del vehiculo
         //----------------------------------------------------------------------------------
         $vehicle = new VehicleController;
-        $vehicle->status($newvehicle->id);
+        $vehicle->status($newvehicle->id,$id);
         session()->forget('id');
         $request->session()->flash('mensaje','Taxista Agregado');
         return view('user.createUser');
@@ -59,8 +59,8 @@ class TaxiDriver extends Controller
     public function showAll()
     { 
         //
-        $taxistas= App\Taxi_Driver::paginate(7);
-        return view('user.taxiDriver',compact('taxistas'));
+        $taxiDrivers= App\Taxi_Driver::paginate(7);
+        return view('user.taxiDriver',compact('taxiDrivers'));
     }
     //--------------------------------------------------------------------------------------
     //Retorna los datos de un determinado taxista al formulario donde se puede modificar 
@@ -104,6 +104,7 @@ class TaxiDriver extends Controller
         $vehicleActivate=$vehicle->getVehicle($id);
             $taxiDriver->percentage=$request->inputTaxiDriverPercentage;
             $taxiDriver->cut_date=$request->cut;
+            $taxiDriver->current_driver_license =$request->inputTaxiDriverDate;
             $taxiDriver->save();
             $personUpdate->name = $request->inputTaxiDriverName;
             $personUpdate->identification = $request->inputTaxiDriverIdentification;
@@ -112,6 +113,8 @@ class TaxiDriver extends Controller
             $user->save();
             return view('user.detailTaxiDriver',compact('taxiDriver','user','vehicleActivate'));
     }
-
+     //--------------------------------------------------------------------------------------
+    //Funcion que busca un taxista
+    //--------------------------------------------------------------------------------------
    
 }

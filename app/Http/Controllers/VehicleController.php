@@ -37,7 +37,7 @@ class VehicleController extends Controller
         $newvehicle->status = '1';
         $newvehicle->taxi_drivers_id = $id;
         $newvehicle->save();
-        $this->status($newvehicle->id);
+        $this->status($newvehicle->id,$id);
 
 
        return;
@@ -72,9 +72,9 @@ public function getVehicle($id)
 //Funcion para actualizar el campos activo de la tabla vehiculo
 //--------------------------------------------------------------------------------------
 
-public function status($id)
+public function status($id,$taxiDriverId)
 {
-    DB::table('vehicles')->where('active','1')->update(['active'=>'0']);
+    DB::table('vehicles')->where([['active','1'],['taxi_drivers_id',$taxiDriverId]])->update(['active'=>'0']);
     DB::table('vehicles')->where('id',$id)->update(['active'=>'1']);
     return;
 }

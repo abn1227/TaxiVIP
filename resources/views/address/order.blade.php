@@ -132,14 +132,32 @@ $("#order").click(
         accessToken: 'pk.eyJ1IjoiYWJuYWlyIiwiYSI6ImNrNmQ3NW1rNDFhZHIzbG4zcndjZDlpMmUifQ.oFrOAXNmucIGc9n96Y0yyw'
     }).addTo(map);
 
-    L.Routing.control({
-    waypoints: [
-        L.latLng(14.0539, -87.1224),
-        L.latLng(14.0818005 , -87.20681)
-    ],
-    routeWhileDragging: true
-    }).addTo(map);
+        // L.Routing.control({
+        // waypoints: [
+        //     L.latLng(14.0539, -87.1224),
+        //     L.latLng(14.0818005 , -87.20681)
+        // ],
+        // routeWhileDragging: true
+        // }).addTo(map);
 
+     L.Routing.control({
+	waypoints: [
+		L.latLng(14.0539, -87.1224),
+		L.latLng(14.0818005 , -87.20681)
+    ],
+    
+    routeWhileDragging: true,
+    reverseWaypoints: true,
+	showAlternatives: true,
+    altLineOptions: {
+		styles: [
+			{color: 'black', opacity: 0.15, weight: 9},
+			{color: 'white', opacity: 0.8, weight: 6},
+			{color: 'blue', opacity: 0.5, weight: 2}
+		]
+	}
+	
+}).addTo(map);
     
 </script>
 
