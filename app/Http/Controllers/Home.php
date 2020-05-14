@@ -28,7 +28,7 @@ class Home extends Controller
                 'img'=>'operador'
             ],
             [
-                'url' => 'control',
+                'url' => 'show-cut',
                 'name' => 'Corte',
                 'description' => 'Gestione el pago que debe de hacer el conductor.',
                 'img'=>'corte'
