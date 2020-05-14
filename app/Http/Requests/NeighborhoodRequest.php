@@ -25,15 +25,15 @@ class NeighborhoodRequest extends FormRequest
     {
         return [
             'neighborhood'=>'required',
-            'fistTime'=>'required',
-            'lastTime'=>'requited'
+            'firstTime'=>'required',
+            'lastTime'=>'required'
         ];
     }
     public function messages()
     {
         return[
             'neighborhood.required'=>'Debe ingresar el nombre de la colonia',
-            'fistTime.required'=>'Debe ingresar la hora de inicio ',
+            'firstTime.required'=>'Debe ingresar la hora de inicio ',
             'lastTime.required'=>'Debe ingresar la hora de finalizacion',
                        
         ];

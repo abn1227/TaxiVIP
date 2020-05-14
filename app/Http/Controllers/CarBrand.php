@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CarBrandRequest;
 use App;
 
 class CarBrand extends Controller
@@ -10,7 +11,7 @@ class CarBrand extends Controller
     public function init(){
         return view('vehicles.carBrand.createCarBrand');
     }
-    public function save(Request $request){
+    public function save(CarBrandRequest $request){
         $brand= new App\Car_Brand;
         $brand->name=$request->inputBrandName;
         $brand->save();
@@ -30,7 +31,7 @@ class CarBrand extends Controller
         $Brands= App\Car_Brand::findOrFail($id);
         return view('vehicles.carBrand.editCarBrand',compact('Brands'));
     }
-    public function update($id, Request $request)
+    public function update($id, CarBrandRequest $request)
     {
         $brands= App\Car_Brand::findOrFail($id);
         $brands->name=$request->inputEditBrandName;

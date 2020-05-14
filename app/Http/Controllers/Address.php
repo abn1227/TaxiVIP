@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\NeighborhoodRequest;
 use App;
 
 class Address extends Controller
@@ -10,7 +11,7 @@ class Address extends Controller
     public function init(){
         return view('Address/add');
     }
-    public function save(Request $request)
+    public function save(NeighborhoodRequest $request)
     {
         $neighborhood= new App\Neighborhood;
         $neighborhood->name_neighborhood= $request->neighborhood;
