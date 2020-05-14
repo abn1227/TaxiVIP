@@ -1,14 +1,14 @@
-<div style="margin-left: 250px; height: 530px; margin-top: 50px; " class="ui modal detail coupled" id="detail">
+<div style="margin-left: 250px; height: 500px; margin-top: 50px; " class="ui modal detail coupled" id="detail">
     <i class="close icon"></i>
     <div class="header">
       Vehiculo En uso
     </div>
     <div class="image content" >
       <div class="ui medium image" >
-        <img style="margin-top: 50px" class="ui medium circular image" src="{{asset('img\vehicle.jpg')}}">
+        <img  class="ui medium circular image" src="{{asset('img\vehicle.jpg')}}">
       </div>
       <div class="description scrolling content " style="width: 500px;">
-        <div >
+        <div style="padding-top: 35px" >
             <form action="{{route('update-vehicle',$vehicleActivate->id)}}" method="post" class="ui form">
                 @method('Put')
                 @csrf

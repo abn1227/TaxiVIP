@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App;
 class Order extends Controller
 {
     public function init(){
-        return view('Address/order');
+        $neighborhood=  App\Neighborhood::All();
+        
+        return view('Address/order',compact('neighborhood'));
     }
 }

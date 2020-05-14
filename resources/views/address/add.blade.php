@@ -1,72 +1,53 @@
 @extends('templates.mainTemplate')
 
-@section('head')
-{{-- LEAFLET  --}}
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
-<style type="text/css">
-    #map {
-        height: 200%;
-        padding: 0;
-        margin: 0;
-    }
-
-    .address {
-        cursor: pointer
-    }
-
-    .address:hover {
-        color: #AA0000;
-        text-decoration: underline
-    }
-</style>
-
-@endsection
 @section('title')
-Home
+Address
 @endsection
 
 @section('body')
 @extends('templates.navBar')
+
 <h5>
     Bienvenido a el modulo de direcciones
 </h5>
 <div class="container">
-
-    <form>
-        <input type="hidden" name="lat" id="lat" size=12 value="">
-        <input type="hidden" name="lon" id="lon" size=12 value="">
-    </form>
-
-    <div class="row mb-5">
-        <div class="col-md-5">
-            <b>Buscador de direcciones</b>
-            <div class="ui search selection fluid dropdown">
-                <input type="hidden" name="addr" id="addr" onkeyup="custom()">
-                <i class="dropdown icon"></i>
-                <div class="default text">Search a place...</div>
-                <div class="menu" id="menu">
-                </div>
-            </div>
-
-            <br>
-            <b>Nombre de direccion</b>
-            <div class="ui fluid input mt-2">
-                <input type="text" placeholder="Nombre de direccion">
-            </div>
-
-            <br>
-            <b>Coordenadas</b>
-            <div class="ui fluid input mt-2">
-                <input id="coordinates" name="coordinates" type="text" placeholder="Coordenadas">
-            </div>
+<div class="row">
+    {{-- Columna derecha --}}
+    <div class="col-lg-6">
+        {{-- Guardado exitoso --}}
+        @if (session('mensaje'))
+        <div class="alert alert-success">
+            {{session('mensaje')}}
         </div>
-
-        <div class="col-md-7">
-            <div id="map"></div>
-        </div>
+        @endif
+        {{-- fin guardado exitoso --}}
+        {{-- Formulario --}}
+        <form class="ui form" action="{{route('save-addresses')}}" method="post">
+            @csrf
+            <div class="field">
+              <label>Nombre de colonia</label>
+              <input type="text" name="neighborhood" placeholder="Ejemplo:... Quezada">
+            </div>
+            <div class="field">
+              <label>Hora de primer Acceso</label>
+              <input type="time" name="firstTime" >
+            </div>
+            <div class="field">
+                <label>Ultima de primer Acceso</label>
+                <input type="time" name="lastTime">
+              </div>
+            <button class="ui button blue fluid" type="submit">
+                <i class="save icon"></i> Guardar</button>
+          </form>
+        {{-- Fin Formulario --}}
     </div>
-
+    {{-- Fin columna derecha --}}
+    {{-- Columna Izquierda --}}
+    <div class="col-lg-6">
+        <img src="{{ asset('img/map.png') }}" alt="" style="height: 500px; width: 500px;">
+    </div>
+    {{-- Fin columna izquierda --}}
+</div>
 </div>
 @endsection
 
