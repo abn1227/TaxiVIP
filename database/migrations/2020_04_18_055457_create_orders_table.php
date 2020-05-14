@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->double('price', 6, 2);
             $table->double('distance', 5, 2);
+            $table->string('url_map', 1);
             $table->dateTime('date');
             $table->string('canceled', 1);
             $table->bigInteger('neighborhoods_origin_id')->unsigned();
