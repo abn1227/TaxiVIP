@@ -20,7 +20,10 @@ class CreateTaxiDriversTable extends Migration
             $table->integer('cut_date');
             $table->date('current_driver_license');
             $table->string('status', 1);
-            $table->foreignId('persons_id')->constrained();
+            $table->bigInteger('persons_id')->unsigned();
+            $table->foreign('persons_id')->references('id')->on('persons');
+            $table->bigInteger('route_zones_id')->unsigned();
+            $table->foreign('route_zones_id')->references('id')->on('route_zones');
             $table->timestamps();
         });
     }

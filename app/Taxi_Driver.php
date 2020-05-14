@@ -24,4 +24,8 @@ class Taxi_Driver extends Model
     public function cut(){
         return $this->hasMany('App\Cut','taxi_drivers_id');
     }
+
+    public function routeZone(){
+        return $this->belongsTo('App\Route_Zone', 'route_zones_id');
+    }
 }

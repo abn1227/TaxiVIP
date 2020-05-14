@@ -11,4 +11,8 @@ class Neighborhood extends Model
     public function order(){
         return $this->hasMany('App\Order');
     }
+
+    public function routeZone(){
+        return $this->belongsTo('App\Route_Zone', 'route_zones_id') ;
+    }
 }

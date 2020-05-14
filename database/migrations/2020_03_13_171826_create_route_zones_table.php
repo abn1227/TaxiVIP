@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNeighborhoodsTable extends Migration
+class CreateRouteZonesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateNeighborhoodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('neighborhoods', function (Blueprint $table) {
+        Schema::create('route_zones', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
-            $table->string('name_neighborhood', 45);
-            $table->time('start_time');
-            $table->time('end_time');
-            $table->bigInteger('route_zones_id')->unsigned();
-            $table->foreign('route_zones_id')->references('id')->on('route_zones');
+            $table->string('name', 20);
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateNeighborhoodsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('neighborhoods');
+        Schema::dropIfExists('route_zones');
     }
 }
