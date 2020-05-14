@@ -88,3 +88,4 @@ Route::get('/address/order', 'Order@init')->name('order');
 //Rutas para gestionar la creacion de ordenes
 //-------------------------------------------------------------------------------------------------
 Route::get('/cut/show', 'CorteController@init')->name('show-cut');
+Route::put('/cut/show', 'CorteController@')->name('do-cut');
