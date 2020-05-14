@@ -29,13 +29,13 @@
 @foreach ($taxiDriver as $item)
 @switch($item->cut_date)
     @case(1)
-        <?php $corte='Diario' ?>
+        <?php $corte=1 ?>
         @break
     @case(2)
-        <?php $corte='Semanal' ?>
+        <?php $corte=7 ?>
         @break
     @case(3)
-        <?php $corte='Quincenal' ?>
+        <?php $corte=15 ?>
         @break
     @default
         
@@ -49,8 +49,20 @@
         <td>{{$item->person->mobile}}</td> 
         <td>{{$item->percentage}}</td>
         <td>{{$corte}}</td>
+        @switch($corte)
+            @case(1)
+                <td>{{$item->person->created_at->modify('+1 day')->format('d/m/y')}}</td>
+                @break
+            @case(7)
+                <td>{{$item->person->created_at->modify('+7 day')->format('d/m/y')}}</td>
+                @break
+            @case(15)
+                <td>{{$item->person->created_at->modify('+15 day')->format('d/m/y')}}</td>
+                @break
+        @endswitch
+        
         <td>
-          <a href="{{route('detail-taxidriver',$item->id)}}" class="ui yellow button"> Realizar corte </a>
+          <a href="{{route('do-cut',$item->id)}}" class="ui yellow button"> Realizar corte </a>
         </td>
       </tr>
     </tbody>
