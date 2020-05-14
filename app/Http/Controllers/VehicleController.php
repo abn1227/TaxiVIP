@@ -52,7 +52,6 @@ class VehicleController extends Controller
         $vehicle->car_models_id=$request->model;
         $vehicle->license_plate=$request->licensePlate;
         $vehicle->color=$request->color;
-        $vehicle->active=$request->status;
         $vehicle->save();
         return back();
     }

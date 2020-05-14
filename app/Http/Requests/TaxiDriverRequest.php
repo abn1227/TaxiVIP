@@ -52,6 +52,7 @@ class TaxiDriverRequest extends FormRequest
                         'inputTaxiDriverPercentage'=>'required',
                         'cut'=>'required',
                         'inputTaxiDriverDate'=>'required',
+                        'selectVehicle'=>'required',
                     ];
                    }
                 break;
@@ -76,7 +77,8 @@ class TaxiDriverRequest extends FormRequest
             'color.required'=>'Debe ingresar el color del vehiculo',
             'licensePlate.required'=>'Debe ingresar la placa del vehiculo',
             'licensePlate.unique'=>'Este vehiculo ya se encuentra registrado',
-            'inputTaxiDriverDate.required'=>'Debe imgresar una fecha de vencimiento para la licencia'
+            'inputTaxiDriverDate.required'=>'Debe imgresar una fecha de vencimiento para la licencia',
+            'selectVehicle.required'=>'Debe seleccionar un vehiculo',
         ];
     }
 }

@@ -58,7 +58,8 @@
             <td>
               <input type="text" class="form-control"
                       name="inputTaxiDriverIdentification" 
-                      value="{{old('inputTaxiDriverIdentification',$taxiDriver->person->identification)}}">
+                      value="{{old('inputTaxiDriverIdentification',$taxiDriver->person->identification)}}"
+                      required>
             </td>
           </tr>
           <tr>
@@ -66,7 +67,8 @@
             <td>
               <input type="text" class="form-control"
               name="inputTaxiDriverName" 
-              value="{{old('inputTaxiDriverName',$taxiDriver->person->name)}}"> 
+              value="{{old('inputTaxiDriverName',$taxiDriver->person->name)}}"
+              required> 
             </td>
           </tr>
           <tr>
@@ -74,7 +76,8 @@
             <td>
               <input type="text" class="form-control"
               name="inputTaxiDriverMobile" 
-              value="{{old('inputTaxiDriverMobile',$taxiDriver->person->mobile)}}">
+              value="{{old('inputTaxiDriverMobile',$taxiDriver->person->mobile)}}"
+              required>
             </td>
           </tr>
           <tr>
@@ -82,7 +85,8 @@
             <td>
               <input type="text" class="form-control"
               name="inputTaxiDriverPercentage" 
-              value="{{old('inputTaxiDriverPercentage',$taxiDriver->percentage)}}">
+              value="{{old('inputTaxiDriverPercentage',$taxiDriver->percentage)}}"
+              required>
             </td>
           </tr>
           <tr>
@@ -132,7 +136,8 @@
             <td>
               <input type="date" class="form-control"
               name="inputTaxiDriverDate" 
-              value="{{old('inputTaxiDriverPercentage',$taxiDriver->current_driver_license)}}">
+              value="{{old('inputTaxiDriverPercentage',$taxiDriver->current_driver_license)}}"
+              required>
             </td>
           </tr>
 
