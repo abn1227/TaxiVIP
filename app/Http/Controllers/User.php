@@ -8,6 +8,7 @@ use App;
 use App\Http\Controllers\Person;
 use App\Http\Controllers\CarModel;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\Route;
 
 class User extends Controller
 {
@@ -63,12 +64,14 @@ class User extends Controller
         //Instancias de controladores para llamar informacion de la base de datos 
         $person = new Person;
         $model = new CarModel;
+        $route = new Route;
         //--------------------------------------------------------------------------------------
         //Llamado a los metodos necesarios para cargar el formulario de taxista
         //Asi como la creacion de la persona en la base de datos
         //--------------------------------------------------------------------------------------
         $models=$model->getCarModel();
         $id=$person->person($request);
+        $routes=$route->getRoute();
         session(['id'=>$id]);
         //--------------------------------------------------------------------------------------
         //Llamado al metodo que crea al usuario
@@ -79,7 +82,7 @@ class User extends Controller
         // Validacion para activar la ventana modal que contiene el formulario para agregar taxista y vehiculo
         $typeUser=$request->role;
         if ($typeUser==3) {
-           return view('user.createUser', ['id'=>$id,'typeUser'=>$typeUser,'models'=>$models]);
+           return view('user.createUser', ['id'=>$id,'typeUser'=>$typeUser,'models'=>$models,'routes'=>$routes]);
         }
         else{
             return view('user.createUser');

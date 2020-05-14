@@ -26,7 +26,8 @@ class NeighborhoodRequest extends FormRequest
         return [
             'neighborhood'=>'required',
             'firstTime'=>'required',
-            'lastTime'=>'required'
+            'lastTime'=>'required',
+            'selectRoute'=>'required',
         ];
     }
     public function messages()
@@ -35,7 +36,7 @@ class NeighborhoodRequest extends FormRequest
             'neighborhood.required'=>'Debe ingresar el nombre de la colonia',
             'firstTime.required'=>'Debe ingresar la hora de inicio ',
             'lastTime.required'=>'Debe ingresar la hora de finalizacion',
-                       
+            'selectRoute.required'=>'Debe seleccionar la ruta a la que sera asignada la colonia'
         ];
     }
 }

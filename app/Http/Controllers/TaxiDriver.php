@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\Route;
 use App\Http\Requests\VehicleRequest;
 use App\Http\Requests\TaxiDriverRequest;
+
 
 class TaxiDriver extends Controller
 {
@@ -25,6 +27,7 @@ class TaxiDriver extends Controller
         $taxiDrivers->cut_date=$request->cut;
         $taxiDrivers->current_driver_license=$request->inputCurrentDriverLicense;
         $taxiDrivers->status='1';
+        $taxiDrivers->route_zones_id=$request->route;
         $taxiDrivers->save();
         $id= $taxiDrivers->id;
         //----------------------------------------------------------------------------------
@@ -74,9 +77,11 @@ class TaxiDriver extends Controller
         $vehicle=DB::table('vehicles')->where('taxi_drivers_id',$taxiDriver->id)->get();
         $model = new CarModel;
         $vehicleAct = new VehicleController;
+        $route= new Route;
         $models=$model->getCarModel();
         $vehicleActivate=$vehicleAct->getVehicle($taxiDriver->id);
-        return view('user.editTaxiDriver',compact('taxiDriver','user','vehicle','models','vehicleActivate'));
+        $routes=$route->getRoute();
+        return view('user.editTaxiDriver',compact('taxiDriver','user','vehicle','models','vehicleActivate','routes'));
     }
     //--------------------------------------------------------------------------------------
     //Envia los datos del taxista a la pantalla donde se muestran los detalle del taxista
@@ -105,6 +110,7 @@ class TaxiDriver extends Controller
             $taxiDriver->percentage=$request->inputTaxiDriverPercentage;
             $taxiDriver->cut_date=$request->cut;
             $taxiDriver->current_driver_license =$request->inputTaxiDriverDate;
+            $taxiDriver->route_zones_id=$request->route;
             $taxiDriver->save();
             $personUpdate->name = $request->inputTaxiDriverName;
             $personUpdate->identification = $request->inputTaxiDriverIdentification;

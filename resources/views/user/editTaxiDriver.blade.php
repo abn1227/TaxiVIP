@@ -42,7 +42,7 @@
       {{-- Fin imagen --}}
       {{-- Datos taxista --}}
       
-      <div class="col-lg-6" style="padding-top:20px; ">
+      <div class="col-lg-6" >
         
       <form action="{{route('update-taxidriver',$taxiDriver->id)}}" method="post">
         @method('put')
@@ -155,6 +155,22 @@
               {{-- <label for="">{{$vehicle}}</label> --}}
             </td>
           </tr>
+
+          <tr>
+            <td><label >Ruta Asignada</label></td>
+            <td >
+              <select class="ui search dropdown" name="route">
+                <option value="">Seleccione una ruta</option>
+                 @foreach ($routes as $route)
+                     <option value="{{$route->id}}"
+                      {{old('route',$route->id) == "$route->id" ? "selected" : "" }} >{{$route->name}}</option>
+                 @endforeach              
+              </select>
+              {{-- <label for="">{{$vehicle}}</label> --}}
+            </td>
+          </tr>
+
+
           <tr>
             <td colspan="2">
               <div class="ui fluid buttons">

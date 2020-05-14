@@ -60,6 +60,20 @@
               </div>
             <!--Fin radiobotones-->
 
+            {{-- Seleccionar ruta --}}
+            <div class="field">
+              <label>Ruta</label>
+              <select class="ui search dropdown" name="route" required>
+                <option value="">Rutas</option>
+                @foreach ($routes as $route)
+                    <option value="{{$route->id}}" 
+                      {{old('route') == "$route->id" ? "selected" : "" }}
+                      >{{$route->name}}</option>
+                @endforeach                        
+              </select>
+            </div>
+            {{-- Fin seleccionar Ruta --}}
+
             <div class="ui header">Vehiculo </div>
 
             <div class="field">

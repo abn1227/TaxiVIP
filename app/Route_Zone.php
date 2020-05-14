@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Route_Zone extends Model
 {
+    protected $table='route_zones';
     public function neighborhoods(){
         return $this->hasMany('App\Neighborhoods', 'route_zones_id');
     }

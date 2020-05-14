@@ -36,7 +36,7 @@
       {{-- Fin imagen --}}
       {{-- Datos taxista --}}
 
-      <div class="col-lg-6" style="padding-top:30px; ">
+      <div class="col-lg-6" >
        <table class="ui yellow table">
         <thead>
           <th colspan="2" style="text-align: center">
@@ -75,6 +75,10 @@
           <tr>
             <td><label >Vehiculo</label></td>
             <td>{{$vehicleActivate->license_plate}}</td>
+          </tr>
+          <tr>
+            <td><label >Ruta</label></td>
+            <td>{{$taxiDriver->routeZone->name}}</td>
           </tr>
           <tr>
             <td colspan="2" >

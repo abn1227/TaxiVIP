@@ -35,6 +35,7 @@ class TaxiDriverRequest extends FormRequest
                         'model'=>'required',
                         'color'=>'required',
                         'licensePlate'=>'required|unique:vehicles,license_plate',
+                        'route'=>'required',
                         
                     ];
                 }
@@ -53,6 +54,7 @@ class TaxiDriverRequest extends FormRequest
                         'cut'=>'required',
                         'inputTaxiDriverDate'=>'required',
                         'selectVehicle'=>'required',
+                        'route'=>'required',
                     ];
                    }
                 break;
@@ -79,6 +81,7 @@ class TaxiDriverRequest extends FormRequest
             'licensePlate.unique'=>'Este vehiculo ya se encuentra registrado',
             'inputTaxiDriverDate.required'=>'Debe imgresar una fecha de vencimiento para la licencia',
             'selectVehicle.required'=>'Debe seleccionar un vehiculo',
+            'route.required'=>'Debe seleccionar la ruta a la que sera asignado el taxista'
         ];
     }
 }

@@ -9,7 +9,8 @@ use App;
 class Address extends Controller
 {
     public function init(){
-        return view('Address/add');
+        $routes= App\Route_Zone::all();
+        return view('Address/add', compact('routes'));
     }
     public function save(NeighborhoodRequest $request)
     {
@@ -17,8 +18,10 @@ class Address extends Controller
         $neighborhood->name_neighborhood= $request->neighborhood;
         $neighborhood->start_time= $request->firstTime;
         $neighborhood->end_time= $request->lastTime;
+        $neighborhood->route_zones_id=$request->selectRoute;
         $neighborhood->save();
         $request->session()->flash('mensaje','Nueva dirección registrada con exito');
         return back();
     }
+    
 }

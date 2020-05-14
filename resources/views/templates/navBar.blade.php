@@ -9,7 +9,7 @@
             <a class="nav-link" href="{{ route('home') }}">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('home') }}">Control Panel<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{ route('home') }}">Rutas<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('home') }}">About<span class="sr-only">(current)</span></a>

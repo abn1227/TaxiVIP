@@ -1,15 +1,15 @@
 @extends('templates.mainTemplate')
 
 @section('title')
-Address
+Route
 @endsection
 
 @section('body')
 @extends('templates.navBar')
 
-<h5>
-    Bienvenido a el modulo de direcciones
-</h5>
+<h2>
+    Rutas
+</h2>
 <div class="container">
 <div class="row">
     {{-- Columna derecha --}}
@@ -33,29 +33,12 @@ Address
         @endif
         {{-- fin guardado exitoso --}}
         {{-- Formulario --}}
-        <form class="ui form" action="{{route('save-addresses')}}" method="post">
+        <form class="ui form" action="{{route('save-route')}}" method="post">
             @csrf
             <div class="field">
-                <label>Ruta</label>
-                <select name="selectRoute" required>
-                    <option value="">Seleccione una ruta</option>
-                    @foreach ($routes as $route)
-                        <option value="{{$route->id}}">{{$route->name}}</option>
-                    @endforeach
-                </select>
-              </div>
-            <div class="field">
-              <label>Nombre de colonia</label>
-              <input type="text" name="neighborhood" placeholder="Ejemplo:... Quezada" required>
+              <label>Nombre de la ruta</label>
+              <input type="text" name="route"  required>
             </div>
-            <div class="field">
-              <label>Hora de primer Acceso</label>
-              <input type="time" name="firstTime" required>
-            </div>
-            <div class="field">
-                <label>Ultima de primer Acceso</label>
-                <input type="time" name="lastTime" required>
-              </div>
             <button class="ui button blue fluid" type="submit">
                 <i class="save icon"></i> Guardar</button>
           </form>
