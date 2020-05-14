@@ -13,46 +13,34 @@ Orden
     <div class="col-md-6">
         <form action="" class="ui form">
                 <div class="field">
-                    <b>Colonia Origen</b>
-                <div class="ui search selection fluid dropdown">
-                    <input type="hidden" name="addr" id="addr" onkeyup="custom()">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Search a place...</div>
-                    <div class="menu" id="menu">
-                    </div>
-                </div>
+                <b>Colonia Origen</b>
+                <select class="ui search dropdown" name="origin" id="">
+                    <option value="">Selecione punto de partida</option>
+                    @foreach ($neighborhood as $item)
+                        <option value="{{$item->id}}">{{$item->name_neighborhood}}</option>
+                    @endforeach
+                </select>
                 </div>
                 <br>
                <div class="field">
                 <b>Colonia Destino</b>
-                <div class="ui search selection fluid dropdown">
-                    <input type="hidden" name="addr" id="addr" onkeyup="custom()">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Search a place...</div>
-                    <div class="menu" id="menu">
-                    </div>
-                </div>
+                <select class="ui search dropdown" name="destination" id="">
+                    <option value="">Selecione destino</option>
+                    @foreach ($neighborhood as $item)
+                        <option value="{{$item->id}}">{{$item->name_neighborhood}}</option>
+                    @endforeach
+                </select>
                </div>
-    
-                <br>
-                <div class="field"> 
-                    <b>Distancia</b>
-                <div class="ui fluid input ">
-                    <input type="text"  disabled>
-                </div>
-                </div>
-    
-                <br>
-                <div class="fluid">
-                    <b>Precio</b>
-                <div class="ui fluid input mt-2">
-                    <input type="text" disabled>
-                </div>
-                </div>
+     
+                
     
                 <br>
                 <table class="ui table">
                     <tr>
+                        <td>
+                            <button class="ui button teal fluid" type="button">
+                                <i class="info icon"></i>Disponibilidad</button>
+                        </td>
                         <td>
                             <button class="ui button blue fluid" id="order" type="button">
                                 <i class="plus icon"></i> Crear Orden</button>
@@ -68,5 +56,34 @@ Orden
 </div>
    
 </div>
+@endsection
+
+@section('executionScripts')
+
+<script>
+    $('.clearable.example .ui.selection.dropdown')
+  .dropdown({
+    clearable: true
+  })
+;
+$('.clearable.example .ui.inline.dropdown')
+  .dropdown({
+    clearable: true,
+    placeholder: 'any'
+  })
+;
+
+//modal
+$("#order").click(
+  function(){
+
+ $('.ui.modal')
+  .modal('show');
+  }
+
+);
+//
+</script>
+    
 @endsection
 

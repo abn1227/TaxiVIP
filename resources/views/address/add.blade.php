@@ -26,15 +26,15 @@ Address
             @csrf
             <div class="field">
               <label>Nombre de colonia</label>
-              <input type="text" name="neighborhood" placeholder="Ejemplo:... Quezada">
+              <input type="text" name="neighborhood" placeholder="Ejemplo:... Quezada" required>
             </div>
             <div class="field">
               <label>Hora de primer Acceso</label>
-              <input type="time" name="firstTime" >
+              <input type="time" name="firstTime" required>
             </div>
             <div class="field">
                 <label>Ultima de primer Acceso</label>
-                <input type="time" name="lastTime">
+                <input type="time" name="lastTime" required>
               </div>
             <button class="ui button blue fluid" type="submit">
                 <i class="save icon"></i> Guardar</button>
