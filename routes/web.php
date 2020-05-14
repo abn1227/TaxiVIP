@@ -14,6 +14,7 @@
 Route::get('/', 'Home@init')->name('home');
 Route::get('/control', 'Home@init')->name('control');
 Route::get('/address', 'Address@init')->name('addresses');
+Route::post('/address/save','Address@save')->name('save-addresses');
 /*
 ---------------------------------------------------------------------------
 Rutas para la gestion de usuario

@@ -16,8 +16,8 @@ class CreateNeighborhoodsTable extends Migration
         Schema::create('neighborhoods', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
             $table->string('name_neighborhood', 45);
-            $table->bigInteger('schedule_id')->unsigned();
-            $table->foreign('schedule_id')->references('id')->on('schedule');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->timestamps();
         });
     }
