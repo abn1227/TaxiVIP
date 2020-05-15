@@ -27,6 +27,7 @@ class TaxiDriver extends Controller
         $taxiDrivers->cut_date=$request->cut;
         $taxiDrivers->current_driver_license=$request->inputCurrentDriverLicense;
         $taxiDrivers->status='1';
+        $taxiDrivers->active='1';
         $taxiDrivers->route_zones_id=$request->route;
         $taxiDrivers->save();
         $id= $taxiDrivers->id;

@@ -8,10 +8,30 @@ Orden
 <h5>
     Bienvenido a el modulo de carreras
 </h5>
+ {{-- manejo de errores --}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        {{-- Fin manejo de errores --}}
+       
 <div class="container">
 <div class="row">
     <div class="col-md-6">
-        <form action="" class="ui form">
+         {{-- Guardado exitoso --}}
+         @if (session('mensaje'))
+         <div class="alert alert-success">
+             {{session('mensaje')}}
+         </div>
+         @endif
+     {{-- fin guardado exitoso --}}
+        <form action="{{route('availability')}}" class="ui form" method="POST">
+            @csrf
                 <div class="field">
                 <b>Colonia Origen</b>
                 <select class="ui search dropdown" name="origin" id="">
@@ -38,7 +58,7 @@ Orden
                 <table class="ui table">
                     <tr>
                         <td>
-                            <button class="ui button teal fluid" type="button">
+                            <button class="ui button teal fluid" type="submit">
                                 <i class="info icon"></i>Disponibilidad</button>
                         </td>
                         <td>
@@ -48,10 +68,11 @@ Orden
                     </tr>
                 </table>
         </form>
-        @include('address/orderModal')
+        {{-- @include('address/orderModal') --}}
+        @includeWhen(isset($taxiDrivers), 'address/orderModal')
     </div>
     <div class="col-md-6">
-        <img src="{{ asset('img/mapa.jpg') }}" alt="" style="width: 550px; height: 450px;">
+        <img src="{{ asset('img/mapa.jpg') }}" alt="" style="width: 450px; height: 350px;" class="ui fluid image">
     </div>
 </div>
    
@@ -61,18 +82,36 @@ Orden
 @section('executionScripts')
 
 <script>
-    $('.clearable.example .ui.selection.dropdown')
-  .dropdown({
-    clearable: true
-  })
-;
-$('.clearable.example .ui.inline.dropdown')
-  .dropdown({
-    clearable: true,
-    placeholder: 'any'
-  })
-;
+//----------------------------------------------------------------------------------------------------------
+//Calculo del precio 
+//----------------------------------------------------------------------------------------------------------
+$("#c").click(function() {
+    //Verificar hora
+    var now = new Date($.now());
+    var t1 = '06:00:00';
+    var t2 = '18:00:00';
+    var hour= now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+   // alert(typeof(hour)+','+typeof(t1)+','+typeof(t2));
+   if (hour>=t1 && hour<t2) {
+        var distance = $('#distance').val();
+        distance++
+        var p=15;
+        var price= p*(distance);
+        $("#price").val(price);
+   } else {
+        var distance = $('#distance').val();
+        distance++
+        var p=15;
+        var d=2;
+        var price= d*p*(distance);
+        $("#price").val(price);
+   }
 
+
+   
+});
+//----------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------
 //modal
 $("#order").click(
   function(){

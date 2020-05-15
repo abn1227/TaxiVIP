@@ -16,7 +16,9 @@ Route::get('/control', 'Home@init')->name('control');
 Route::get('/address', 'Address@init')->name('addresses');
 Route::get('/address/route', 'Route@init')->name('route');
 Route::post('/address/save','Address@save')->name('save-addresses');
+Route::post('/address/availability','Address@availability')->name('availability');
 Route::post('/address/save-route','Route@save')->name('save-route');
+
 /*
 ---------------------------------------------------------------------------
 Rutas para la gestion de usuario
@@ -85,6 +87,7 @@ Route::put('/users/employees/update/{id}','Employees@updateEmployees')->name('up
 //-------------------------------------------------------------------------------------------------
 
 Route::get('/address/order', 'Order@init')->name('order');
+Route::post('/address/order-save','Order@save')->name('save-order');
 
 //-------------------------------------------------------------------------------------------------
 //Rutas para gestionar la creacion de ordenes
