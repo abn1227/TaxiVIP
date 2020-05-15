@@ -15,8 +15,8 @@ class CreatePersonsTable extends Migration
     {
         Schema::create('persons', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('identification',13)->unique();
-            $table->string('name');
+            $table->string('identification',13)->unique()->nullable();
+            $table->string('name')->nullable();
             $table->string('mobile',13);
             $table->string('status', 1);
             $table->timestamps();
