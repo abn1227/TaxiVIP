@@ -31,7 +31,9 @@ class Address extends Controller
         // Verificar si ambas colonias pertenecen a la misma ruta
         if ($origin->route_zones_id==$destination->route_zones_id) {
             //Verificar los horarios
-            $now= Carbon::now();
+            // $now= Carbon::now();
+            $now= date('H:m:s');
+            dd($now,$destination->start_time,$destination->end_time);
             if (($now>=$origin->start_time) && ($now<$origin->end_time)) {
                 if ($now>=$destination->start_time && $now<$destination->end_time) {
 
