@@ -16,7 +16,4 @@ class Order extends Model
         return $this->belongsTo('App\Client', 'clients_id');
     }
 
-    public function neighborhood(){
-        return $this->belongsTo('App\Neighborhood');
-    }
 }
