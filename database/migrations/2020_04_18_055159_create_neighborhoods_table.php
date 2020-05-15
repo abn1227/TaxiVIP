@@ -18,8 +18,6 @@ class CreateNeighborhoodsTable extends Migration
             $table->string('name_neighborhood', 45);
             $table->time('start_time');
             $table->time('end_time');
-            $table->bigInteger('route_zones_id')->unsigned();
-            $table->foreign('route_zones_id')->references('id')->on('route_zones');
             $table->timestamps();
         });
     }
