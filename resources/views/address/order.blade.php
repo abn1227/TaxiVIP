@@ -8,28 +8,35 @@ Orden
 <h5>
     Bienvenido a el modulo de carreras
 </h5>
- {{-- manejo de errores --}}
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        {{-- Fin manejo de errores --}}
        
 <div class="container">
 <div class="row">
     <div class="col-md-6">
+          {{-- manejo de errores --}}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        {{-- Fin manejo de errores --}}
          {{-- Guardado exitoso --}}
          @if (session('mensaje'))
          <div class="alert alert-success">
              {{session('mensaje')}}
          </div>
          @endif
-     {{-- fin guardado exitoso --}}
+         {{-- fin guardado exitoso --}}
+          {{-- warning --}}
+          @if (session('msj'))
+          <div class="alert alert-warning">
+              {{session('msj')}}
+          </div>
+          @endif
+          {{-- fin warning --}}
         <form action="{{route('availability')}}" class="ui form" method="POST">
             @csrf
                 <div class="field">
@@ -72,7 +79,8 @@ Orden
         @includeWhen(isset($taxiDrivers), 'address/orderModal')
     </div>
     <div class="col-md-6">
-        <img src="{{ asset('img/mapa.jpg') }}" alt="" style="width: 450px; height: 350px;" class="ui fluid image">
+        @include('templates/orderMenu')
+        <img src="{{ asset('img/mapa.jpg') }}" style="height: 350px;" class="ui fluid image">
     </div>
 </div>
    

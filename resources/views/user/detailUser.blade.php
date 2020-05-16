@@ -15,12 +15,12 @@
 {{-- fin Actualizacion exitosa --}}
 <div class="container" style="margin-top:50px;">
   <div class="row">
-    <div class="col" align="center" >
-    <img src="{{ asset('img/recepcionista.jpg') }}" alt="" style="width: 250px; height: 400px; ">
+    <div class="col-sm-6" align="center" >
+    <img src="{{ asset('img/recepcionista.jpg') }}" class="ui fluid image" style="width: 250px; height: 400px;" >
     </div>
-    <div class="col" style="padding-top:10px; padding-right:120px;">
+    <div class="col-sm-6" >
      
-    <form method="get"  action="{{route('user')}}"> 
+    <form method="get"  action="{{route('user')}}" class="form ui"> 
     @csrf
         <table class="ui yellow table">
             <thead>

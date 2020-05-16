@@ -87,8 +87,11 @@ Route::put('/users/employees/update/{id}','Employees@updateEmployees')->name('up
 //-------------------------------------------------------------------------------------------------
 
 Route::get('/address/order', 'Order@init')->name('order');
+Route::get('/address/pending-order', 'Order@pendingOrders')->name('pending');
 Route::post('/address/order-save','Order@save')->name('save-order');
-
+Route::put('/address/order-update/{id}','Order@update')->name('update-order');
+Route::put('/address/order-taxidriver-status/{id}', 'Order@status')->name('status');
+Route::get('/address/order-taxidriver-active', 'Order@inactive')->name('inactive');
 //-------------------------------------------------------------------------------------------------
 //Rutas para gestionar la creacion de ordenes
 //-------------------------------------------------------------------------------------------------

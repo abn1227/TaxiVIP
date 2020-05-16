@@ -27,11 +27,11 @@
 
         <div class="container" >
             <div class="row">
-              <div class="col-lg-6" align="center" >
-              <img src="{{ asset('img/empleados.jpg') }}" alt="" style="width: 500px; height: 500px; ">
+              <div class="col-lg-7" align="center" >
+              <img src="{{ asset('img/empleados.jpg') }}" class="ui fluid image">
               </div>
-              <div class="col-lg-6" style="padding-top:60px; padding-right:120px;">
-              <form method="POST" action="{{route('add-user')}}" > 
+              <div class="col-lg-5" style="padding-top:60px;">
+              <form method="POST" action="{{route('add-user')}}"  class="ui form"> 
               @csrf
                   <div class="form-group">
                     <label for="exampleInputEmail1">Identificacion</label>
@@ -77,44 +77,51 @@
                               required>
                   </div>
 
-                  <div class="form-group">
+                  
                         
-                    <div class="ui form">
-                        <div class="inline fields">
-                          <label for="fruit">Cargo:</label>
-                          
-                          <div class="field">
-                            <div class="ui radio checkbox">
-                              <input type="radio" name="role" value="2" tabindex="0" class="hidden" 
-                              {{ old('role') == "2" ? "checked" : "" }}>
-                              <label>Operario</label>
-                            </div>
-                          </div>
-                          <div class="field">
-                            <div class="ui radio checkbox">
-                              <input type="radio" name="role" value="3" tabindex="0" class="hidden"
-                              {{ old('role') == "3" ? "checked" : "" }}>
-                              <label>Taxista</label>
-                            </div>
-                          </div>
-                          <div class="field">
-                            <div class="ui radio checkbox">
-                              <input type="radio" name="role" value="1" tabindex="0" class="hidden"
-                              {{ old('role') == "1" ? "checked" : "" }}>
-                              <label>Administrador</label>
-                            </div>
-                          </div>
+                  <table class="ui table">
+                    <tr>
+                      <td>
+                        <label>Cargo:</label>
+                      </td>
+                      <td>
+                        <div class="ui radio checkbox">
+                          <input type="radio" name="role" value="2" tabindex="0" class="hidden" 
+                          {{ old('role') == "2" ? "checked" : "" }}>
+                          <label>Operario</label>
                         </div>
-
-
-
-                  </div>
-
-                  <div style="margin-left: 50px">
-                     <button type="submit" name="inputAdd" class="large ui blue button">Agregar</button>
-                     <button type="reset" class="large ui teal basic button">Limpiar</button>
-                     <button  type="button" id ="showModal" name="showModal" class="large ui blue basic button">Taxista</button>
-                  </div>
+                      </td>
+                      <td>
+                        <div class="ui radio checkbox">
+                          <input type="radio" name="role" value="3" tabindex="0" class="hidden"
+                          {{ old('role') == "3" ? "checked" : "" }}>
+                          <label>Taxista</label>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="ui radio checkbox">
+                          <input type="radio" name="role" value="1" tabindex="0" class="hidden"
+                          {{ old('role') == "1" ? "checked" : "" }}>
+                          <label>Administrador</label>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                  
+                    <table class="ui table">
+                      <tr>
+                        <td>
+                          <button type="submit" name="inputAdd" class="ui blue button fluid">Agregar</button>
+                        </td>
+                        <td>
+                          <button type="reset" class="ui teal basic button fluid">Limpiar</button>
+                        </td>
+                        <td>
+                          <button  type="button" id ="showModal" name="showModal" class="fluid ui blue basic button">Taxista</button>
+                        </td>
+                      </tr>
+                    </table>
+                  
                   
               </form>
               <!--

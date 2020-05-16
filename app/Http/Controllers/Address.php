@@ -28,43 +28,39 @@ class Address extends Controller
     {
         $origin=App\Neighborhood::findOrfail($request->origin);
         $destination=App\Neighborhood::findOrfail($request->destination);
-        // Verificar si ambas colonias pertenecen a la misma ruta
-        if ($origin->route_zones_id==$destination->route_zones_id) {
-            //Verificar los horarios
-            // $now= Carbon::now();
-            $now= date('H:m:s');
-            dd($now,$destination->start_time,$destination->end_time);
+        
+            date_default_timezone_set('America/Tegucigalpa');
+            $now= Carbon::now()->toTimeString();
+            // dd($now,$destination->start_time,$destination->end_time);
             if (($now>=$origin->start_time) && ($now<$origin->end_time)) {
                 if ($now>=$destination->start_time && $now<$destination->end_time) {
 
                      //Verificar si existe un taxista disponible en esta ruta
-                        $taxiDrivers=App\Taxi_Driver::where([
+                        $taxiDrivers=App\Taxi_Driver::Where([
                             ['route_zones_id','=',$origin->route_zones_id],
                             ['status','=','1']
-                        ])->get();
+                        ])->orderBy('mileage','asc')
+                        ->get();
+                        // count($taxiDrivers)>=1
                         if (count($taxiDrivers)>=1) {
                             $request->session()->flash('mensaje','Hay taxistas disponibles');
                             $neighborhood=  App\Neighborhood::All();
                             return view('Address/order',compact('neighborhood','taxiDrivers'));
                         }else {
-                            $request->session()->flash('mensaje','No hay taxistas disponibles');
+                            $request->session()->flash('msj','No hay taxistas disponibles');
                             return back();
                         }
                        
                 }
                 else {
-                    $request->session()->flash('mensaje','No hay acceso a la colonia destino en este horario');
+                    $request->session()->flash('msj','No hay acceso a la colonia destino en este horario');
                     return back();
                 }
             }else {
-                $request->session()->flash('mensaje','No hay acceso a la colonia de origen en este horario');
+                $request->session()->flash('msj','No hay acceso a la colonia de origen en este horario');
                 return back();
             }
-        }
-        else {
-            $request->session()->flash('mensaje','Estas colonias no pertencen a la misma ruta');
-            return back();
-        }
+       
     }
     
 }

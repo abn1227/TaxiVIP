@@ -31,7 +31,7 @@
     <div class="row">
       {{-- Imagen taxista  --}}
       <div class="col-lg-6" align="left" >
-        <img src="{{ asset('img/taxista.jpg') }}" >
+        <img src="{{ asset('img/taxista.jpg') }}" class="ui fluid image" >
       </div>
       {{-- Fin imagen --}}
       {{-- Datos taxista --}}
