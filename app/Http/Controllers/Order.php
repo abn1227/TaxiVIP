@@ -10,7 +10,7 @@ class Order extends Controller
     public function init(){
         $neighborhood=  App\Neighborhood::All();
         
-        return view('Address/order',compact('neighborhood'));
+        return view('address/order',compact('neighborhood'));
     }
     public function save(Request $request)
     {
