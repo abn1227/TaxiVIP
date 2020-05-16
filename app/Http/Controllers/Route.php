@@ -9,7 +9,7 @@ class Route extends Controller
 {
     public function init()
     {
-        return view('Address/createRoute');
+        return view('address/createRoute');
     }
 
     public function save(RouteRequest $request)

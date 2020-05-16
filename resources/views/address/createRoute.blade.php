@@ -47,7 +47,7 @@ Route
     {{-- Fin columna derecha --}}
     {{-- Columna Izquierda --}}
     <div class="col-lg-6">
-        @include('templates/neighborhoodmenu')
+        @include('templates/neighborhoodMenu')
         <img src="{{ asset('img/map.png') }}" alt="" class="ui fluid image">
     </div>
     {{-- Fin columna izquierda --}}
