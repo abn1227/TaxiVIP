@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\RouteRequest;
 use App;
 class Route extends Controller
 {
@@ -11,7 +12,7 @@ class Route extends Controller
         return view('Address/createRoute');
     }
 
-    public function save(Request $request)
+    public function save(RouteRequest $request)
     {
         $route= new App\Route_Zone;
         $route->name=$request->route;
