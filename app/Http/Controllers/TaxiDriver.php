@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\Route;
+use App\Http\Controllers\CorteController;
 use App\Http\Requests\VehicleRequest;
 use App\Http\Requests\TaxiDriverRequest;
 
@@ -47,6 +48,17 @@ class TaxiDriver extends Controller
         $newvehicle->status = '1';
         $newvehicle->taxi_drivers_id = $id;
         $newvehicle->save();
+        //----------------------------------------------------------------------------------
+        //Agegar dato a la tabla cut
+        //----------------------------------------------------------------------------------
+        $cut = new App\Cut;
+        $pay = 0;
+        $date = new \DateTime();
+        $cut->payment = $pay;
+        $cut->cut_date = $date;
+        $cut->status = '1';
+        $cut->taxi_drivers_id = $id;
+        $cut->save();
         //----------------------------------------------------------------------------------
         //Estatus del vehiculo
         //----------------------------------------------------------------------------------

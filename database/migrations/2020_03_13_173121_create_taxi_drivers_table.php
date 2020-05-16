@@ -19,6 +19,7 @@ class CreateTaxiDriversTable extends Migration
             $table->integer('percentage');
             $table->integer('cut_date');
             $table->date('current_driver_license');
+            $table->integer('accrued_payments');
             $table->string('status', 1);
             $table->string('active', 1);
             $table->bigInteger('persons_id')->unsigned();
