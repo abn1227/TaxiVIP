@@ -51,7 +51,7 @@ class Order extends Controller
     public function update(Request $request,$id)
     {
         $order=App\Order::findOrfail($id);
-        if ($request->canceled='2') {
+        if ($request->canceled=='2') {
             $order->canceled=$request->canceled;
             $order->save();
             $request->session()->flash('mensaje','Estado de la orden actualizado');
