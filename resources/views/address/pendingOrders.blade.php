@@ -84,7 +84,7 @@ Orden
         <img src="{{ asset('img/mapa.jpg') }}" style="height: 350px;" class="ui fluid image">
     </div>
 </div>
-   
+{{$orders->links()}}
 </div>
 @endsection
 
