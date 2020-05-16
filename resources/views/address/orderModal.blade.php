@@ -44,12 +44,13 @@
             
             <div class="field">
                 <label>Taxista</label>
-                <select class="ui search dropdown" name="taxiDriver" required>
-                  <option value="">Seleccione un taxista</option>
-                      @foreach ($taxiDrivers as $taxiDriver)
-                          <option value="{{$taxiDriver->id}}">{{$taxiDriver->person->name.' / '.$taxiDriver->person->mobile}}</option>
-                      @endforeach
-                </select>
+                <label >
+                  @foreach ($taxiDrivers as $taxiDriver)
+                    <input type="hidden" name="taxiDriver" value="{{$taxiDriver->id}}">
+                    <input type="text" readonly value="{{$taxiDriver->person->name.' / '.$taxiDriver->person->mobile}}">
+                    @break
+                  @endforeach
+                </label>
               </div>
             
               <div class="field">

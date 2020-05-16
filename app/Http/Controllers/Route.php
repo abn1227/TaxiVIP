@@ -24,4 +24,5 @@ class Route extends Controller
         $routes=App\Route_Zone::All();
         return $routes;
     }
+    
 }
