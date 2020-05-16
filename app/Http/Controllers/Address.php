@@ -11,7 +11,7 @@ class Address extends Controller
 {
     public function init(){
         $routes= App\Route_Zone::all();
-        return view('Address/add', compact('routes'));
+        return view('address/add', compact('routes'));
     }
     public function save(NeighborhoodRequest $request)
     {

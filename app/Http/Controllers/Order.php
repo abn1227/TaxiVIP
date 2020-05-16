@@ -41,7 +41,7 @@ class Order extends Controller
         $taxiDriver->save();
         $request->session()->flash('mensaje','Guardado');
         $neighborhood=  App\Neighborhood::All();
-        return view('Address/order',compact('neighborhood'));
+        return view('address/order',compact('neighborhood'));
     }
     public function pendingOrders()
     {
