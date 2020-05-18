@@ -24,6 +24,12 @@ class Address extends Controller
         $request->session()->flash('mensaje','Nueva dirección registrada con exito');
         return back();
     }
+
+    public function showNeighborhood($id)
+    {
+        $neighborhoods=App\Neighborhood::where('route_zones_id',$id)->get();
+        return view('address.neighborhood',compact('neighborhoods'));
+    }
     public function availability(Request $request)
     {
         $origin=App\Neighborhood::findOrfail($request->origin);
@@ -61,6 +67,23 @@ class Address extends Controller
                 return back();
             }
        
+    }
+    public function edit($id)
+    {
+        $routes= App\Route_Zone::all();
+        $neighborhood=App\Neighborhood::findOrfail($id);
+        return view('address/editAddress',compact('routes','neighborhood'));
+    }
+    public function update(NeighborhoodRequest $request, $id)
+    {
+        $neighborhood=App\Neighborhood::findOrFail($id);
+        $neighborhood->name_neighborhood=$request->neighborhood;
+        $neighborhood->start_time= $request->firstTime;
+        $neighborhood->end_time= $request->lastTime;
+        $neighborhood->route_zones_id=$request->selectRoute;
+        $neighborhood->save();
+        $request->session()->flash('mensaje','Direccion actualizada');
+        return back();
     }
     
 }
