@@ -38,9 +38,10 @@ class Employees extends Controller
         $user->status=$request->status;
         $person->save();
         $user->save();
-        if ($user->type_users_id=='3') {
-            $taxiDriver=App\Taxi_Driver::findOrFail($user->persons_id);
+        if ($user->type_users_id==3) {
+            $taxiDriver=App\Taxi_Driver::where('persons_id',$person->id)->first();
             $taxiDriver->active=$request->status;
+            $taxiDriver->save();
         }
         $request->session()->flash('mensaje','Los datos del empleado han sido actualizados con exito');
         return  redirect()->route('employees');

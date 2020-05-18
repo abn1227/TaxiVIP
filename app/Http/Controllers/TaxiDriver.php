@@ -76,7 +76,7 @@ class TaxiDriver extends Controller
     public function showAll()
     { 
         //
-        $taxiDrivers= App\Taxi_Driver::paginate(7);
+        $taxiDrivers= App\Taxi_Driver::where('active','1')->paginate(7);
         return view('user.taxiDriver',compact('taxiDrivers'));
     }
     //--------------------------------------------------------------------------------------
