@@ -11,7 +11,15 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        factory(\App\User::class, 50)->create();
+        DB::table('type_users')->insert([
+            'description' => 'Administrador',
+        ]);
+        DB::table('type_users')->insert([
+            'description' => 'Operario',
+        ]);
+        DB::table('type_users')->insert([
+            'description' => 'Taxista',
+        ]);
+        
     }
 }

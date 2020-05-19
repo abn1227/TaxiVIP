@@ -162,7 +162,7 @@
                 <option value="">Seleccione una ruta</option>
                  @foreach ($routes as $route)
                      <option value="{{$route->id}}"
-                      {{old('route',$route->id) == "$route->id" ? "selected" : "" }} >{{$route->name}}</option>
+                      {{old('route',$route->id) == "$taxiDriver->route_zones_id" ? "selected" : "" }} >{{$route->name}}</option>
                  @endforeach              
               </select>
               {{-- <label for="">{{$vehicle}}</label> --}}

@@ -10,6 +10,6 @@ class Neighborhood extends Model
 
     //nm
     public function routeZone(){
-        return $this->belongsToMany('App\Route_Zone', 'route_zones_id') ;
+        return $this->belongsTo('App\Route_Zone', 'route_zones_id') ;
     }
 }

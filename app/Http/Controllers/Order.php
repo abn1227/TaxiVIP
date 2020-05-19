@@ -33,9 +33,7 @@ class Order extends Controller
         $order->canceled='0';
         $order->taxi_drivers_id=$request->taxiDriver;
         $order->clients_id=$client->id;
-        $order->save();
-        //Asignacion de kilometraje para el taxista
-        
+        $order->save();        
         $taxiDriver=App\Taxi_Driver::findOrFail($request->taxiDriver);
         $taxiDriver->status='0';
         $taxiDriver->save();
@@ -60,6 +58,7 @@ class Order extends Controller
        else {
             $taxiDriver=App\Taxi_Driver::findOrFail($order->taxi_drivers_id);
             $mileage=$taxiDriver->mileage+$order->distance;
+            $pay=$taxiDriver->accrued_payments=$taxiDriver->accrued_payments+$order->price;
             $taxiDriver->mileage=$mileage;
             $order->canceled=$request->canceled;
             $order->save();

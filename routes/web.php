@@ -13,12 +13,15 @@
 
 Route::get('/', 'Home@init')->name('home');
 Route::get('/control', 'Home@init')->name('control');
+Route::get('/address/routes', 'route@showRoute')->name('show-route');
 Route::get('/address', 'Address@init')->name('addresses');
 Route::get('/address/route', 'Route@init')->name('route');
 Route::post('/address/save','Address@save')->name('save-addresses');
 Route::post('/address/availability','Address@availability')->name('availability');
 Route::post('/address/save-route','Route@save')->name('save-route');
-
+Route::get('/address/neighborhood/{id}', 'Address@showNeighborhood')->name('neighborhoods');
+Route::get('/address/neighborhood/edit/{id}', 'Address@edit')->name('edit-neighborhoods');
+Route::put('/address/neighborhood/update/{id}', 'Address@update')->name('update-neighborhoods');
 /*
 ---------------------------------------------------------------------------
 Rutas para la gestion de usuario

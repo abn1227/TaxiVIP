@@ -23,12 +23,32 @@ class NeighborhoodRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'neighborhood'=>'required',
-            'firstTime'=>'required',
-            'lastTime'=>'required',
-            'selectRoute'=>'required',
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                {
+                    return [
+                        'neighborhood'=>'required',
+                        'firstTime'=>'required',
+                        'lastTime'=>'required',
+                        'selectRoute'=>'required',
+                    ];
+                }
+                break;
+            case 'PUT':
+               {
+                return [
+                    'neighborhood'=>'required',
+                    'firstTime'=>'required',
+                    'lastTime'=>'required',
+                    'selectRoute'=>'required',
+                ];
+               }
+                break;
+            default:
+                # code...
+                break;
+        }
+       
     }
     public function messages()
     {
