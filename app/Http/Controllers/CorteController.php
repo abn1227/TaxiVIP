@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\Cut;
 
 
 class CorteController extends Controller
@@ -20,8 +21,15 @@ class CorteController extends Controller
     public function init()
     {
         $status = '1';
-        $taxiDriver= App\Taxi_Driver::where('status', $status)->paginate(5);
-        return view('cut.cut', compact('taxiDriver'));
+        $taxiDriver= App\Taxi_Driver::where('status','=', '1')->paginate(5);
+        
+        $taxiDriverid = $taxiDriver;
+        $corte = App\Cut::where('taxi_drivers_id','=', $taxiDriverid)->paginate(5);
+        return view('cut.cut', compact('taxiDriver','corte'));
+        /*$taxiDriver= App\Taxi_Driver::where('status', $status)->paginate(5);
+        return view('cut.cut', compact('taxiDriver'));*/
+        //$cut= App\Cut::where('status', $status)->paginate(5);   
+        //return view('cut.cut', compact('cut'));
     }
 
     public function doCut(Request $request, $id){
