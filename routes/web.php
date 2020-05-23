@@ -95,6 +95,8 @@ Route::post('/address/order-save','Order@save')->name('save-order');
 Route::put('/address/order-update/{id}','Order@update')->name('update-order');
 Route::put('/address/order-taxidriver-status/{id}', 'Order@status')->name('status');
 Route::get('/address/order-taxidriver-active', 'Order@inactive')->name('inactive');
+Route::get('/address/order/history', 'Order@orders')->name('history');
+Route::get('/address/order/history/{id}', 'Order@show')->name('detail-history');
 //-------------------------------------------------------------------------------------------------
 //Rutas para gestionar la creacion de ordenes
 //-------------------------------------------------------------------------------------------------

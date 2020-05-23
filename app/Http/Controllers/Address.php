@@ -32,6 +32,18 @@ class Address extends Controller
     }
     public function availability(Request $request)
     {
+        //----------------------------------------------------------------
+        //Validaciones para la disponibilidad
+        //---------------------------------------------------------------
+        $request->validate([
+            'origin' => 'required',
+            'destination' => 'required',
+        ],[
+            'origin.required'=>'Debe seleccionar el punto de origen',
+            'destination.required'=>'Debe seleccionar el destino'
+        ]);
+        //---------------------------------------------------------------
+        //---------------------------------------------------------------
         $origin=App\Neighborhood::findOrfail($request->origin);
         $destination=App\Neighborhood::findOrfail($request->destination);
         
