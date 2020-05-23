@@ -44,7 +44,9 @@ Orden
                 <select class="ui search dropdown" name="origin" id="">
                     <option value="">Selecione punto de partida</option>
                     @foreach ($neighborhood as $item)
-                        <option value="{{$item->id}}">{{$item->name_neighborhood}}</option>
+                        <option value="{{$item->id}}"
+                            {{old('origin')==$item->id?'selected':''}}>
+                            {{$item->name_neighborhood}}</option>
                     @endforeach
                 </select>
                 </div>
@@ -54,7 +56,9 @@ Orden
                 <select class="ui search dropdown" name="destination" id="">
                     <option value="">Selecione destino</option>
                     @foreach ($neighborhood as $item)
-                        <option value="{{$item->id}}">{{$item->name_neighborhood}}</option>
+                        <option value="{{$item->id}}"
+                            {{old('destination')==$item->id?'selected':''}}>
+                            {{$item->name_neighborhood}}</option>
                     @endforeach
                 </select>
                </div>

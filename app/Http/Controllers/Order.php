@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use Carbon\Carbon;
+use App\Http\Requests\OrderRequest;
 class Order extends Controller
 {
     public function init(){
@@ -12,7 +13,7 @@ class Order extends Controller
         
         return view('address/order',compact('neighborhood'));
     }
-    public function save(Request $request)
+    public function save(OrderRequest $request)
     {
         date_default_timezone_set('America/Tegucigalpa');
         $date=Carbon::now();
@@ -80,5 +81,21 @@ class Order extends Controller
     {
         $taxiDrivers=App\Taxi_Driver::where('status','0')->paginate(3);
         return view('address.inactive',compact('taxiDrivers'));
+    }
+    //-------------------------------------------------------------------------------------------------------------
+    //Muestra el historial de ordenes
+    //-------------------------------------------------------------------------------------------------------------
+    public function orders()
+    {
+        $orders= App\Order::paginate(10);
+        return view('address.historyOrders',compact('orders'));
+    }
+    //-------------------------------------------------------------------------------------------------------------
+    //Muestra el detalle de una orden en especifico 
+    //-------------------------------------------------------------------------------------------------------------
+    public function show($id)
+    {
+        $order= App\Order::findOrFail($id);
+        return view('address.detailHistory', compact('order'));
     }
 }

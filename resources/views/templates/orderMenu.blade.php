@@ -1,8 +1,10 @@
 <div class="ui stackable menu" >
   <div class="item">
-    <img src="{{ asset('img/ubicacion.jpeg') }}" style="height: 30px; width: 30px">
+    <a href="{{route('history')}}">
+    <img src="{{ asset('img/historial.png') }}" style="height: 30px; width: 30px">
+    </a>
   </div>
-  <a class="item" href="{{route('order')}}">Crear ordenes</a>
-  <a class="item" href="{{route('pending')}}" >Ordenes pendientes</a>
-  <a class="item" href="{{route('inactive')}}">Taxistas inactivos</a>
+  <a class="item" href="{{route('order')}}">carrera nueva</a>
+  <a class="item" href="{{route('pending')}}" >carreras pendientes</a>
+  <a class="item" href="{{route('inactive')}}">taxistas inactivos</a>
 </div>
