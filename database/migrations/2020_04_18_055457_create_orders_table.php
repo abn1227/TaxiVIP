@@ -17,8 +17,9 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->double('price', 6, 2);
             $table->double('distance', 5, 2);
-            $table->string('url_map', 250);
+            $table->string('url_map', 500);
             $table->dateTime('date');
+            $table->double('senior_discount', 4, 2);
             $table->string('canceled', 1);
             $table->bigInteger('taxi_drivers_id')->unsigned();
             $table->foreign('taxi_drivers_id')->references('id')->on('taxi_drivers');

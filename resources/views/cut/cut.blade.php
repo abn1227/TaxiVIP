@@ -49,7 +49,8 @@
             @else
                 <tr>
             @endif
-                    
+
+            @if($cortes->status == '1')        
                     <td class="table-warning">{{$item->person->id}}</td>
                     <td>{{$item->id}}</td>
                     <td>{{$item->person->identification}}</td>
@@ -81,7 +82,7 @@
                     </td>
                 </tr>
                 </tbody>
-
+            @endif
         @endforeach
     @endforeach
     </table>
