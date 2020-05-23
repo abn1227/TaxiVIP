@@ -12,6 +12,10 @@ use App\Http\Controllers\Route;
 
 class User extends Controller
 {
+    public function __construct()
+{
+    $this->middleware('auth');
+}
     //--------------------------------------------------------------------------------------
     /*Muestra los datos de el usuario logueado*/
     //--------------------------------------------------------------------------------------

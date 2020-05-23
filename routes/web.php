@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'Home@init')->name('home');
+Route::get('/home', 'Home@init')->name('home');
+Route::get('/logout','Auth\LoginController@logout');
 Route::get('/control', 'Home@init')->name('control');
 Route::get('/address/routes', 'route@showRoute')->name('show-route');
 Route::get('/address', 'Address@init')->name('addresses');
