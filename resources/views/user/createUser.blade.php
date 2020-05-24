@@ -111,13 +111,14 @@
                     <table class="ui table">
                       <tr>
                         <td>
-                          <button type="submit" name="inputAdd" class="ui blue button fluid">Agregar</button>
+                          <button type="submit" name="inputAdd" class="ui blue button fluid"><i class="plus icon"></i> Agregar</button>
                         </td>
                         <td>
-                          <button type="reset" class="ui teal basic button fluid">Limpiar</button>
+                          <button type="reset" class="ui teal button fluid"><i class="eraser icon"></i>Limpiar</button>
                         </td>
                         <td>
-                          <button  type="button" id ="showModal" name="showModal" class="fluid ui blue basic button">Taxista</button>
+                          <button  type="button" id ="showModal" name="showModal" class="fluid ui green  button">
+                            <i class="taxi icon"></i>Taxista</button>
                         </td>
                       </tr>
                     </table>
