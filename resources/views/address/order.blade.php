@@ -103,13 +103,15 @@ $("#c").click(function() {
     var t1 = '06:00:00';
     var t2 = '18:00:00';
     var hour= now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-   // alert(typeof(hour)+','+typeof(t1)+','+typeof(t2));
-   if (hour>=t1 && hour<t2) {
+   if (!$("#terceraEdad").is(':checked')) {
+    if (hour>=t1 && hour<t2) {
         var distance = $('#distance').val();
         distance++;
         var p=15;
         var price= p*(distance);
         $("#price").val(price);
+        $("#discount").val(0);
+        $("#total").val(price);
    } else {
         var distance = $('#distance').val();
         distance++;
@@ -117,7 +119,36 @@ $("#c").click(function() {
         var d=2;
         var price= d*p*(distance);
         $("#price").val(price);
+        $("#discount").val(0);
+        $("#total").val(price);
    }
+       
+   } else {
+    if (hour>=t1 && hour<t2) {
+        var distance = $('#distance').val();
+        distance++;
+        var p=15;
+        var price= p*(distance);
+        var discount=price*0.30;
+        var total= price-discount;
+        $("#price").val(price);
+        $("#discount").val(discount);
+        $("#total").val(total);
+   } else {
+        var distance = $('#distance').val();
+        distance++;
+        var p=15;
+        var d=2;
+        var price= d*p*(distance);
+        var discount=price*0.30;
+        var total= price-discount;
+        $("#price").val(price);
+        $("#discount").val(discount);
+        $("#total").val(total);
+   }
+   }
+
+  
 
 
    
@@ -133,7 +164,10 @@ $("#order").click(
   }
 
 );
-//
+//casikla de verificacion
+$('.ui.checkbox')
+  .checkbox()
+;
 </script>
     
 @endsection

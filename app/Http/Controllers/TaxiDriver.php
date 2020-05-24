@@ -47,6 +47,7 @@ class TaxiDriver extends Controller
         $newvehicle->license_plate = $request->licensePlate;
         $newvehicle->active = '1';
         $newvehicle->status = '1';
+        $newvehicle->car_year = $request->year;
         $newvehicle->taxi_drivers_id = $id;
         $newvehicle->save();
         //----------------------------------------------------------------------------------
@@ -131,6 +132,7 @@ class TaxiDriver extends Controller
             $personUpdate->mobile = $request->inputTaxiDriverMobile;    
             $personUpdate->save();
             $user->save();
+            $request->session()->flash('mensaje','Datos del taxista actualizados');
             return view('user.detailTaxiDriver',compact('taxiDriver','user','vehicleActivate'));
     }
      //--------------------------------------------------------------------------------------

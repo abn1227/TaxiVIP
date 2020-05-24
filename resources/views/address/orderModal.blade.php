@@ -7,7 +7,7 @@
       <div class="ui medium image">
         <img src="{{asset('img\taxista-ciudad.jpg')}}">
       </div>
-      <div class="description scrolling content " style="width: 500px; height: 380px">
+      <div class="description scrolling content" style="width: 700px; height: 380px">
         {{-- <div class="ui header">Detalle de la orden </div> --}}
         <!--
             Formulario para el ingreso de informacion del taxista
@@ -22,6 +22,12 @@
                        <input type="number" name="distance" id="distance" required value="{{old('distance')}}">
                     </td>
                     <td>
+                      <div class="ui checkbox">
+                        <input type="checkbox" tabindex="0" class="hidden" name="terceraEdad" id="terceraEdad">
+                        <label>Tercera edad</label>
+                      </div>
+                    </td>
+                    <td>
                       <button class=" ui green button fluid" id="c" type="button" onclick="price()">
                         <i class="icon money"></i>Calcular precio
                       </button>
@@ -32,11 +38,21 @@
                 
               </div>
 
-            <div class="field">
-              <label>Precio</label>
-              <input type="number" name="price" id="price" readonly required >
+            <div class="fields " style="width: 570px">
+              <div class="field">
+                <label>Precio</label>
+                <input type="number" name="price" id="price" readonly required >
+              </div>
+              <div class="field">
+                <label>Descuento</label>
+                <input type="number" name="discount" id="discount" readonly required >
+              </div>
+              <div class="field">
+                <label>Total</label>
+                <input type="number" name="total" id="total" readonly required >
+              </div>
             </div>
-
+            
             <div class="field">
               <label>URL</label>
               <input type="text" name="url" id="url" required value="{{old('url')}}">

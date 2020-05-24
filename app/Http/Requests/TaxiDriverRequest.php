@@ -34,6 +34,7 @@ class TaxiDriverRequest extends FormRequest
                         'cut'=>'required',
                         'model'=>'required',
                         'color'=>'required',
+                        'year'=>'required',
                         'licensePlate'=>'required|unique:vehicles,license_plate',
                         'route'=>'required',
                         
@@ -77,6 +78,7 @@ class TaxiDriverRequest extends FormRequest
             'inputCurrentDriverLicense.required'=>'Debe ingresar la fecha de vencimiento de la licencia',
             'model.required'=>'Debe seleccionar un modelo de vehiculo',
             'color.required'=>'Debe ingresar el color del vehiculo',
+            'year.required'=>'Debe ingresar el año del vehiculo',
             'licensePlate.required'=>'Debe ingresar la placa del vehiculo',
             'licensePlate.unique'=>'Este vehiculo ya se encuentra registrado',
             'inputTaxiDriverDate.required'=>'Debe imgresar una fecha de vencimiento para la licencia',

@@ -92,6 +92,16 @@
               <input type="text" name="color" placeholder="ejemplo... Rojo" required value="{{old('color')}}">
             </div>
             <div class="field">
+              <label>Año</label>
+              <select name="year" id="year" class="ui search dropdown" >
+                <option value="">Año del vehículo</option>
+              @for ($i = 2006; $i < 2017; $i++)
+                  <option value="{{$i}}"
+                  {{old('year') == "$i" ? "selected" : ""}}> {{$i}}</option>
+              @endfor
+            </select>
+            </div>
+            <div class="field">
               <label>Placa</label>
               <input type="text" name="licensePlate" placeholder="Ejemplo... H AB 2649" value="{{old('licensePlate')}}" required> 
             </div>

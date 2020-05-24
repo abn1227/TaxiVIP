@@ -27,13 +27,14 @@ class Order extends Controller
         $client->status='1';
         $client->save();
         $order= new App\Order;
-        $order->price= $request->price;
+        $order->price= $request->total;
         $order->distance=$request->distance;
         $order->url_map=$request->url;
         $order->date=$date;
         $order->canceled='0';
         $order->taxi_drivers_id=$request->taxiDriver;
         $order->clients_id=$client->id;
+        $order->senior_discount=$request->discount;
         $order->save();        
         $taxiDriver=App\Taxi_Driver::findOrFail($request->taxiDriver);
         $taxiDriver->status='0';
@@ -42,11 +43,17 @@ class Order extends Controller
         $neighborhood=  App\Neighborhood::All();
         return view('address/order',compact('neighborhood'));
     }
+    //---------------------------------------------------------------------------------------------------
+    //Muestra el listado de las ordenes que aun no se confirma sus estado como concluido o cancelado
+    //---------------------------------------------------------------------------------------------------
     public function pendingOrders()
     {
        $orders=App\Order::where('canceled','0')->paginate(3); 
        return view('address/pendingOrders',compact('orders'));
     }
+    //---------------------------------------------------------------------------------------------------
+    //Actualiza el estado de la orden, ya sea concluido o cancelado 
+    //---------------------------------------------------------------------------------------------------
     public function update(Request $request,$id)
     {
         $order=App\Order::findOrfail($id);
@@ -69,6 +76,9 @@ class Order extends Controller
        }
        
     }
+    //---------------------------------------------------------------------------------------------------
+    //Actualiza el estado de un taxista como disponible
+    //---------------------------------------------------------------------------------------------------
     public function status(Request $request,$id)
     {
         $taxiDriver=App\Taxi_Driver::findOrFail($id);
@@ -77,6 +87,9 @@ class Order extends Controller
         $request->session()->flash('mensaje','Estado actualizado');
         return back();
     }
+    //---------------------------------------------------------------------------------------------------
+    //Muestra el listado de taxistas inactivos 
+    //---------------------------------------------------------------------------------------------------
     public function inactive()
     {
         $taxiDrivers=App\Taxi_Driver::where('status','0')->paginate(3);

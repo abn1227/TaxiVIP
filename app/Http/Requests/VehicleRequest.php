@@ -31,6 +31,7 @@ class VehicleRequest extends FormRequest
             
                         'model'=>'required',
                         'color'=>'required',
+                        'year'=>'required',
                         'licensePlate'=>'required|unique:vehicles,license_plate'
                     ];
 
@@ -42,6 +43,7 @@ class VehicleRequest extends FormRequest
                        
                         'model'=>'required',
                         'color'=>'required',
+                        'year'=>'required',
                         'licensePlate'=>'required|unique:vehicles,license_plate,'.$this->id
                     ]; 
                 }
@@ -57,6 +59,7 @@ class VehicleRequest extends FormRequest
         return[
             'model.required'=>'Debe seleccionar un modelo',
             'color.required'=>'Debe ingresar el color del vehiculo',
+            'color.required'=>'Debe ingresar el año del vehiculo',
             'licensePlate.required'=>'Debe ingresar la placa del vehiculo',
             'licensePlate.unique'=>'Este vehiculo ya se encuentra registrado',
                         

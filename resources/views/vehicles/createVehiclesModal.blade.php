@@ -1,4 +1,4 @@
-<div style="margin-left: 250px; height: 500px; margin-top: 50px; " class="ui modal create coupled " id="create">
+<div style="margin-left: 250px; height: 550px; margin-top: 50px; " class="ui modal create coupled " id="create">
     <i class="close icon"></i>
     <div class="header">
       Nuevo Vehiculo
@@ -24,6 +24,16 @@
                     <label >Color</label>
                     <input type="text" name="color" placeholder="Color"
                     value="{{old('color')}}">
+                </div>
+                <div class="field">
+                  <label>Año</label>
+                  <select name="year" id="year" class="ui search dropdown" >
+                    <option value="">Año del vehículo</option>
+                  @for ($i = 2006; $i < 2017; $i++)
+                      <option value="{{$i}}"
+                      {{old('year') == "$i" ? "selected" : ""}}> {{$i}}</option>
+                  @endfor
+                </select>
                 </div>
                 <div class="field">
                     <label >Placa</label>

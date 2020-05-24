@@ -29,6 +29,8 @@ class OrderRequest extends FormRequest
         return [
             'distance'=>'required|numeric',
             'price'=>'required',
+            'total'=>'required',
+            'discount'=>'required',
             'url'=>'required',
             'taxiDriver'=>'required',
             'phone'=>'required'
@@ -40,6 +42,8 @@ class OrderRequest extends FormRequest
             'distance.numeric'=>'Debe ingresar un numero',
             'distance.required'=>'Debe ingresar la distancia',
             'price.required'=>'No se calculo el precio',
+            'total.required'=>'No se calculo el total',
+            'discount.required'=>'No se calculo el descuento',
             'url.required'=>'Debe de ingresar la url de google maps',
             'taxiDriver.required'=>'debe seleccionar un taxista',
             'phone.required'=>'ingrese el número de celular del cliente'
