@@ -22,12 +22,14 @@
                 <table class="ui yellow table table-striped">
                 <thead>
                     <tr>
+                    <th>id persona</th>
+                    <th>id corte</th>
                     <th>identidad</th>
                     <th>Name</th>
-                    <th>Celular</th>
-                    <th>Porcentaje</th>
+                    <th>Porcentaje %</th>
+                    <th>Ingresos percibidos</th>
+                    <th>Total a pagar</th>
                     <th>Fecha de corte</th>
-                    <th>Informacion</th>
                     </tr>
                 </thead>
                 @foreach ($taxiDriver as $item)
@@ -62,15 +64,14 @@
                                     <td>{{$item->person->identification}}</td>
                                     <td>{{$item->person->name}}</td>
                                     @if($item->percentage<10)
-                                        <td>{{'0'.$item->percentage}}</td>
+                                        <td>{{'0'.$item->percentage}}%</td>
                                     @else
-                                        <td>{{$item->percentage}}</td>
+                                        <td>{{$item->percentage}}%</td>
                                     @endif
                                     <td>{{$item->accrued_payments}}</td>
-                                    <td>{{date('d-m-y')}}</td>
-                                    <td>{{$cortes->payment}}</td>
+                                    <td>{{($item->percentage * $item->accrued_payments)/100}}</td>
+                                    <!--td>{{date('d-m-y')}}</td-->
                                     <!--td>{{$item->cut}}</td-->
-                                    <td>{{$corte}}</td>
                                     @switch($corte)
                                         @case(1)
                                             <td>{{$item->person->created_at->modify('+1 day')->format('d/m/y')}}</td>
