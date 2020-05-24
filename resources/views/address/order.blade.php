@@ -41,7 +41,7 @@ Orden
             @csrf
                 <div class="field">
                 <b>Colonia Origen</b>
-                <select class="ui search dropdown" name="origin" id="">
+                <select class="ui search dropdown" name="origin" id="" required>
                     <option value="">Selecione punto de partida</option>
                     @foreach ($neighborhood as $item)
                         <option value="{{$item->id}}"
@@ -53,7 +53,7 @@ Orden
                 <br>
                <div class="field">
                 <b>Colonia Destino</b>
-                <select class="ui search dropdown" name="destination" id="">
+                <select class="ui search dropdown" name="destination" id="" required>
                     <option value="">Selecione destino</option>
                     @foreach ($neighborhood as $item)
                         <option value="{{$item->id}}"
@@ -106,13 +106,13 @@ $("#c").click(function() {
    // alert(typeof(hour)+','+typeof(t1)+','+typeof(t2));
    if (hour>=t1 && hour<t2) {
         var distance = $('#distance').val();
-        distance++
+        distance++;
         var p=15;
         var price= p*(distance);
         $("#price").val(price);
    } else {
         var distance = $('#distance').val();
-        distance++
+        distance++;
         var p=15;
         var d=2;
         var price= d*p*(distance);

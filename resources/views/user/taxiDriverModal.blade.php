@@ -97,7 +97,8 @@
             </div>
             
 
-            <button type="submit" name="btnTaxiDriving"  class="ui blue button">Guardar</button>
+            <button type="submit" name="btnTaxiDriving"  class="ui blue button">
+              <i class="save icon"></i>Guardar</button>
 
           </form>
         <!--

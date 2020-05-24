@@ -30,7 +30,5 @@
         @yield('executionScripts')
 
     </body>
-    {{--<footer class="mb-0">
-        <p class="text-muted">Taxis VIP &copy; 2020, JAEM Dev</p>
-    </footer>--}}
+
 </html>

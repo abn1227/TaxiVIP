@@ -27,12 +27,22 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'distance'=>'required',
+            'distance'=>'required|numeric',
             'price'=>'required',
             'url'=>'required',
             'taxiDriver'=>'required',
             'phone'=>'required'
         ];
     }
-
+    public function messages()
+    {
+        return[
+            'distance.numeric'=>'Debe ingresar un numero',
+            'distance.required'=>'Debe ingresar la distancia',
+            'price.required'=>'No se calculo el precio',
+            'url.required'=>'Debe de ingresar la url de google maps',
+            'taxiDriver.required'=>'debe seleccionar un taxista',
+            'phone.required'=>'ingrese el número de celular del cliente'
+        ];
+    }
 }

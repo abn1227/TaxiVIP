@@ -19,7 +19,7 @@
                 <table class="ui table">
                   <tr>
                     <td >
-                       <input type="text" name="distance" id="distance" required value="{{old('price')}}">
+                       <input type="number" name="distance" id="distance" required value="{{old('distance')}}">
                     </td>
                     <td>
                       <button class=" ui green button fluid" id="c" type="button" onclick="price()">
@@ -34,7 +34,7 @@
 
             <div class="field">
               <label>Precio</label>
-              <input type="text" name="price" id="price" readonly required >
+              <input type="number" name="price" id="price" readonly required >
             </div>
 
             <div class="field">
