@@ -17,7 +17,7 @@ class CreateVehiclesTable extends Migration
             $table->bigIncrements('id');
             $table->string('color', 45);
             $table->string('license_plate', 45)->unique();
-            $table->date('car_year');
+            $table->integer('car_year');
             $table->string('active', 1);
             $table->string('status', 1);
             $table->bigInteger('taxi_drivers_id')->unsigned();

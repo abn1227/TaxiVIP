@@ -82,9 +82,21 @@ Orden
                             <input type="text" readonly value="{{$order->distance}}">
                         </div>
                         <div class="field">
+                            <?php $price=$order->price+$order->senior_discount?>
                             <label>Precio</label>
+                            <input type="text" readonly value="{{$price}}">
+                        </div>
+                        <div class="field">
+                            <label>Descuento</label>
+                            <input type="text" readonly value="{{$order->senior_discount}}">
+                        </div>
+                        <div class="field">
+                            <label>Total</label>
                             <input type="text" readonly value="{{$order->price}}">
                         </div>
+                        
+                    </div>
+                    <div class="fields">
                         <div class="field">
                             <label>Estado</label>
                             <input type="text" readonly value="{{$status}}">

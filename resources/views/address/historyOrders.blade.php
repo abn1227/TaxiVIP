@@ -48,7 +48,7 @@ Orden
             <tbody>
                 @foreach ($orders as $order)
                 @switch($order->canceled)
-                    @case('o')
+                    @case('0')
                         <?php $status='pendiente'?>
                         @break
                     @case('1')

@@ -11,6 +11,17 @@ class TypeUserSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('type_users')->insert([
+            'id'=>1,
+            'description' => 'Administrador',
+        ]);
+        DB::table('type_users')->insert([
+            'id'=>2,
+            'description' => 'Operario',
+        ]);
+        DB::table('type_users')->insert([
+            'id'=>3,
+            'description' => 'Taxista',
+        ]);
     }
 }
