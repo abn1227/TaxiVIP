@@ -58,7 +58,7 @@
 
                             @if($cortes->status == '1')        
                                     <td>{{$item->person->id}}</td>
-                                    <td>{{$item->id}}</td>
+                                    <td>{{$cortes->id}}</td>
                                     <td>{{$item->person->identification}}</td>
                                     <td>{{$item->person->name}}</td>
                                     @if($item->percentage<10)
@@ -84,7 +84,7 @@
                                     @endswitch
                                     
                                     <td>
-                                        <form action="{{route('do-cut',$item->id)}}" method="post">
+                                        <form action="{{route('do-cut',$cortes->id)}}" method="post">
                                             @method('put')
                                             @csrf
                                             <button type="submit" class="ui yellow button">
