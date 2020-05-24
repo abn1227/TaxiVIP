@@ -101,4 +101,4 @@ Route::get('/address/order/history/{id}', 'Order@show')->name('detail-history');
 //Rutas para gestionar la creacion de ordenes
 //-------------------------------------------------------------------------------------------------
 Route::get('/cut/show', 'CorteController@init')->name('show-cut');
-Route::put('/cut/show', 'CorteController@')->name('do-cut');
+Route::put('/cut/show/{id}', 'CorteController@doCut')->name('do-cut');
