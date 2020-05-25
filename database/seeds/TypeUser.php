@@ -20,7 +20,7 @@ class TypeUser extends Seeder
         type_users::create(['description' => 'Taxista']);*/
 
         //DB::table('type_users')->insert(['description' => 'Taxista']);
-
+        Type_User::truncate();
         $role=new Type_User();
         $role->description="Administrador";
         $role->save();
