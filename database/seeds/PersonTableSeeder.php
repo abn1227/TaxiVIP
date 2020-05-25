@@ -12,7 +12,6 @@ class PersonTableSeeder extends Seeder
     public function run()
     {
         DB::table('persons')->insert([
-            'id'=>1,
             'name' => 'Evelin Paola Izaguirre',
             'mobile'=>'98626731',
             'status'=>'1',
