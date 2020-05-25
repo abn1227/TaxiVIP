@@ -11,7 +11,7 @@ class TypeUserSeeder extends Seeder
      */
     public function run()
     {
-        Type_User::truncate();
+      //  Type_User::truncate();
         DB::table('type_users')->insert([
             'description' => 'Administrador',
         ]);
