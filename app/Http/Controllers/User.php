@@ -100,10 +100,12 @@ class User extends Controller
     }
     public function showFormCreateId(){
         $model = new CarModel;
+        $route = new Route;
         $models=$model->getCarModel();
+        $routes=$route->getRoute();
         $typeUser=3;
         $id=session('id');
-        return view('user.createUser', ['id'=>$id,'typeUser'=>$typeUser,'models'=>$models]);
+        return view('user.createUser', ['id'=>$id,'typeUser'=>$typeUser,'models'=>$models,'routes'=>$routes]);
     }
     
     /*funcion que inserta a el usuario*/
