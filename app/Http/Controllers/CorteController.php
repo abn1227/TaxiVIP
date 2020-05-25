@@ -52,7 +52,7 @@ class CorteController extends Controller
         if($porcentage < 10){
             $porcentage = '0'.$porcentage;
         }
-        $paym = ($porcentage*$gananciacon)/100;
+        $paym = round( ($porcentage*$gananciacon)/100, 0, PHP_ROUND_HALF_UP)+1;
 
         //update a accrued_payment el valor se obtiene arriba
         $taxiDriver->accrued_payments = '0';
