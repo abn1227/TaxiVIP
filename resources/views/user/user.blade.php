@@ -6,6 +6,24 @@
 
 @section('body')
 @extends('templates/navBar')
+{{-- manejo de errores --}}
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+{{-- Fin manejo de errores --}}
+{{-- Guardado exitoso --}}
+@if (session('mensaje'))
+<div class="alert alert-success">
+    {{session('mensaje')}}
+</div>
+@endif
+{{-- fin guardado exitoso --}}
 <div class="container" style="margin-top:50px;">
   <div class="row">
     <div class="col" align="center" >
@@ -39,7 +57,7 @@
             <input type="email" class="form-control" 
                     name="inputEmail" 
                     aria-describedby="emailHelp"
-                    value="{{ $user->email }}">
+                    value="{{$user->email}}">
         </div>
 
         <div class="form-group">
@@ -58,7 +76,8 @@
                     value="">
         </div>
         
-        <button type="submit" name="inputUpdate" class="btn btn-warning btn-block">Actualizar</button>
+        <button type="submit" name="inputUpdate" class="btn btn-warning btn-block">
+          <i class="sync icon"></i> Actualizar</button>
     </form>
 
 
