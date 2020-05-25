@@ -21,14 +21,12 @@ class CorteController extends Controller
     public function init()
     {
         $status = '1';
-        $taxiDriver= App\Taxi_Driver::where('status','=', '1')
-                        ->paginate(5);
+        $taxiDriver= App\Taxi_Driver::where('status','=', '1')->paginate(5);
         
         $taxiDriverid = $taxiDriver;
         //$condition = ['taxi_drivers_id' => $taxiDriverid, 'status' => $status];
-        $corte = App\Cut::where([['taxi_drivers_id','=', $taxiDriverid],['status','=', '1']])->paginate(5);
+        $corte = App\Cut::where([['taxi_drivers_id','=', $taxiDriverid],['status','=', '1']]);
         
-        $resultado = 3;//$taxiDriver->percentage;
         return view('cut.cut', compact('taxiDriver','corte'));
         /*$taxiDriver= App\Taxi_Driver::where('status', $status)->paginate(5);
         return view('cut.cut', compact('taxiDriver'));*/
@@ -59,6 +57,7 @@ class CorteController extends Controller
         $cut->save();
 
         //update a campos de la tabla taxi_drivers
+        
 
          return back()->with('mensaje', 'Corte realizado con exito ');
     }
