@@ -69,7 +69,7 @@
                                         <td>{{$item->percentage}}%</td>
                                     @endif
                                     <td>{{$item->accrued_payments}}</td>
-                                    <td>{{($item->percentage * $item->accrued_payments)/100}}</td>
+                                    <td>{{round( ($item->percentage * $item->accrued_payments)/100 )}}</td>
                                     <!--td>{{date('d-m-y')}}</td-->
                                     <!--td>{{$item->cut}}</td-->
                                     @switch($corte)
