@@ -6,5 +6,5 @@
   </div>
   <a class="item" href="{{route('order')}}">carrera nueva</a>
   <a class="item" href="{{route('pending')}}" >carreras pendientes</a>
-  <a class="item" href="{{route('inactive')}}">taxistas inactivos</a>
+  <a class="item" href="{{route('inactive')}}">estado de taxistas</a>
 </div>

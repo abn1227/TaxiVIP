@@ -68,6 +68,7 @@ class Order extends Controller
             $mileage=$taxiDriver->mileage+$order->distance;
             $pay=$taxiDriver->accrued_payments=$taxiDriver->accrued_payments+$order->price;
             $taxiDriver->mileage=$mileage;
+            $taxiDriver->status='1';
             $order->canceled=$request->canceled;
             $order->save();
             $taxiDriver->save();
@@ -96,11 +97,11 @@ class Order extends Controller
       
     }
     //---------------------------------------------------------------------------------------------------
-    //Muestra el listado de taxistas inactivos 
+    //Muestra el listado de taxistas activos que se pretende deshabilitar
     //---------------------------------------------------------------------------------------------------
     public function inactive()
     {
-        $taxiDrivers=App\Taxi_Driver::where('status','0')->paginate(3);
+        $taxiDrivers=App\Taxi_Driver::paginate(3);
         return view('address.inactive',compact('taxiDrivers'));
     }
     //-------------------------------------------------------------------------------------------------------------
