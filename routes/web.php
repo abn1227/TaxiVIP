@@ -15,7 +15,7 @@ Route::get('/home', 'Home@init')->name('home');
 Route::get('/logout','Auth\LoginController@logout');
 Route::get('/control', 'Home@init')->name('control');
 
-Route::get('/address/routes', 'route@showRoute')->name('show-route')->middleware('auth','manager');
+Route::get('/address/routes', 'Route@showRoute')->name('show-route')->middleware('auth','manager');
 Route::get('/address', 'Address@init')->name('addresses')->middleware('auth','manager');
 Route::get('/address/route', 'Route@init')->name('route')->middleware('auth','manager');
 Route::post('/address/save','Address@save')->name('save-addresses')->middleware('auth','manager');
