@@ -25,8 +25,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('mileage:taxi_drivers')->dailyAt('10:30');
+       // $schedule->command('mileage:taxi_drivers')->dailyAt('10:30');
+       $schedule->command('mileage:taxi_drivers')->everyTenMinutes();
     }
+
 
     /**
      * Register the commands for the application.
