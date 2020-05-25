@@ -6,13 +6,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('home') }}">Inicio<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{ route('home') }}"><i class="home icon"></i> Inicio</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('detail-user') }}">Usuario<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{ route('detail-user') }}"><i class="user icon"></i> Usuario</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('logout') }}"><i class="sign-out icon"></i> Salir<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{{ route('logout') }}"><i class="sign-out icon"></i> Salir</a>
       </li>
       </ul>
     </div>
