@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Type_User;
 class TypeUserSeeder extends Seeder
 {
     /**
@@ -11,7 +11,7 @@ class TypeUserSeeder extends Seeder
      */
     public function run()
     {
-        Type_Users::truncate();
+        Type_User::truncate();
         DB::table('type_users')->insert([
             'description' => 'Administrador',
         ]);
