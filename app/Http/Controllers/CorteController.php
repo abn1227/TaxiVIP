@@ -21,7 +21,9 @@ class CorteController extends Controller
     public function init()
     {
         $status = '1';
-        
+        $taxiDriver= App\Taxi_Driver::where('status','=', '1')->paginate(5);
+        $taxiDriverid = $taxiDriver;
+        $corte = App\Cut::where([['taxi_drivers_id','=', $taxiDriverid],['status','=', '1']]);
         return view('cut.cut', compact('taxiDriver','corte'));
         /*$taxiDriver= App\Taxi_Driver::where('status', $status)->paginate(5);
         return view('cut.cut', compact('taxiDriver'));*/
