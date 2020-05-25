@@ -17,8 +17,9 @@ class Home extends Controller
         return view('home', compact('modules'));
     }
 
-    public function control(){
-        return view('control');
+   
+    public function welcome(){
+        return view('welcome');
     }
 
     private function getModules(){
