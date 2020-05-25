@@ -28,7 +28,7 @@ class Route extends Controller
 
     public function showRoute()
     {
-        $routes=App\Route_zone::All();
+        $routes=App\Route_Zone::All();
         return view('address/routes', compact('routes'));
     }
     

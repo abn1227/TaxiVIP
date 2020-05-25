@@ -36,9 +36,6 @@ class ModifyUsers extends Migration
             $table->dropForeign('users_type_users_id_foreign');
             $table->dropColumn('type_users_id');
         });
-        Schema::table('users', function(Blueprint $table){
-            $table->string('name');
-        });
         //
     }
 }
