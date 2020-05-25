@@ -30,6 +30,13 @@ Orden
          </div>
          @endif
          {{-- fin guardado exitoso --}}
+          {{-- warning --}}
+          @if (session('msj'))
+          <div class="alert alert-warning">
+              {{session('msj')}}
+          </div>
+          @endif
+          {{-- fin warning --}}
          @foreach ($taxiDrivers as $taxiDriver)
         <form action="{{route('status',$taxiDriver->id)}}" class="ui form" method="POST">
             @method('put')

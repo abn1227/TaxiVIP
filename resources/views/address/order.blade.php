@@ -6,9 +6,9 @@ Orden
 @section('body')
 @extends('templates.navBar')
 <h5>
-    Bienvenido a el modulo de carreras
+    Bienvenido a el módulo de carreras
 </h5>
-       
+       <hr>
 <div class="container">
 <div class="row">
     <div class="col-md-6">

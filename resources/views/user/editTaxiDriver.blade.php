@@ -142,10 +142,10 @@
 
 
           <tr>
-            <td><label >Vehiculo activo</label></td>
+            <td><label >Vehículo activo</label></td>
             <td >
               <select class="ui search dropdown" name="selectVehicle">
-                <option value="">Seleccione un vehiculo</option>
+                <option value="">Seleccione un vehículo</option>
                  @foreach ($vehicle as $item)
                      <option value="{{$item->id}}"
                       {{old('selectVehicle',$item->id) == "$vehicleActivate->id" ? "selected" : "" }} >{{$item->license_plate}}</option>
@@ -177,7 +177,7 @@
                 <i class="undo icon"></i>Actualizar</button>
                <div class="or"></div>
                <button class="ui teal button" type="button" id="vehicle" name="vehicle">
-                <i class="eye icon"></i>Vehiculo</button>
+                <i class="eye icon"></i>Vehículo</button>
               </div>
             </td>
           </tr>

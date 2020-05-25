@@ -8,7 +8,7 @@ Address
 @extends('templates.navBar')
 
 <h5>
-    Bienvenido a el modulo de direcciones
+    Bienvenido a el módulo de direcciones
 </h5>
 <div class="container">
 <div class="row">

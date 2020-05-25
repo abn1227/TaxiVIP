@@ -8,7 +8,7 @@ Orden
 <h5>
     Historial de carreras
 </h5>
-       
+       <hr>
 <div class="container">
 <div class="row">
     <div class="col-md-6">

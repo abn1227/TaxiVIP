@@ -10,6 +10,7 @@ Route
 <h2>
     Listado de colonias
 </h2>
+<hr>
 <div class="container">
 <div class="row">
     {{-- Columna derecha --}}

@@ -81,11 +81,19 @@ class Order extends Controller
     //---------------------------------------------------------------------------------------------------
     public function status(Request $request,$id)
     {
-        $taxiDriver=App\Taxi_Driver::findOrFail($id);
-        $taxiDriver->status=$request->status;
-        $taxiDriver->save();
-        $request->session()->flash('mensaje','Estado actualizado');
-        return back();
+        $orderPending=App\Order::where([['taxi_drivers_id',$id],['canceled','0']])->get();
+        if (count($orderPending)>0) {
+            $request->session()->flash('msj','El taxista tiene una carrera pendiente');
+            return back();
+        }
+        else {
+            $taxiDriver=App\Taxi_Driver::findOrFail($id);
+            $taxiDriver->status=$request->status;
+            $taxiDriver->save();
+            $request->session()->flash('mensaje','Estado actualizado');
+            return back();
+        }
+      
     }
     //---------------------------------------------------------------------------------------------------
     //Muestra el listado de taxistas inactivos 

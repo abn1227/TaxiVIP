@@ -49,35 +49,43 @@ class Address extends Controller
         
             date_default_timezone_set('America/Tegucigalpa');
             $now= Carbon::now()->toTimeString();
-            // dd($now,$destination->start_time,$destination->end_time);
-            if (($now>=$origin->start_time) && ($now<$origin->end_time)) {
-                if ($now>=$destination->start_time && $now<$destination->end_time) {
-
-                     //Verificar si existe un taxista disponible en esta ruta
-                        $taxiDrivers=App\Taxi_Driver::Where([
-                            ['route_zones_id','=',$origin->route_zones_id],
-                            ['status','=','1']
-                        ])->orderBy('mileage','asc')
-                        ->get();
-                        // count($taxiDrivers)>=1
-                        if (count($taxiDrivers)>=1) {
-                            $request->session()->flash('mensaje','Hay taxistas disponibles');
-                            $neighborhood=  App\Neighborhood::All();
-                            return view('Address/order',compact('neighborhood','taxiDrivers'));
-                        }else {
-                            $request->session()->flash('msj','No hay taxistas disponibles');
-                            return back();
-                        }
-                       
-                }
-                else {
-                    $request->session()->flash('msj','No hay acceso a la colonia destino en este horario');
+            //Asegurarnos que no sea hora pico
+            if (!($now>'17:00:00'&& $now<'18:00:00')) {
+                if (($now>=$origin->start_time) && ($now<$origin->end_time)) {
+                    if ($now>=$destination->start_time && $now<$destination->end_time) {
+    
+                         //Verificar si existe un taxista disponible en esta ruta
+                            $taxiDrivers=App\Taxi_Driver::Where([
+                                ['route_zones_id','=',$origin->route_zones_id],
+                                ['status','=','1']
+                            ])->orderBy('mileage','asc')
+                            ->get();
+                            // count($taxiDrivers)>=1
+                            if (count($taxiDrivers)>=1) {
+                                $request->session()->flash('mensaje','Hay taxistas disponibles');
+                                $neighborhood=  App\Neighborhood::All();
+                                return view('Address/order',compact('neighborhood','taxiDrivers'));
+                            }else {
+                                $request->session()->flash('msj','No hay taxistas disponibles');
+                                return back();
+                            }
+                           
+                    }
+                    else {
+                        $request->session()->flash('msj','No hay acceso a la colonia destino en este horario');
+                        return back();
+                    }
+                }else {
+                    $request->session()->flash('msj','No hay acceso a la colonia de origen en este horario');
                     return back();
                 }
-            }else {
-                $request->session()->flash('msj','No hay acceso a la colonia de origen en este horario');
+            } else {
+                $request->session()->flash('msj', 'Lo sentimos, es hora pico');
                 return back();
             }
+            
+            // dd($now,$destination->start_time,$destination->end_time);
+            
        
     }
     public function edit($id)
