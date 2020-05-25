@@ -23,7 +23,8 @@ class CorteController extends Controller
         $status = '1';
         $taxiDriver= App\Taxi_Driver::where('status','=', '1')
                         ->paginate(5);
-        
+        $taxiDriver= App\Taxi_Driver::where('status','=', '1')
+                        ->get();
         $taxiDriverid = $taxiDriver->id;
         //$condition = ['taxi_drivers_id' => $taxiDriverid, 'status' => $status];
         $corte = App\Cut::where([['taxi_drivers_id', $taxiDriverid],['status', '1']])->paginate(5);
