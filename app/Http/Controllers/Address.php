@@ -64,7 +64,7 @@ class Address extends Controller
                             if (count($taxiDrivers)>=1) {
                                 $request->session()->flash('mensaje','Hay taxistas disponibles');
                                 $neighborhood=  App\Neighborhood::All();
-                                return view('Address/order',compact('neighborhood','taxiDrivers'));
+                                return view('address/order',compact('neighborhood','taxiDrivers'));
                             }else {
                                 $request->session()->flash('msj','No hay taxistas disponibles');
                                 return back();
