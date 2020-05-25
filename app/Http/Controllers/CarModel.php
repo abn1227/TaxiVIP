@@ -22,6 +22,8 @@ class CarModel extends Controller
         return back();
     }
     public function showModel(){
+        $brand = new CarBrand;
+        $brands= $brand->getCarBrand();
         $models= App\Car_Model::paginate(10);
         return view('vehicles.model.carModel', compact('brands','models'));
     }
