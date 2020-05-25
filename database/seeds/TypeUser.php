@@ -22,7 +22,7 @@ class TypeUser extends Seeder
         //DB::table('type_users')->insert(['description' => 'Taxista']);
 
         $role=new Type_User();
-        $role->description="administrador";
+        $role->description="Administrador";
         $role->save();
 
         $role->description="Operario";
