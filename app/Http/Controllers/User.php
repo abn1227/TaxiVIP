@@ -9,7 +9,7 @@ use App\Http\Controllers\Person;
 use App\Http\Controllers\CarModel;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\Route;
-
+use Illuminate\Http\Request;
 class User extends Controller
 {
     public function __construct()
@@ -49,13 +49,13 @@ class User extends Controller
     que se encargan de cada una de estas tareas*/
     //--------------------------------------------------------------------------------------
     public function update( UserRequest  $request, $id){
+        $person = new Person;
         $idPerson=$this->updateUser( $request, $id);
-        $this->updatePerson( $request, $idPerson);
+        $person->updatePerson( $request, $idPerson);
         //Obtiene el usuario logueado y envia a la vista de editar usuario
         $array=$this->getUser();
         $user=$array[0];
         $person=$array[1];
-        session(['mensaje'=>'Usuario Actualizado']);
         return view('user.detailUser',compact('user','person'));
     }
     //--------------------------------------------------------------------------------------
@@ -123,9 +123,16 @@ class User extends Controller
     public function updateUser(Request $request, $id)
     {
         $userUpdate= App\User::findOrFail($id);
-        $userUpdate->email = $request->inputEmail;
-        $userUpdate->password = bcrypt($request->inputPassword);    
-        $userUpdate->save();
+        if (isset($request->inputPassword)) {
+            $userUpdate->email = $request->inputEmail;
+            $userUpdate->password = bcrypt($request->inputPassword); 
+            $userUpdate->save();
+        }
+       else {
+            $userUpdate->email = $request->inputEmail;
+            $userUpdate->save();
+       }
+        $request->session()->flash('usuario actualizado con exito');
         $id= DB::table('users')->where('id',$id)->value('persons_id');
         return $id;
     }

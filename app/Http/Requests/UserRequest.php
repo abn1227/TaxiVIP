@@ -23,14 +23,34 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'inputNewidentification'=>'required|max:13|unique:persons,identification',
-            'inputNewName'=>'required',
-            'inputNewMobile'=>'required',
-            'inputNewEmail'=>'required|unique:users,email',
-            'inputNewPassword'=>'required',
-            'role'=>'required'
-        ];
+        switch ($this->method()) {
+            case 'POST':
+               {
+                return [
+                    'inputNewidentification'=>'required|max:13|unique:persons,identification',
+                    'inputNewName'=>'required',
+                    'inputNewMobile'=>'required',
+                    'inputNewEmail'=>'required|unique:users,email',
+                    'inputNewPassword'=>'required',
+                    'role'=>'required'
+                ];
+               }
+                break;
+            case 'PUT':
+                {
+                    return [
+                        'inputIdentification'=>'required|max:13|unique:persons,identification,'.$this->id,
+                        'inputName'=>'required',
+                        'inputMobile'=>'required',
+                        'inputEmail'=>'required|unique:users,email,'.$this->id,
+                    ];
+                }
+                break;
+            default:
+                # code...
+                break;
+        }
+        
     }
     public function messages()
     {
@@ -41,8 +61,14 @@ class UserRequest extends FormRequest
             'inputNewMobile.required'=>'Es obligario que ingrese un numero de telefono',
             'inputNewEmail.required'=>'Campo obligatorio',
             'inputNewEmail.unique'=>'ya existe un usuario con este correo',
-            'inputNewPassword.required'=>'RTN ya existe para otra empresa',
-            'role.required'=>'Debe seleccionar un rol'
+            'inputNewPassword.required'=>'Debe ingresar contraseña',
+            'role.required'=>'Debe seleccionar un rol',
+            'inputEmail.required'=>'Debe ingresar su email',
+            'inputEmail.unique'=>'ya existe un usuario con este correo',
+            'inputMobile.required'=>'Debe ingresar su número telefónico',
+            'inputName.required'=>'Debe ingresar su número nombre',
+            
+
         ];
     }
 }

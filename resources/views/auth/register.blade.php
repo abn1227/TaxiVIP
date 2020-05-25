@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('templates/mainTemplate')
 
-@section('content')
+@section('body')
+@extends('templates/navBar')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
