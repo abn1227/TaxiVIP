@@ -50,9 +50,6 @@
         <td>{{$item->percentage}}</td>
         <td>{{$corte}}</td>
         <td>
-          {{$item}}
-        </td>
-        <td>
           <a href="{{route('detail-taxidriver',$item->id)}}" class="ui yellow button"> Detalle </a>
         </td>
       </tr>
