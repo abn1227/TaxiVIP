@@ -25,7 +25,7 @@
     <meta name="keywords" content="Semantic-UI, Theme, Design, Template" />
     <meta name="author" content="PPType" />
     <meta name="theme-color" content="#ffffff" />
-    <title>Carousel Template for Semantic-UI</title>
+    <title>Taxi VIP</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"

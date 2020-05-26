@@ -17,11 +17,6 @@ class Home extends Controller
         return view('home', compact('modules'));
     }
 
-   
-    public function welcome(){
-        return view('welcome');
-    }
-
     private function getModules(){
         $user = Auth::user();
         if ($user->type_users_id=='1') {
