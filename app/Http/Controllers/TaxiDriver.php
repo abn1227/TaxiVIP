@@ -87,8 +87,8 @@ class TaxiDriver extends Controller
     public function editTaxiDriver($id)
     {
         //
-        $taxiDriver= App\Taxi_Driver::findOrFail($id);
-        $user= App\User::findOrFail($taxiDriver->persons_id);
+        $taxiDriver= App\Taxi_Driver::find($id);
+        $user= App\User::find($taxiDriver->persons_id);
         $vehicle=DB::table('vehicles')->where('taxi_drivers_id',$taxiDriver->id)->get();
         $model = new CarModel;
         $vehicleAct = new VehicleController;
