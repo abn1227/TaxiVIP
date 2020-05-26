@@ -1,7 +1,7 @@
 @extends('templates.mainTemplate')
 
 @section('title')
-Route
+Direcciones
 @endsection
 
 @section('body')

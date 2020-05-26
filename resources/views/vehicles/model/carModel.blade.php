@@ -1,7 +1,7 @@
 @extends('templates/mainTemplate')
 
 @section('title')
-    Taxista
+    Modelos
 @endsection
 
 @section('body')
