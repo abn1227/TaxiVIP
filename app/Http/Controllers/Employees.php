@@ -30,7 +30,7 @@ class Employees extends Controller
     public function updateEmployees(EmployeeRequest $request,$id)
     {
         $user=App\User::findOrFail($id);
-        $person=App\Person::where('id',$user->persons_id)->get();
+        $person=App\Person::findOrFail($user->persons_id);
         $person->identification=$request->inputUserIdentification;
         $person->name=$request->inputUserName;
         $person->mobile=$request->inputUserMobile;
