@@ -58,6 +58,7 @@ class TaxiDriver extends Controller
         $date = new \DateTime();
         $cut->payment = $pay;
         $cut->cut_date = $date;
+        $cut->penalty_fee;
         $cut->status = '1';
         $cut->taxi_drivers_id = $id;
         $cut->save();

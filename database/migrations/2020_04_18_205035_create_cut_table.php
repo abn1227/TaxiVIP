@@ -17,6 +17,7 @@ class CreateCutTable extends Migration
             $table->bigIncrements('id');
             $table->double('payment',6, 2);
             $table->dateTime('cut_date');
+            $table->double('penalty_fee',6, 2);
             $table->string('status', 1);
             $table->bigInteger('taxi_drivers_id')->unsigned();
             $table->foreign('taxi_drivers_id')->references('id')->on('taxi_drivers');
