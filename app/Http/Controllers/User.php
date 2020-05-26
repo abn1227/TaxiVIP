@@ -98,6 +98,10 @@ class User extends Controller
     public function showFormCreate(){
         return view('user.createUser');
     }
+    //--------------------------------------------------------------------------------------
+    //Metodo para mostrar nuevamente el formulario form create en caso de fallar la 
+    //validacion 
+    //--------------------------------------------------------------------------------------
     public function showFormCreateId(){
         $model = new CarModel;
         $route = new Route;
