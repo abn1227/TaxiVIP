@@ -109,18 +109,18 @@ $("#c").click(function() {
         distance++;
         var p=15;
         var price= p*(distance);
-        $("#price").val(price);
+        $("#price").val(Math.ceil(price));
         $("#discount").val(0);
-        $("#total").val(price);
+        $("#total").val(Math.ceil(price));
    } else {
         var distance = $('#distance').val();
         distance++;
         var p=15;
         var d=2;
         var price= d*p*(distance);
-        $("#price").val(price);
+        $("#price").val(Math.ceil(price));
         $("#discount").val(0);
-        $("#total").val(price);
+        $("#total").val(Math.ceil(price));
    }
        
    } else {
@@ -131,9 +131,9 @@ $("#c").click(function() {
         var price= p*(distance);
         var discount=price*0.30;
         var total= price-discount;
-        $("#price").val(price);
-        $("#discount").val(discount);
-        $("#total").val(total);
+        $("#price").val(Math.ceil(price));
+        $("#discount").val(Math.ceil(discount));
+        $("#total").val(Math.ceil(total));
    } else {
         var distance = $('#distance').val();
         distance++;
@@ -142,9 +142,9 @@ $("#c").click(function() {
         var price= d*p*(distance);
         var discount=price*0.30;
         var total= price-discount;
-        $("#price").val(price);
-        $("#discount").val(discount);
-        $("#total").val(total);
+        $("#price").val(Math.ceil(price));
+        $("#discount").val(Math.ceil(discount));
+        $("#total").val(Math.ceil(total));
    }
    }
 
