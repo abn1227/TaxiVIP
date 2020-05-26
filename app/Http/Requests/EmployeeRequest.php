@@ -27,7 +27,7 @@ class EmployeeRequest extends FormRequest
     {
         $user=App\User::findOrFail($this->id);
         return [
-            'inputUserIdentification'=>'required|unique:persons,id,'.$user->persosn_id,
+            'inputUserIdentification'=>'required|unique:persons,id,'.$user->persons_id,
             'inputUserName'=>'required',
             'inputUserMobile'=>'required',
             'status'=>'required',

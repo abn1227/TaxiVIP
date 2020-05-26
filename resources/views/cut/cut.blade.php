@@ -22,14 +22,13 @@
                 <table class="ui yellow table table-striped">
                 <thead>
                     <tr>
-                    <th>id persona</th>
-                    <th>id corte</th>
-                    <th>identidad</th>
-                    <th>Name</th>
+                    <th>Identidad</th>
+                    <th>Nombre</th>
                     <th>Porcentaje %</th>
                     <th>Ingresos percibidos</th>
                     <th>Total a pagar</th>
                     <th>Fecha de corte</th>
+                    <th>Acción</th>
                     </tr>
                 </thead>
                 @foreach ($taxiDriver as $item)
@@ -59,8 +58,6 @@
                             
 
                             @if($cortes->status == '1')        
-                                    <td>{{$item->person->id}}</td>
-                                    <td>{{$cortes->id}}</td>
                                     <td>{{$item->person->identification}}</td>
                                     <td>{{$item->person->name}}</td>
                                     @if($item->percentage<10)
