@@ -50,7 +50,7 @@ class Address extends Controller
             date_default_timezone_set('America/Tegucigalpa');
             $now= Carbon::now()->toTimeString();
             //Asegurarnos que no sea hora pico
-            if (!($now>'17:00:00'&& $now<'18:00:00')) {
+            if (!($now>'16:00:00'&& $now<'17:00:00')) {
                 if (($now>=$origin->start_time) && ($now<$origin->end_time)) {
                     if ($now>=$destination->start_time && $now<$destination->end_time) {
     
