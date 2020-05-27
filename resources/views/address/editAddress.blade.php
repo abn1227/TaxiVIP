@@ -1,7 +1,7 @@
 @extends('templates.mainTemplate')
 
 @section('title')
-Address
+Direcciones
 @endsection
 
 @section('body')

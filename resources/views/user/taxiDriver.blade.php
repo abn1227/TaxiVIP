@@ -1,7 +1,7 @@
 @extends('templates/mainTemplate')
 
 @section('title')
-    User
+    Taxista
 @endsection
 
 @section('body')
