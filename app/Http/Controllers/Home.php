@@ -22,6 +22,12 @@ class Home extends Controller
         if ($user->type_users_id=='1') {
             $modules = [
                 [
+                    'url' => 'order',
+                    'name' => 'Control de carreras',
+                    'description' => 'Gestione las solicitudes de servicios de taxi.',
+                    'img'=>'operador'
+                ],
+                [
                     'url' => 'show-cut',
                     'name' => 'Corte',
                     'description' => 'Gestione el pago que debe de hacer el conductor.',
@@ -32,6 +38,12 @@ class Home extends Controller
                     'name' => 'Agregar Empleado',
                     'description' => 'Agregue un nuevo empleado a planilla.',
                     'img'=>'empleados'
+                ],
+                [
+                    'url' => 'show-taxidrivers',
+                    'name' => 'Control de conductores',
+                    'description' => 'Mostrar todos los conductores registrados en el sistema.',
+                    'img'=>'taxista'
                 ],
         
                 [

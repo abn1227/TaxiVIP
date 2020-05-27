@@ -37,7 +37,7 @@ Rutas
             @csrf
             <div class="field">
               <label>Nombre de la ruta</label>
-              <input type="text" name="route"  required>
+            <input type="text" name="route" value="{{old('route')}}"  required>
             </div>
             <button class="ui button blue fluid" type="submit">
                 <i class="save icon"></i> Guardar</button>

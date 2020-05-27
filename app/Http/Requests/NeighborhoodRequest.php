@@ -27,7 +27,7 @@ class NeighborhoodRequest extends FormRequest
             case 'POST':
                 {
                     return [
-                        'neighborhood'=>'required',
+                        'neighborhood'=>'required|unique:neighborhoods,name_neighborhood',
                         'firstTime'=>'required',
                         'lastTime'=>'required',
                         'selectRoute'=>'required',
@@ -37,7 +37,7 @@ class NeighborhoodRequest extends FormRequest
             case 'PUT':
                {
                 return [
-                    'neighborhood'=>'required',
+                    'neighborhood'=>'required|unique:neighborhoods,name_neighborhood,'.$this->id,
                     'firstTime'=>'required',
                     'lastTime'=>'required',
                     'selectRoute'=>'required',
@@ -54,6 +54,7 @@ class NeighborhoodRequest extends FormRequest
     {
         return[
             'neighborhood.required'=>'Debe ingresar el nombre de la colonia',
+            'neighborhood.unique'=>'Esta colonia ya esta registrada',
             'firstTime.required'=>'Debe ingresar la hora de inicio ',
             'lastTime.required'=>'Debe ingresar la hora de finalizacion',
             'selectRoute.required'=>'Debe seleccionar la ruta a la que sera asignada la colonia'

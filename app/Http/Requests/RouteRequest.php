@@ -27,7 +27,7 @@ class RouteRequest extends FormRequest
             case 'POST':
                 {
                     return [
-                        'route'=>'required',
+                        'route'=>'required|unique:route_zones,name',
                     ];
                 }
                 break;
@@ -44,6 +44,7 @@ class RouteRequest extends FormRequest
     {
         return[
             'route.required'=>'Debe ingresar el nombre de la ruta',
+            'route.unique'=>'Esta ruta ya esta registrada',
         ];
     }
 }

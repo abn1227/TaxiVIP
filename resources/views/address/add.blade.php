@@ -41,21 +41,21 @@ Direcciones
                 <select name="selectRoute" required>
                     <option value="">Seleccione una ruta</option>
                     @foreach ($routes as $route)
-                        <option value="{{$route->id}}">{{$route->name}}</option>
+                        <option value="{{$route->id}}" {{ old('selectRoute') == "$route->id" ? "selected" : "" }}>{{$route->name}}</option>
                     @endforeach
                 </select>
               </div>
             <div class="field">
               <label>Nombre de colonia</label>
-              <input type="text" name="neighborhood" placeholder="Ejemplo:... Quezada" required>
+            <input type="text" name="neighborhood" placeholder="Ejemplo:... Quezada" value="{{old('neighborhood')}}" required>
             </div>
             <div class="field">
               <label>Hora de primer Acceso</label>
-              <input type="time" name="firstTime" required>
+              <input type="time" name="firstTime" value="{{old('firstTime')}}" required>
             </div>
             <div class="field">
                 <label>Ultima de primer Acceso</label>
-                <input type="time" name="lastTime" required>
+                <input type="time" name="lastTime" value="{{old('lastTime')}}" required>
               </div>
             <button class="ui button blue fluid" type="submit">
                 <i class="save icon"></i> Guardar</button>
