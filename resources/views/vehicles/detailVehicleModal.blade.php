@@ -22,9 +22,23 @@
                     </select>
                 </div>
                 <div class="field">
-                    <label >Color</label>
+                    {{-- <label >Color</label>
                     <input type="text" name="color" placeholder="Color"
-                    value="{{old('color',$vehicleActivate->color)}}" required>
+                    value="{{old('color',$vehicleActivate->color)}}" required> --}}
+                    <select name="color" id="color" required>
+                      <option value="">Seleccione un color</option>
+                      <option value="Negro"{{ old('color',$vehicleActivate->color) == "Negro" ? "selected" : "" }}>Negro</option>
+                      <option value="Rojo" {{ old('color',$vehicleActivate->color) == "Rojo" ? "selected" : "" }}>Rojo</option>
+                      <option value="Azul" {{ old('color',$vehicleActivate->color) == "Azul" ? "selected" : "" }}>Azul</option>
+                      <option value="Blanco" {{ old('color',$vehicleActivate->color) == "Blanco" ? "selected" : "" }}>Blanco</option>
+                      <option value="Amarillo" {{ old('color',$vehicleActivate->color) == "Amarillo" ? "selected" : "" }}>Amarillo</option>
+                      <option value="Verde" {{ old('color',$vehicleActivate->color) == "Verde" ? "selected" : "" }}>Verde</option>
+                      <option value="Gris" {{ old('color',$vehicleActivate->color) == "Gris" ? "selected" : "" }}>Gris</option>
+                      <option value="Marrón" {{ old('color',$vehicleActivate->color) == "Marrón" ? "selected" : "" }}>Marrón</option>
+                      <option value="Plateado" {{ old('color',$vehicleActivate->color) == "Plateado" ? "selected" : "" }}>Plateado</option>
+                      <option value="Morado" {{ old('color',$vehicleActivate->color) == "Morado" ? "selected" : "" }}>Morado</option>
+                      <option value="Oliva" {{ old('color',$vehicleActivate->color) == "Oliva" ? "selected" : "" }}>Oliva</option>
+                    </select>
                 </div>
                 <div class="field">
                   <label>Año</label>

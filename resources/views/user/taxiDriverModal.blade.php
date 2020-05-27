@@ -91,17 +91,18 @@
               <label>Color</label>
               {{-- <input type="text" name="color" placeholder="ejemplo... Rojo" required value="{{old('color')}}"> --}}
               <select name="color" id="color" required>
-                <option value="Negro">Negro</option>
-                <option value="Rojo">Rojo</option>
-                <option value="Azul">Azul</option>
-                <option value="Blanco">Blanco</option>
-                <option value="Amarillo">Amarillo</option>
-                <option value="Verde">Verde</option>
-                <option value="Gris">Gris</option>
-                <option value="Marrón">Marrón</option>
-                <option value="Plateado">Plateado</option>
-                <option value="Morado">Morado</option>
-                <option value="Oliva">Oliva</option>
+                <option value="">Seleccione un color</option>
+                <option value="Negro"{{ old('color') == "Negro" ? "selected" : "" }}>Negro</option>
+                <option value="Rojo" {{ old('color') == "Rojo" ? "selected" : "" }}>Rojo</option>
+                <option value="Azul" {{ old('color') == "Azul" ? "selected" : "" }}>Azul</option>
+                <option value="Blanco" {{ old('color') == "Blanco" ? "selected" : "" }}>Blanco</option>
+                <option value="Amarillo" {{ old('color') == "Amarillo" ? "selected" : "" }}>Amarillo</option>
+                <option value="Verde" {{ old('color') == "Verde" ? "selected" : "" }}>Verde</option>
+                <option value="Gris" {{ old('color') == "Gris" ? "selected" : "" }}>Gris</option>
+                <option value="Marrón" {{ old('color') == "Marrón" ? "selected" : "" }}>Marrón</option>
+                <option value="Plateado" {{ old('color') == "Plateado" ? "selected" : "" }}>Plateado</option>
+                <option value="Morado" {{ old('color') == "Morado" ? "selected" : "" }}>Morado</option>
+                <option value="Oliva" {{ old('color') == "Oliva" ? "selected" : "" }}>Oliva</option>
               </select>
             </div>
             <div class="field">
