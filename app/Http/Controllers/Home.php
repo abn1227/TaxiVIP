@@ -69,12 +69,6 @@ class Home extends Controller
                     'img'=>'corte'
                 ],
                 [
-                    'url' => 'form-create-user',
-                    'name' => 'Agregar Empleado',
-                    'description' => 'Agregue un nuevo empleado a planilla.',
-                    'img'=>'empleados'
-                ],
-                [
                     'url' => 'show-taxidrivers',
                     'name' => 'Control de conductores',
                     'description' => 'Mostrar todos los conductores registrados en el sistema.',
@@ -87,7 +81,7 @@ class Home extends Controller
                              
                 [
                     'url' => 'show-taxidrivers',
-                    'name' => 'Control de conductores',
+                    'name' => 'Historial de pagos',
                     'description' => 'Mostrar todos los conductores registrados en el sistema.',
                     'img'=>'taxista'
                 ]

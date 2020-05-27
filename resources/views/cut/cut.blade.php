@@ -28,6 +28,8 @@
                     <th>Ingresos percibidos</th>
                     <th>Total a pagar</th>
                     <th>Fecha de corte</th>
+                    <th>Multa</th>
+                    <th>Total a pagar</th>
                     <th>Acción</th>
                     </tr>
                 </thead>
@@ -71,16 +73,24 @@
                                     <!--td>{{$item->cut}}</td-->
                                     @switch($corte)
                                         @case(1)
-                                            <td>{{$item->person->created_at->modify('+1 day')->format('d/m/y')}}</td>
+                                            <td>{{$cortes->created_at->modify('+1 day')->format('d/m/y')}}</td>
                                             @break
                                         @case(7)
-                                            <td>{{$item->person->created_at->modify('+7 day')->format('d/m/y')}}</td>
+                                            <td>{{$cortes->created_at->modify('+7 day')->format('d/m/y')}}</td>
                                             @break
                                         @case(15)
-                                            <td>{{$item->person->created_at->modify('+15 day')->format('d/m/y')}}</td>
+                                            <td>{{$cortes->created_at->modify('+15 day')->format('d/m/y')}}</td>
                                             @break
                                     @endswitch
-                                    
+                                    @if(@date() < $cortes->created_at)
+                                        <td>{{$cortes->penalty_fee}}</td>
+                                        <td>{{(@date('d-m-Y'))}}</td>
+                                    @endif
+                                    @if($item->percentage<10)
+                                        <td>{{round( ('0'.$item->percentage * $item->accrued_payments)/100 )+$cortes->penalty_fee}}</td>
+                                    @else
+                                        <td>{{round( ($item->percentage * $item->accrued_payments)/100 )+$cortes->penalty_fee}}</td>
+                                    @endif
                                     <td>
                                         <form action="{{route('do-cut',$cortes->id)}}" method="post">
                                             @method('put')

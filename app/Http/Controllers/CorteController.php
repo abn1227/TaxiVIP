@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\Cut;
+use Carbon\Carbon;
 
 
 class CorteController extends Controller
@@ -41,6 +42,7 @@ class CorteController extends Controller
         $cut->payment = $pay;
         $cut->cut_date = $date;
         $cut->status = '1';
+        $cut->penalty_fee = '0';
         $cut->taxi_drivers_id = $userSelect->taxi_drivers_id;
         $cut->save();
 
@@ -52,18 +54,29 @@ class CorteController extends Controller
         if($porcentage < 10){
             $porcentage = '0'.$porcentage;
         }
+
+        //verificando la diferencia de dias
+        $cut_day = Carbon::createFromDate($userSelect->created_at);
+        $today = Carbon::now();
+
+        $penalty_fee = ($cut_day->diffInDays($now))*100;
+        
+        //guardar el cobro
         $paym = ($porcentage*$gananciacon)/100;
         $paym = round($paym);
 
-        //update a accrued_payment el valor se obtiene arriba
-        $taxiDriver->accrued_payments = '0';
-        $taxiDriver->save();
+        
 
         //actualizar datos del corte
         $cutUpdate = App\Cut::findOrFail($id);
         $cutUpdate->payment = $paym;
         $cutUpdate->status = '0';
+        $cut->penalty_fee = $penalty_fee;
         $cutUpdate->save();
+
+        //update a accrued_payment el valor se obtiene arriba
+        $taxiDriver->accrued_payments = '0';
+        $taxiDriver->save();
 
          return back()->with('mensaje', 'Corte realizado con exito ');
     }
