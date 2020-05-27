@@ -97,12 +97,6 @@ class Home extends Controller
                     'description' => 'Mostrar todos los pagos que ha efectuado.'.$user->id,
                     'img'=>'historial'
                 ],
-                [
-                    'url' => 'home',
-                    'name' => 'Historial de carreras ralizadas',
-                    'description' => 'Visualizara las carreras realizadas.',
-                    'img'=>'carrera'
-                ]
             ];
         }
         return $modules;
