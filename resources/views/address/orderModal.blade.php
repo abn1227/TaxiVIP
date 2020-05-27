@@ -19,7 +19,7 @@
                 <table class="ui table">
                   <tr>
                     <td >
-                       <input type="number" name="distance" id="distance" required value="{{old('distance')}}" min="0">
+                       <input type="number" name="distance" id="distance" required value="{{old('distance')}}" min="0" step=".01">
                     </td>
                     <td>
                       <div class="ui checkbox">
