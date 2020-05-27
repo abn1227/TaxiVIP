@@ -62,13 +62,33 @@
                 <label>Taxista</label>
                 <label >
                   @foreach ($taxiDrivers as $taxiDriver)
+                  <?php 
+                  $vehicle=App\Vehicle::where([
+                    ['taxi_drivers_id',$taxiDriver->id],
+                    ['active','1']
+                  ])->first();
+                  ?>
                     <input type="hidden" name="taxiDriver" value="{{$taxiDriver->id}}">
                     <input type="text" readonly value="{{$taxiDriver->person->name.' / '.$taxiDriver->person->mobile}}">
                     @break
                   @endforeach
                 </label>
               </div>
-            
+              <div class="field">
+                <label>Placa del vehiculo</label>
+              <input type="text" name="vehicle" value="{{ $vehicle->license_plate}}" readonly >
+              </div>
+
+              <div class="field">
+                <label>Color del vehículo</label>
+              <input type="text" name="vehicle" value="{{ $vehicle->color}}" readonly >
+              </div>
+
+              <div class="field">
+                <label>Marca y modelo del vehículo</label>
+              <input type="text" name="vehicle" value="{{$vehicle->carModel->car_brand->name.'/'. $vehicle->carModel->name}}" readonly >
+              </div>
+
               <div class="field">
                 <label>Celular cliente</label>
                 <input type="text" name="phone" id="phone" required >
