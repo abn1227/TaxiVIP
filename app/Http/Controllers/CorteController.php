@@ -44,7 +44,7 @@ class CorteController extends Controller
         $cut->status = '1';
         $cut->penalty_fee = '0';
         $cut->taxi_drivers_id = $userSelect->taxi_drivers_id;
-        $cut->save();
+        // $cut->save();
 
         //obtener valores de la tabla taxi_drivers
         $taxiDriver = App\Taxi_Driver::findOrFail($userSelect->taxi_drivers_id);
@@ -56,11 +56,11 @@ class CorteController extends Controller
         }
 
         //verificando la diferencia de dias
-        $cut_day = Carbon::createFromDate($userSelect->created_at);
+        $cut_day = Carbon::parse($userSelect->created_at);
         $today = Carbon::now();
 
-        $penalty_fee = ($cut_day->diffInDays($now))*100;
-        
+        $penalty_fee = ($cut_day->diffInDays($today))*100;
+        //dd($penalty_fee);
         //guardar el cobro
         $paym = ($porcentage*$gananciacon)/100;
         $paym = round($paym);
