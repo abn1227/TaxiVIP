@@ -109,7 +109,7 @@ class Order extends Controller
     //-------------------------------------------------------------------------------------------------------------
     public function orders()
     {
-        $orders= App\Order::paginate(10);
+        $orders= App\Order::orderby('id','desc')->paginate(6);
         return view('address.historyOrders',compact('orders'));
     }
     //-------------------------------------------------------------------------------------------------------------
