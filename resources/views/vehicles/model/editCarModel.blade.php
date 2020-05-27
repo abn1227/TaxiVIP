@@ -44,7 +44,7 @@
                   <tr>
                     <td><label >Marca</label></td>
                     <td colspan="3">
-                      <select class="ui search dropdown" name="editSearchCarBrand">
+                      <select class="ui search dropdown" name="editSearchCarBrand" required>
                         <option value="">Marcas</option>
                         @foreach ($brands as $brand)
                             <option value="{{$brand->id}}" 
@@ -56,7 +56,7 @@
                 <tr>
                     <td><label >Modelo</label></td>
                     <td colspan="3">
-                     <input type="text" name="editCarModel" value="{{old('carModel',$model->name)}}">                        
+                     <input type="text" name="editCarModel" value="{{old('carModel',$model->name)}}" required>                        
                     </td>
                 </tr>
                 <tr>

@@ -45,7 +45,7 @@
                     <td><label >Marca</label></td>
                     <td colspan="3">
                         <div class="field">
-                            <input type="text" name="inputEditBrandName" value="{{old('inputEditBrandName',$Brands->name)}}" >
+                            <input type="text" name="inputEditBrandName" value="{{old('inputEditBrandName',$Brands->name)}}" required >
                         </div>
                     </td>
                 </tr>

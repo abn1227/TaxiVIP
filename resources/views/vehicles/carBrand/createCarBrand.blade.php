@@ -44,7 +44,7 @@
                     <td><label >Marca</label></td>
                     <td colspan="3">
                         <div class="field">
-                            <input type="text" name="inputBrandName" >
+                            <input type="text" name="inputBrandName" required>
                         </div>
                     </td>
                 </tr>
