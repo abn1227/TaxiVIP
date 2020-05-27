@@ -80,9 +80,9 @@ class Home extends Controller
             $modules = [
                              
                 [
-                    'url' => 'home',
+                    'url' => 'show-historial',
                     'name' => 'Historial de pagos',
-                    'description' => 'Mostrar todos los pagos que ha efectuado.',
+                    'description' => 'Mostrar todos los pagos que ha efectuado.'.$user->id,
                     'img'=>'historial'
                 ],
                 [

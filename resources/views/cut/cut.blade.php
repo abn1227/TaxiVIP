@@ -26,7 +26,7 @@
                     <th>Nombre</th>
                     <th>Porcentaje %</th>
                     <th>Ingresos percibidos</th>
-                    <th>Total a pagar</th>
+                    <th>Cobro por carreras</th>
                     <th>Fecha de corte</th>
                     <th>Multa</th>
                     <th>Total a pagar</th>
@@ -67,10 +67,8 @@
                                     @else
                                         <td>{{$item->percentage}}%</td>
                                     @endif
-                                    <td>{{$item->accrued_payments}}</td>
-                                    <td>{{round( ($item->percentage * $item->accrued_payments)/100 )}}</td>
-                                    <!--td>{{date('d-m-y')}}</td-->
-                                    <!--td>{{$item->cut}}</td-->
+                                    <td>L. {{$item->accrued_payments}}</td>
+                                    <td>L. {{round( ($item->percentage * $item->accrued_payments)/100 )}}</td>
                                     @switch($corte)
                                         @case(1)
                                             <td>{{$cortes->created_at->modify('+1 day')->format('d/m/y')}}</td>
@@ -82,15 +80,11 @@
                                             <td>{{$cortes->created_at->modify('+15 day')->format('d/m/y')}}</td>
                                             @break
                                     @endswitch
-                                    @if(@date() < $cortes->created_at)
-                                        <td>{{$cortes->penalty_fee}}</td>
-                                        <td>{{(@date('d-m-Y'))}}</td>
+                                    
+                                    @if(strtotime(date('d-m-Y')) > strtotime($cortes->created_at->format('d/m/Y')))
+                                        <td>L. {{ ((date('d', strtotime(date('d-m-Y'))) - date('d', strtotime($cortes->created_at)))-1)*100}}</td>
                                     @endif
-                                    @if($item->percentage<10)
-                                        <td>{{round( ('0'.$item->percentage * $item->accrued_payments)/100 )+$cortes->penalty_fee}}</td>
-                                    @else
-                                        <td>{{round( ($item->percentage * $item->accrued_payments)/100 )+$cortes->penalty_fee}}</td>
-                                    @endif
+                                    <td>L. {{ (round( ($item->percentage * $item->accrued_payments)/100)) + (((date('d', strtotime(date('d-m-Y'))) - date('d', strtotime($cortes->created_at)))-1)*100)}}</td>
                                     <td>
                                         <form action="{{route('do-cut',$cortes->id)}}" method="post">
                                             @method('put')

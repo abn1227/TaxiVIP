@@ -21,10 +21,18 @@ class CorteController extends Controller
 
     public function init()
     {
+        $user = \Auth::user();
         $status = '1';
         $taxiDriver= App\Taxi_Driver::where('status','=', '1')->paginate(5);
         $taxiDriverid = $taxiDriver;
         $corte = App\Cut::where([['taxi_drivers_id','=', $taxiDriverid],['status','=', '1']]);
+        //verificando la diferencia de dias
+        //dd($corte);
+        /*$cor = App\Taxi_Driver::where('persons_id', $user->id);
+        dd($cor);
+        $cut_day = Carbon::parse($corte->cut_date);
+        $today = Carbon::now();
+        $penalty = ($cut_day->diffInDays($today))*100;*/
         return view('cut.cut', compact('taxiDriver','corte'));
     }
 
@@ -59,8 +67,8 @@ class CorteController extends Controller
         $cut_day = Carbon::parse($userSelect->created_at);
         $today = Carbon::now();
 
-        $penalty_fee = ($cut_day->diffInDays($today))*100;
-        //dd($penalty_fee);
+        $penalty = ($cut_day->diffInDays($today))*100;
+        //dd($penalty);
         //guardar el cobro
         $paym = ($porcentage*$gananciacon)/100;
         $paym = round($paym);
@@ -71,7 +79,7 @@ class CorteController extends Controller
         $cutUpdate = App\Cut::findOrFail($id);
         $cutUpdate->payment = $paym;
         $cutUpdate->status = '0';
-        $cut->penalty_fee = $penalty_fee;
+        $cutUpdate->penalty_fee = $penalty;
         $cutUpdate->save();
 
         //update a accrued_payment el valor se obtiene arriba
