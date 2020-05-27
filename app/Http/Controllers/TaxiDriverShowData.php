@@ -17,14 +17,14 @@ class TaxiDriverShowData extends Controller
         $user = Auth::user();
        // dd($user->id);
         $person = \App\Person::findOrFail($user->persons_id);
-        $taxidriver = App\Taxi_Driver::where('persons_id', $person->id)->get();
+        $taxidriver = App\Taxi_Driver::where('persons_id', $person->id)->first();
         $id = 4;
-        $cut = App\Cut::where('taxi_drivers_id',$taxidriver)->get();
+        $cut = App\Cut::where('taxi_drivers_id',$taxidriver->id)->get();
        //$taxidriver = App\Taxi_Driver::where('persons_id','=',$user->id);
         //dd($taxidriver);
        //$cut = App\Cut::where('taxi_drivers_id','=','1');
-      dd($cut);
-       // return view('taxidrivershow.historial', compact('cut'));
+        //dd($cut);
+        return view('taxidrivershow.historial', compact('cut'));
     }
 
 }
