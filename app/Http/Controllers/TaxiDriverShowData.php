@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App;
 //use App\Http\Controllers\Auth;
 use App\Http\Controllers\Person;
@@ -14,18 +14,17 @@ class TaxiDriverShowData extends Controller
 {
     public function init(){
         //trae todos los datos referentes al conductor
-        $user = \Auth::user();
+        $user = Auth::user();
        // dd($user->id);
-       // $person = \App\Person::findOrFail($user->id);
-        $taxidriver = App\Taxi_Driver::where('taxi_drivers_id', '=', $user->id);
+        $person = \App\Person::findOrFail($user->persons_id);
+        $taxidriver = App\Taxi_Driver::where('persons_id', $person->id)->get();
         $id = 4;
-        //dd($taxidriver);
-        $cut = App\Cut::findOrFail($taxidriver);
+        $cut = App\Cut::where('taxi_drivers_id',$taxidriver)->get();
        //$taxidriver = App\Taxi_Driver::where('persons_id','=',$user->id);
         //dd($taxidriver);
        //$cut = App\Cut::where('taxi_drivers_id','=','1');
-       dd($cut);
-        return view('taxidrivershow.historial', compact('cut'));
+      dd($cut);
+       // return view('taxidrivershow.historial', compact('cut'));
     }
 
 }
