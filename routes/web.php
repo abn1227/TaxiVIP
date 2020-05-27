@@ -20,7 +20,7 @@ Route::get('/address/routes', 'Route@showRoute')->name('show-route')->middleware
 Route::get('/address', 'Address@init')->name('addresses')->middleware('auth','manager');
 Route::get('/address/route', 'Route@init')->name('route')->middleware('auth','manager');
 Route::post('/address/save','Address@save')->name('save-addresses')->middleware('auth','manager');
-Route::post('/address/availability','Address@availability')->name('availability')->middleware('auth','receptionist');
+Route::post('/address/availability','Address@availability')->name('availability')->middleware('auth','shared');
 Route::post('/address/save-route','Route@save')->name('save-route')->middleware('auth','manager');
 Route::get('/address/neighborhood/{id}', 'Address@showNeighborhood')->name('neighborhoods')->middleware('auth','manager');
 Route::get('/address/neighborhood/edit/{id}', 'Address@edit')->name('edit-neighborhoods')->middleware('auth','manager');
@@ -46,19 +46,19 @@ Rutas para los controladores de taxista
 ---------------------------------------------------------------------------
 */
 Route::post('/new-taxi-driving','TaxiDriver@createTaxiDriving')->name('new-taxidriver')->middleware('auth', 'manager');
-Route::get('/taxi-driving','TaxiDriver@showAll')->name('show-taxidrivers')->middleware('auth','receptionist');
-Route::get('/show-taxi-driving/{id}','TaxiDriver@showTaxiDriver')->name('detail-taxidriver')->middleware('auth','receptionist');
-Route::get('/edit-taxi-driving/{id}','TaxiDriver@editTaxiDriver')->name('edit-taxidriver')->middleware('auth','receptionist');
-Route::put('/update-taxi-driving/{id}','TaxiDriver@updateTaxiDriver')->name('update-taxidriver')->middleware('auth','receptionist');
+Route::get('/taxi-driving','TaxiDriver@showAll')->name('show-taxidrivers')->middleware('auth','shared');
+Route::get('/show-taxi-driving/{id}','TaxiDriver@showTaxiDriver')->name('detail-taxidriver')->middleware('auth','shared');
+Route::get('/edit-taxi-driving/{id}','TaxiDriver@editTaxiDriver')->name('edit-taxidriver')->middleware('auth','shared');
+Route::put('/update-taxi-driving/{id}','TaxiDriver@updateTaxiDriver')->name('update-taxidriver')->middleware('auth','shared');
 
 /*
 ---------------------------------------------------------------------------------------------
 Rutas para vehiculos
 ---------------------------------------------------------------------------------------------
 */
-Route::post('/vehicles-create-vehicles/{id}', 'VehicleController@newVehicle')->name('create-vehicle')->middleware('auth','receptionist');
-Route::POST('/add-vehicle', 'VehicleController@insertVehicles')->name('insert.vehicles')->middleware('auth','receptionist'); 
-Route::put('/vehicles-update-vehicles/{id}', 'VehicleController@updateVehicles')->name('update-vehicle')->middleware('auth','receptionist');
+Route::post('/vehicles-create-vehicles/{id}', 'VehicleController@newVehicle')->name('create-vehicle')->middleware('auth','shared');
+Route::POST('/add-vehicle', 'VehicleController@insertVehicles')->name('insert.vehicles')->middleware('auth','shared'); 
+Route::put('/vehicles-update-vehicles/{id}', 'VehicleController@updateVehicles')->name('update-vehicle')->middleware('auth','shared');
 /*---------------------------------------------------------------------------
 Rutas para los controladores de marca y modelo
 ---------------------------------------------------------------------------
@@ -84,13 +84,13 @@ Route::put('/users/employees/update/{id}','Employees@updateEmployees')->name('up
 //Rutas para gestionar la creacion de ordenes
 //-------------------------------------------------------------------------------------------------
 
-Route::get('/address/order', 'Order@init')->name('order')->middleware('auth','receptionist');
-Route::get('/address/pending-order', 'Order@pendingOrders')->name('pending')->middleware('auth','receptionist');
-Route::post('/address/order-save','Order@save')->name('save-order')->middleware('auth','receptionist');
-Route::put('/address/order-update/{id}','Order@update')->name('update-order')->middleware('auth','receptionist');
-Route::put('/address/order-taxidriver-status/{id}', 'Order@status')->name('status')->middleware('auth','receptionist');
-Route::get('/address/order-taxidriver-active', 'Order@inactive')->name('inactive')->middleware('auth','receptionist');
-Route::get('/address/order/history', 'Order@orders')->name('history')->middleware('auth','receptionist');
+Route::get('/address/order', 'Order@init')->name('order')->middleware('auth','shared');
+Route::get('/address/pending-order', 'Order@pendingOrders')->name('pending')->middleware('auth','shared');
+Route::post('/address/order-save','Order@save')->name('save-order')->middleware('auth','shared');
+Route::put('/address/order-update/{id}','Order@update')->name('update-order')->middleware('auth','shared');
+Route::put('/address/order-taxidriver-status/{id}', 'Order@status')->name('status')->middleware('auth','shared');
+Route::get('/address/order-taxidriver-active', 'Order@inactive')->name('inactive')->middleware('auth','shared');
+Route::get('/address/order/history', 'Order@orders')->name('history')->middleware('auth','shared');
 Route::get('/address/order/history/{id}', 'Order@show')->name('detail-history');
 //-------------------------------------------------------------------------------------------------
 //Rutas para gestionar la creacion de ordenes
