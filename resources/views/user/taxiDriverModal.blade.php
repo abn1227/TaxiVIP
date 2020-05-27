@@ -21,7 +21,8 @@
 
             <div class="field">
               <label>porcentaje</label>
-              <input type="number" name="inputPercentaje" placeholder="ejemplo... 25" required value="{{old('inputPercentaje')}}">
+              <input type="number" name="inputPercentaje" placeholder="ejemplo... 25" required value="{{old('inputPercentaje')}}"
+              min="10" max="20">
             </div>
             <div class="field">
               <label>Vencimiento de licencia</label>
