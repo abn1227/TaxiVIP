@@ -52,6 +52,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'taxi.driver' => \App\Http\Middleware\TaxiDriver::class,
         'shared' => \App\Http\Middleware\Shared::class,
         'receptionist' => \App\Http\Middleware\Receptionist::class,
         'manager' => \App\Http\Middleware\Manager::class,

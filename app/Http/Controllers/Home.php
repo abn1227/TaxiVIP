@@ -80,10 +80,16 @@ class Home extends Controller
             $modules = [
                              
                 [
-                    'url' => 'show-taxidrivers',
+                    'url' => 'home',
                     'name' => 'Historial de pagos',
-                    'description' => 'Mostrar todos los conductores registrados en el sistema.',
-                    'img'=>'taxista'
+                    'description' => 'Mostrar todos los pagos que ha efectuado.',
+                    'img'=>'historial'
+                ],
+                [
+                    'url' => 'home',
+                    'name' => 'Historial de carreras ralizadas',
+                    'description' => 'Visualizara las carreras realizadas.',
+                    'img'=>'carrera'
                 ]
             ];
         }

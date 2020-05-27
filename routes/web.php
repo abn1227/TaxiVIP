@@ -102,3 +102,5 @@ Route::put('/cut/show/{id}', 'CorteController@doCut')->name('do-cut')->middlewar
 //Rutas para gestionar los historiales del conductor
 //-------------------------------------------------------------------------------------------------
 
+Route::get('/cut/show', 'CorteController@init')->name('show-cut')->middleware('auth','taxi.driver');
+Route::get('/cut/show', 'CorteController@init')->name('show-cut')->middleware('auth','taxi.driver');
