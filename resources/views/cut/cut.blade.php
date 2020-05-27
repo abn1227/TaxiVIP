@@ -82,9 +82,19 @@
                                     @endswitch
                                     
                                     @if(strtotime(date('d-m-Y')) > strtotime($cortes->created_at->format('d/m/Y')))
-                                        <td>L. {{ ((date('d', strtotime(date('d-m-Y'))) - date('d', strtotime($cortes->created_at)))-1)*100}}</td>
+                                        @if(((date('d', strtotime(date('d-m-Y'))) - date('d', strtotime($cortes->created_at)))-1)*100>0)
+                                            <td>L. {{ ((date('d', strtotime(date('d-m-Y'))) - date('d', strtotime($cortes->created_at)))-1)*100}}</td>
+                                        @else
+                                            <td>L. 0</td>
+                                        @endif
+                                    @else
+                                        .
                                     @endif
-                                    <td>L. {{ (round( ($item->percentage * $item->accrued_payments)/100)) + (((date('d', strtotime(date('d-m-Y'))) - date('d', strtotime($cortes->created_at)))-1)*100)}}</td>
+                                    @if(((date('d', strtotime(date('d-m-Y'))) - date('d', strtotime($cortes->created_at)))-1)*100>0)
+                                        <td>L. {{ (round( ($item->percentage * $item->accrued_payments)/100)) + (((date('d', strtotime(date('d-m-Y'))) - date('d', strtotime($cortes->created_at)))-1)*100)}}</td>
+                                    @else
+                                        <td>L. {{ (round( ($item->percentage * $item->accrued_payments)/100)) }}</td>
+                                    @endif
                                     <td>
                                         <form action="{{route('do-cut',$cortes->id)}}" method="post">
                                             @method('put')
