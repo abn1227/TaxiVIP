@@ -18,8 +18,8 @@ class TaxiDriverShowData extends Controller
        // dd($user->id);
         $person = \App\Person::findOrFail($user->persons_id);
         $taxidriver = App\Taxi_Driver::where('persons_id', $person->id)->first();
-        $id = 4;
-        $cut = App\Cut::where('taxi_drivers_id',$taxidriver->id)->get();
+        
+        $cut = App\Cut::where('taxi_drivers_id',$taxidriver->id)->orderBy('id', 'DESC')->paginate(10);
        //$taxidriver = App\Taxi_Driver::where('persons_id','=',$user->id);
         //dd($taxidriver);
        //$cut = App\Cut::where('taxi_drivers_id','=','1');
