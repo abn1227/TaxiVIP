@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\CarModelRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CarBrand;
 use App;
@@ -13,7 +13,7 @@ class CarModel extends Controller
         $brands= $brand->getCarBrand();
         return view('vehicles.model.createCarModel',compact('brands'));
     }
-    public function save(Request $request){
+    public function save(CarModelRequest $request){
         $model= new App\Car_Model;
         $model->name=$request->carModel;
         $model->car_brands_id=$request->searchCarBrand;
@@ -38,7 +38,7 @@ class CarModel extends Controller
         $model= App\Car_Model::findOrFail($id);
         return view('vehicles.model.editCarModel', compact('model','brands'));
     }
-    public function update(Request $request,$id)
+    public function update(CarModelRequest $request,$id)
     {
         $model= App\Car_Model::findOrFail($id);
         $model->name=$request->editCarModel;

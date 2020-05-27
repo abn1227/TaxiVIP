@@ -44,7 +44,7 @@ class CorteController extends Controller
         $cut->status = '1';
         $cut->penalty_fee = '0';
         $cut->taxi_drivers_id = $userSelect->taxi_drivers_id;
-        // $cut->save();
+        $cut->save();
 
         //obtener valores de la tabla taxi_drivers
         $taxiDriver = App\Taxi_Driver::findOrFail($userSelect->taxi_drivers_id);

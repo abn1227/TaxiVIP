@@ -6,7 +6,17 @@
 
 @section('body')
 @extends('templates/navBar')
-
+ {{-- manejo de errores --}}
+ @if ($errors->any())
+ <div class="alert alert-danger">
+     <ul>
+         @foreach ($errors->all() as $error)
+             <li>{{ $error }}</li>
+         @endforeach
+     </ul>
+ </div>
+@endif
+{{-- Fin manejo de errores --}}
 {{-- Guardado exitoso --}}
 @if (session('mensaje'))
 <div class="alert alert-success">
