@@ -21,7 +21,7 @@
 
             <div class="field">
               <label>porcentaje</label>
-              <input type="text" name="inputPercentaje" placeholder="ejemplo... 25" required value="{{old('inputPercentaje')}}">
+              <input type="number" name="inputPercentaje" placeholder="ejemplo... 25" required value="{{old('inputPercentaje')}}">
             </div>
             <div class="field">
               <label>Vencimiento de licencia</label>
@@ -89,7 +89,20 @@
             </div>
             <div class="field">
               <label>Color</label>
-              <input type="text" name="color" placeholder="ejemplo... Rojo" required value="{{old('color')}}">
+              {{-- <input type="text" name="color" placeholder="ejemplo... Rojo" required value="{{old('color')}}"> --}}
+              <select name="color" id="color" required>
+                <option value="Negro">Negro</option>
+                <option value="Rojo">Rojo</option>
+                <option value="Azul">Azul</option>
+                <option value="Blanco">Blanco</option>
+                <option value="Amarillo">Amarillo</option>
+                <option value="Verde">Verde</option>
+                <option value="Gris">Gris</option>
+                <option value="Marrón">Marrón</option>
+                <option value="Plateado">Plateado</option>
+                <option value="Morado">Morado</option>
+                <option value="Oliva">Oliva</option>
+              </select>
             </div>
             <div class="field">
               <label>Año</label>
